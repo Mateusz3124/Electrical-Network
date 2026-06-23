@@ -1,0 +1,1 @@
+/root/.julia/conda/3/x86_64/bin/jupyter notebook --no-browser --ip=0.0.0.0 --port=3000 --allow-root
