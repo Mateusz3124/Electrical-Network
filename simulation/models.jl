@@ -2,25 +2,34 @@ include("RenewableModel.jl")
 
 function get_solar(solar_plant_template, name::Symbol, P, v)
     bus = compile_bus(solar_plant_template; name=name)
-    set_pfmodel!(bus, pfPV(P = P, V = v))
+    set_pfmodel!(bus, pfPV(P = P, V = 1.0))
     return bus
 end
 
 function get_wind(wind_plant_template, name::Symbol, P, v)
     bus = compile_bus(wind_plant_template; name=name) 
-    set_pfmodel!(bus, pfPV(P = P, V = v))
+    set_pfmodel!(bus, pfPV(P = P, V = 1.0))
     return bus
 end
 
 function get_hydro(hydro_plant_template, name::Symbol, P, v)
     bus = compile_bus(hydro_plant_template; name=name)
-    set_pfmodel!(bus, pfPV(P = P, V = v))
+    set_default!(bus, Regex("gensal₊M_b\$"), P * 1000)
+    set_pfmodel!(bus, pfPV(P = P, V = 1.0))
     return bus
 end
 
 function get_other(other_plant_template, name::Symbol, P, v)
     bus = compile_bus(other_plant_template; name=name)
-    set_pfmodel!(bus, pfPV(P = P, V = v))
+    set_default!(bus, Regex("ctrld_gen₊other₊P_max\$"), 1.3)
+    set_default!(bus, Regex("ctrld_gen₊gov₊V_min\$"), 0.0)
+    set_default!(bus, Regex("ctrld_gen₊gov₊V_max\$"), 1.0)
+    set_default!(bus, Regex("ctrld_gen₊other₊Sn\$"), P * 1000)
+    
+    # set_default!(bus, Regex("ctrld_gen₊other₊Vn\$"), parse.(Float64, v) / 1000)
+    # set_default!(bus, Regex("ctrld_gen₊other₊V_b\$"), parse.(Float64, v) / 1000)
+    
+    set_pfmodel!(bus, pfPV(P = P, V = 1.0))
     return bus
 end
 
@@ -41,6 +50,8 @@ end
 function get_slack(slack_plant_template, name::Symbol, V=1.0)
     bus = compile_bus(slack_plant_template; name=name)
     set_default!(bus, Regex("ctrld_gen₊gov₊V_min\$"), -5.0)
+    set_default!(bus, Regex("ctrld_gen₊avr₊vr_min\$"), -5.0)
+    set_default!(bus, Regex("ctrld_gen₊avr₊vr_max\$"), 5.0)
     set_pfmodel!(bus, pfSlack(V=V))
     return bus
 end
@@ -114,17 +125,16 @@ function initialize_templates()
         Tf=1.0, 
         Te=0.8, 
         Tr=0.01,
-        vr_min=-5.0, 
-        vr_max=5.0, 
+        vr_min=-1.0, 
+        vr_max=1.00, 
         E1=2.342286, 
         Se1=0.07, 
         E2=3.123048, 
         Se2=0.314,
         ceiling_function=:quadratic 
     )
-
     _gov = Library.TGOV1(; name=:gov, 
-    R=0.1, 
+    R=0.5, 
     V_min=0.0, 
     V_max=5.0, 
     T1=0.5, 
@@ -134,12 +144,12 @@ function initialize_templates()
 
     other_farm = CompositeInjector([_machine, _gov, _avr], name=:ctrld_gen)
 
-    zipload = Library.ZIPLoad(name=:load, 
+    zipload = Library.ZIPLoad(name=:load,  #region typu D według klasyfikacji Consolidated Edison Inc 
     Pset=0, 
     Qset=0, 
-    KpZ=1.0, KqZ=1.0, 
-    KpI=0.0, KqI=0.0, 
-    KpC=0.0, KqC=0.0)
+    KpZ=1.31, KqZ=9.2, 
+    KpI=-1.94, KqI=-15.27, 
+    KpC=1.63, KqC=7.07)
     
     piline_fault = Library.PiLine_fault(;R=0.001, X=0.002, G_src=0, B_src=0, G_dst=0, B_dst=0, name=:piline)
     breaker = Library.Breaker(; name=:breaker)
@@ -152,7 +162,7 @@ function initialize_templates()
         junction = compile_bus(MTKBus(; name=:junction_bus_template)),
         slack = compile_bus(Library.SlackAlgebraic(; name=:slack_bus_template)),
         
-        breaker = compile_line(MTKLine(breaker); src=:start, dst=:end),
+        breaker  = compile_line(MTKLine(piline_fault); src=:start, dst=:end),
         line     = compile_line(MTKLine(piline_fault); src=:start, dst=:end)
     )
 end

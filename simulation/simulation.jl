@@ -19,9 +19,10 @@ function short_circuit(line)
 end
 
 function shut_down_procedure(plant, line_to_close, type = other)
+    println(plant)
     plant_cond = ComponentCondition([:busbar₊P], []) do u, p, t
         #even when the plant is shut down, there can still be small values below 0.0
-        u[:busbar₊P] < -0.1
+        return u[:busbar₊P] > 0.5
     end
 
     if type == other
@@ -81,34 +82,75 @@ function shut_down_procedure(plant, line_to_close, type = other)
 
 end
 
-function simulate(nw, s0, nodes, lines)
-    shut_down_procedure(nodes[1], 5)
-    shut_down_procedure(nodes[4], 8, solar_wind)
-    shut_down_procedure(nodes[7], 11)
-    shut_down_procedure(nodes[59], 94)
-    shut_down_procedure(nodes[92], 146)
-    shut_down_procedure(nodes[139], 209)
-    shut_down_procedure(nodes[243], 364)
-    shut_down_procedure(nodes[264], 396)
-    shut_down_procedure(nodes[330], 483, hydro)
-    shut_down_procedure(nodes[372], 534)
-    shut_down_procedure(nodes[419], 595, hydro)
-    shut_down_procedure(nodes[423], 600)
-    shut_down_procedure(nodes[428], 605)
-    shut_down_procedure(nodes[433], 610, hydro)
-    shut_down_procedure(nodes[438], 615)
-    shut_down_procedure(nodes[446], 622)
-    shut_down_procedure(nodes[450], 626)
-    shut_down_procedure(nodes[462], 637, solar_wind)
-    shut_down_procedure(nodes[467], 643)
-    shut_down_procedure(nodes[472], 649, solar_wind)
-    shut_down_procedure(nodes[475], 652)
-    shut_down_procedure(nodes[478], 654)
-    shut_down_procedure(nodes[488], 663, solar_wind)
-    
-    short_circuit(lines[142])
+function change_load(node)
+    _change_load = ComponentAffect([], [:load₊Pset, :load₊Qset]) do u, p, ctx
+        @info "increased load [$(ctx.vidx)] t = $(ctx.t)s"
+        p[:load₊Pset] += 0.02
+        p[:load₊Qset] += 0.02 * 0.005
+    end
 
-    prob = ODEProblem(nw, s0, (0.0, 2.0))
-    sol = solve(prob, FBDF())
+    t_steps = collect(1:10:61)
+    set_callback!(node, PresetTimeComponentCallback(t_steps, _change_load))
+end
+
+function shut_down_inits(nodes)
+    shut_down_procedure(nodes[1], 5)
+    # shut_down_procedure(nodes[4], 8, solar_wind)
+    # shut_down_procedure(nodes[7], 11)
+    # shut_down_procedure(nodes[59], 94)
+    # shut_down_procedure(nodes[92], 146)
+    # shut_down_procedure(nodes[139], 209)
+    # shut_down_procedure(nodes[243], 364)
+    # shut_down_procedure(nodes[264], 396)
+    # shut_down_procedure(nodes[330], 483, hydro)
+    # shut_down_procedure(nodes[372], 534)
+    # shut_down_procedure(nodes[419], 595, hydro)
+    # shut_down_procedure(nodes[423], 600)
+    # shut_down_procedure(nodes[428], 605)
+    # shut_down_procedure(nodes[433], 610, hydro)
+    # shut_down_procedure(nodes[438], 615)
+    # shut_down_procedure(nodes[446], 622)
+    # shut_down_procedure(nodes[450], 626)
+    # shut_down_procedure(nodes[462], 637, solar_wind)
+    # shut_down_procedure(nodes[467], 643)
+    # shut_down_procedure(nodes[472], 649, solar_wind)
+    # shut_down_procedure(nodes[475], 652)
+    # shut_down_procedure(nodes[478], 654)
+    # shut_down_procedure(nodes[488], 663, solar_wind)
+end
+
+function change_load_all(nodes)
+    for node in nodes
+        parts = split(string(node.name), "_")
+        if length(parts) == 2
+            if parts[2] == "load"
+                change_load(node)
+            end
+        end
+    end
+end
+
+function plant_Max(nodes)
+    for node in nodes
+        parts = split(string(node.name), "_")
+        if length(parts) == 2
+            if parts[2] == "plant"
+                shut_down_procedure(node, node.metadata[:pfmodel].symmetadata[:pv₊P][:default] * 1.1)
+            end
+        end
+    end
+end
+
+function simulate(nw, s0, nodes, lines)
+    # shut_down_inits(nodes)
+    # short_circuit(lines[142])
+
+    # plant_Max(nodes)
+    change_load_all(nodes)
+
+
+    prob = ODEProblem(nw, s0, (0.0, 71))
+    sol = solve(prob, Rodas5P())
+    # sol = solve(prob, FBDF())
     return sol
 end

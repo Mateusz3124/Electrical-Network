@@ -43,7 +43,8 @@
       "maxlat": 50.8913441,
       "maxlon": 2.8837601,
       "power": 0,
-      "source": "wind"
+      "source": "wind",
+      "voltage": "150000"
     },
     "15917174": {
       "type": "plant",
@@ -66,7 +67,8 @@
       "maxlat": 51.3316686,
       "maxlon": 4.2631998,
       "power": 2935,
-      "source": "nuclear"
+      "source": "nuclear",
+      "voltage": "150000"
     },
     "16094648": {
       "type": "line",
@@ -13956,7 +13958,8 @@
       "maxlat": 50.4394073,
       "maxlon": 6.0398257,
       "power": 9.2,
-      "source": "hydro"
+      "source": "hydro",
+      "voltage": "150000"
     },
     "185485357": {
       "type": "substation",
@@ -17750,7 +17753,8 @@
       "maxlat": 51.3513403,
       "maxlon": 3.2219534,
       "power": 40,
-      "source": "gas"
+      "source": "gas",
+      "voltage": "150000"
     },
     "207089501": {
       "type": "line",
@@ -24708,7 +24712,8 @@
       "maxlat": 51.2642881,
       "maxlon": 3.2129779,
       "power": 460,
-      "source": "gas"
+      "source": "gas",
+      "voltage": "150000"
     },
     "335540666": {
       "type": "substation",
@@ -24958,7 +24963,8 @@
       "maxlat": 50.3858158,
       "maxlon": 5.862744,
       "power": 1164,
-      "source": "hydro"
+      "source": "hydro",
+      "voltage": "150000"
     },
     "430151367": {
       "type": "line",
@@ -25083,7 +25089,8 @@
       "maxlat": 51.2568262,
       "maxlon": 4.3388301,
       "power": 140,
-      "source": "gas"
+      "source": "gas",
+      "voltage": "150000"
     },
     "442856580": {
       "type": "line",
@@ -26317,7 +26324,8 @@
       "maxlat": 50.4327211,
       "maxlon": 4.3972483,
       "power": 451,
-      "source": "gas"
+      "source": "gas",
+      "voltage": "150000"
     },
     "648567655": {
       "type": "substation",
@@ -26458,7 +26466,8 @@
       "maxlat": 51.1599402,
       "maxlon": 3.8106093,
       "power": 315,
-      "source": "gas"
+      "source": "gas",
+      "voltage": "150000"
     },
     "656373382": {
       "type": "line",
@@ -28608,7 +28617,8 @@
       "maxlat": 51.2541248,
       "maxlon": 3.2113626,
       "power": 4.2,
-      "source": "waste"
+      "source": "waste",
+      "voltage": "150000"
     },
     "738918451": {
       "type": "line",
@@ -30117,7 +30127,8 @@
       "maxlat": 51.5805,
       "maxlon": 3.0926644,
       "power": 370,
-      "source": "wind"
+      "source": "wind",
+      "voltage": "150000"
     },
     "792949382": {
       "type": "plant",
@@ -30140,7 +30151,8 @@
       "maxlat": 50.7279789,
       "maxlon": 3.8548235,
       "power": 50,
-      "source": "battery"
+      "source": "battery",
+      "voltage": "150000"
     },
     "800316655": {
       "type": "substation",

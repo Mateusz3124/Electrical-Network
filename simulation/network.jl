@@ -12,7 +12,7 @@ function has_element(array, id)
 end
 
 function should_have_load(info)
-  if length(info.start) == 1
+  if length(info.start) == 1 && (string(info.highVoltage) != string(info.lowVoltage) || parse(Int64, info.highVoltage) <= 70000 || parse(Int64, info.lowVoltage) <= 70000 )
     return 1
   end
   return 0
@@ -29,11 +29,11 @@ function handle_plant!(id, info, network, nodes, lines, tpl, p_base)
   p /= p_base
 
   if info.source == "wind" || info.source == "solar"
-    push!(nodes, get_wind(tpl.solar_wind, Symbol(id, :_plant), p, v))
+    push!(nodes, get_wind(tpl.solar_wind, Symbol(id, :_plant), p, info.voltage))
   elseif info.source == "hydro"
-    push!(nodes, get_hydro(tpl.hydro, Symbol(id, :_plant), p, v))
+    push!(nodes, get_hydro(tpl.hydro, Symbol(id, :_plant), p, info.voltage))
   else
-    push!(nodes, get_other(tpl.other, Symbol(id, :_plant), p, v))
+    push!(nodes, get_other(tpl.other, Symbol(id, :_plant), p, info.voltage))
   end
   
   push!(nodes, get_junction(tpl.junction, id))
@@ -46,14 +46,17 @@ end
 
 function handle_subsation!(id, info, network, nodes, lines, tpl, p, q)
   push!(nodes, get_junction(tpl.junction, id))
-  if length(info.start) == 1
+
+  if should_have_load(info) == 1
     push!(nodes, get_load(tpl.load, Symbol(id, :_load), p , q))
     push!(lines, get_line(tpl.line, id, Symbol(id, :_load)))
     return
   end
+
   if string(info.highVoltage) == string(info.lowVoltage)
     return
   end
+
   push!(nodes, get_junction(tpl.junction, Symbol(id, :_low)))
   push!(lines, get_line(tpl.line, id, Symbol(id, :_low)))
 end
@@ -137,8 +140,12 @@ function create_network(data, p_base)
     end
   end
 
+  println(load_count)
+
   p = power_sum / load_count * 0.97
   q = p * 0.005
+
+  println(p)
         
   for (id, info) in data.network
     if info.type == "substation"
@@ -170,7 +177,7 @@ function create_network(data, p_base)
   push!(unique_lines, get_line(tpl.line, Symbol("France"), Symbol("239441587")))
 
   push!(nodes, get_slack(tpl.other, :Netherlands, 1.0))
-  push!(unique_lines, get_line(tpl.line, Symbol("Netherlands"), Symbol("60606465")))
+  push!(unique_lines, get_line(tpl.line, Symbol("Netherlands"), Symbol("825954426")))
 
   nw = Network(nodes, unique_lines)
   return (nw, nodes, unique_lines)
