@@ -44,12 +44,43 @@ function handle_plant!(id, info, network, nodes, lines, tpl, p_base)
   return p
 end
 
+industry = Set([
+    Symbol("33756607_load"),
+    Symbol("228369813_load"),
+    Symbol("225982020_load"),
+    Symbol("225991900_load"),
+    Symbol("239444041_load"),
+    Symbol("205830382_load"),
+    Symbol("239276278_load"),
+    Symbol("825954426_load"),
+    Symbol("666662687_load"),
+    Symbol("667172748_load"),
+    Symbol("103325119_load"),
+    Symbol("766062193_load"),
+    Symbol("1351038456_load"),
+    Symbol("715026288_load"),
+    Symbol("138113463_load"),
+    Symbol("105919468_load"),
+    Symbol("87792346_load"),
+    Symbol("168872812_load"),
+    Symbol("161234130_load"),
+])
+
+i = 1
+
 function handle_subsation!(id, info, network, nodes, lines, tpl, p, q)
   push!(nodes, get_junction(tpl.junction, id))
-
+  global i
   if should_have_load(info) == 1
-    push!(nodes, get_load(tpl.load, Symbol(id, :_load), p , q))
+    if Symbol(id, :_load) in industry
+	    push!(nodes, get_load(tpl.load, Symbol(id, :_load), q , q * 0.005, 1.21, -1.61, 4.35, -7.08))
+    elseif i % 2 == 0
+      push!(nodes, get_load(tpl.load, Symbol(id, :_load), p , p * 0.005, 1.31, -1.94, 9.20, -15.27))
+    else
+      push!(nodes, get_load(tpl.load, Symbol(id, :_load), p , p * 0.005, 0.76, -0.52, 6.92, -11.75))
+    end
     push!(lines, get_line(tpl.line, id, Symbol(id, :_load)))
+    i += 1
     return
   end
 
@@ -142,10 +173,13 @@ function create_network(data, p_base)
 
   println(load_count)
 
-  p = power_sum / load_count * 0.97
-  q = p * 0.005
+  power_used = power_sum * 0.97
+  p = power_used * 0.5 / (load_count - 19)
+  q = power_used * 0.5 / 19.0
 
   println(p)
+  println(power_sum * 0.97 / load_count)
+  println(q)
         
   for (id, info) in data.network
     if info.type == "substation"

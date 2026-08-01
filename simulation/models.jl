@@ -22,9 +22,10 @@ end
 function get_other(other_plant_template, name::Symbol, P, v)
     bus = compile_bus(other_plant_template; name=name)
     set_default!(bus, Regex("ctrld_gen₊other₊P_max\$"), 1.3)
-    set_default!(bus, Regex("ctrld_gen₊gov₊V_min\$"), 0.0)
-    set_default!(bus, Regex("ctrld_gen₊gov₊V_max\$"), 1.0)
     set_default!(bus, Regex("ctrld_gen₊other₊Sn\$"), P * 1000)
+
+    # set_default!(bus, Regex("ctrld_gen₊gov₊V_min\$"), 0.0)
+    # set_default!(bus, Regex("ctrld_gen₊gov₊V_max\$"), 1.0)
     
     # set_default!(bus, Regex("ctrld_gen₊other₊Vn\$"), parse.(Float64, v) / 1000)
     # set_default!(bus, Regex("ctrld_gen₊other₊V_b\$"), parse.(Float64, v) / 1000)
@@ -33,10 +34,19 @@ function get_other(other_plant_template, name::Symbol, P, v)
     return bus
 end
 
-function get_load(bus_load_template, name::Symbol, P, Q) 
+function get_load(bus_load_template, name::Symbol, P, Q, KpZ, KpI, KqZ, KqI) 
     bus_load = compile_bus(bus_load_template; name=name)
-    set_default!(bus_load, Regex("load₊Pset\$"), -P)
-    set_default!(bus_load, Regex("load₊Qset\$"), -Q)
+
+    # set_default!(bus_load, Regex("load₊Pset\$"), -P / scale_p)
+    # set_default!(bus_load, Regex("load₊Qset\$"), -Q / scale_q)
+
+    # set_default!(bus_load, Regex("load₊Vset\$"), 1.0)
+
+    set_default!(bus_load, Regex("load₊KpZ\$"), KpZ)
+    set_default!(bus_load, Regex("load₊KpI\$"), KpI)
+    set_default!(bus_load, Regex("load₊KqZ\$"), KqZ)
+    set_default!(bus_load, Regex("load₊KqI\$"), KqI)
+    
     set_pfmodel!(bus_load, pfPQ(P = -P, Q = -Q))
     return bus_load
 end
@@ -49,7 +59,7 @@ end
 
 function get_slack(slack_plant_template, name::Symbol, V=1.0)
     bus = compile_bus(slack_plant_template; name=name)
-    set_default!(bus, Regex("ctrld_gen₊gov₊V_min\$"), -5.0)
+    set_default!(bus, Regex("ctrld_gen₊gov₊V_min\$"), -1.0)
     set_default!(bus, Regex("ctrld_gen₊avr₊vr_min\$"), -5.0)
     set_default!(bus, Regex("ctrld_gen₊avr₊vr_max\$"), 5.0)
     set_pfmodel!(bus, pfSlack(V=V))
@@ -112,7 +122,7 @@ function initialize_templates()
         X″_q=0.25, 
         T″_d0=0.05, 
         T″_q0=0.035, 
-        H=4.2, 
+        H=4.3, 
         D=0.5
     )
 
@@ -133,10 +143,11 @@ function initialize_templates()
         Se2=0.314,
         ceiling_function=:quadratic 
     )
+    
     _gov = Library.TGOV1(; name=:gov, 
-    R=0.5, 
+    R=0.05, 
     V_min=0.0, 
-    V_max=5.0, 
+    V_max=1.0, 
     T1=0.5, 
     T2=2.1, 
     T3=7.2, 
@@ -148,8 +159,7 @@ function initialize_templates()
     Pset=0, 
     Qset=0, 
     KpZ=1.31, KqZ=9.2, 
-    KpI=-1.94, KqI=-15.27, 
-    KpC=1.63, KqC=7.07)
+    KpI=-1.94, KqI=-15.27)
     
     piline_fault = Library.PiLine_fault(;R=0.001, X=0.002, G_src=0, B_src=0, G_dst=0, B_dst=0, name=:piline)
     breaker = Library.Breaker(; name=:breaker)

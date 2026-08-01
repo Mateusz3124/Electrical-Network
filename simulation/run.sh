@@ -1,1 +1,1 @@
-julia --threads auto --project="." main.jl
+julia --project="." main.jl
