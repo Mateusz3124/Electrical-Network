@@ -85,8 +85,8 @@ end
 function change_load(node)
     _change_load = ComponentAffect([], [:load₊Pset, :load₊Qset]) do u, p, ctx
         @info "increased load [$(ctx.vidx)] t = $(ctx.t)s"
-        p[:load₊Pset] += 0.02
-        p[:load₊Qset] += 0.02 * 0.005
+        p[:load₊Pset] -= 0.01
+        p[:load₊Qset] -= 0.01 * 0.005
     end
 
     t_steps = collect(1:10:61)
@@ -130,26 +130,128 @@ function change_load_all(nodes)
     end
 end
 
-function plant_Max(nodes)
+function plant_Max(nodes, sol)
+    _enable_max = ComponentAffect([], [:ctrld_gen₊gov₊V_max]) do u, p, ctx
+        @info "Set to max $(ctx.id)"
+        p[:ctrld_gen₊gov₊V_max] = 1.0
+    end
+
+    max_cb = PresetTimeComponentCallback(0.0, _enable_max)
     for node in nodes
         parts = split(string(node.name), "_")
         if length(parts) == 2
             if parts[2] == "plant"
-                shut_down_procedure(node, node.metadata[:pfmodel].symmetadata[:pv₊P][:default] * 1.1)
+                try 
+                    println(sol.v[node.name][:ctrld_gen₊gov₊V_max])
+                    set_callback!(node, max_cb)
+                catch
+                end
+            
             end
         end
     end
 end
 
+function create_plant_max_callback(nodes)
+    plant_vidxs=[]
+    for (i, node) in enumerate(nodes)
+        parts = split(string(node.name), "_")
+        if length(parts) == 2
+            if parts[2] == "plant"
+                try 
+                    push!(plant_vidxs,VIndex(i))
+                catch
+                end
+            
+            end
+        end
+    end
+
+    affect = let plant_vidxs = plant_vidxs
+        ComponentAffect([], []) do u, p, ctx
+            integrator = ctx.integrator
+            @info "Triggered plant_Max at t=$(integrator.t)"
+
+            p_net = NWParameter(integrator)
+
+            for vidx in plant_vidxs
+                p_net.v[vidx, :ctrld_gen₊gov₊V_max] = 1.0
+            end         
+            
+            SciMLBase.auto_dt_reset!(integrator)
+            save_parameters!(integrator)
+            nothing
+        end
+    end
+
+    # 3. Exactly ONE callback created
+    return PresetTimeCallback(0.0, affect)
+end
+
+function get_global_callbacks(nodes, sol)
+    plant_vidxs = []
+    load_vidxs = []
+    
+    # 1. Gather all indices ONCE
+    for (i, node) in enumerate(nodes)
+        parts = split(string(node.name), "_")
+        if length(parts) == 2
+            if parts[2] == "plant"
+                try 
+                    println(sol.v[node.name][:ctrld_gen₊gov₊V_max])
+                    push!(plant_vidxs,VIndex(i))
+                catch
+                end
+            elseif parts[2] == "load"
+                push!(load_vidxs, VIndex(i))
+            end
+        end
+    end
+
+    # 2. Define standard SciML affect for Plants
+    plant_affect! = let plant_vidxs = plant_vidxs
+        function (integrator)
+            @info "Triggered plant_Max at t=$(integrator.t)"
+            p_net = NWParameter(integrator)
+            for vidx in plant_vidxs
+                p_net.v[vidx, :ctrld_gen₊gov₊V_max] = 1.0
+            end         
+            SciMLBase.auto_dt_reset!(integrator)
+            save_parameters!(integrator)
+        end
+    end
+
+    # 3. Define standard SciML affect for Loads
+    load_affect! = let load_vidxs = load_vidxs
+        function (integrator)
+            @info "Increased loads at t = $(integrator.t)s"
+            p_net = NWParameter(integrator)
+            for vidx in load_vidxs
+                p_net.v[vidx, :load₊Pset] -= 0.01
+                p_net.v[vidx, :load₊Qset] -= 0.01 * 0.005
+            end
+            SciMLBase.auto_dt_reset!(integrator)
+            save_parameters!(integrator)
+        end
+    end
+
+    # cb_plant = PresetTimeCallback([0.0], plant_affect!)
+    cb_load  = PresetTimeCallback(collect(1.0:60.0:361.0), load_affect!)
+
+    return CallbackSet(cb_load)
+end
+
+# Usage when solving:
 function simulate(nw, s0, nodes, lines)
     # shut_down_inits(nodes)
     # short_circuit(lines[142])
 
-    # plant_Max(nodes)
-    change_load_all(nodes)
+    # plant_Max(nodes, s0)
+    cb = get_global_callbacks(nodes,s0)
+    # change_load_all(nodes)
 
 
-    prob = ODEProblem(nw, s0, (0.0, 71))
+    prob = ODEProblem(nw, s0, (0.0, 500);add_nw_cb=cb)
     sol = solve(prob, Rodas5P())
     # sol = solve(prob, FBDF())
     return sol

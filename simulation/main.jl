@@ -5,6 +5,7 @@ using ModelingToolkit
 using ModelingToolkit: t_nounits as t, D_nounits as Dt
 using ModelingToolkit: connect
 using SciMLBase
+using DiffEqCallbacks
 using OrdinaryDiffEqBDF: FBDF, ODEProblem, solve
 using DifferentialEquations: Rodas5P
 using JSON3
@@ -109,7 +110,6 @@ end
 function main()
     data = JSON3.read(read("../data/calculated/belgium.json", String))
     p_base = 1000
-    
     @time begin
 
     nw, nodes, lines = create_network(data, p_base)
@@ -132,13 +132,14 @@ function main()
             end
         end
     end
-    s0 = initialize_from_pf(nw; verbose=false, tol=1e-7, nwtol=1e-7, parallel=false) 
+
+    s0 = initialize_from_pf(nw; pfs=s, verbose=false, tol=1e-7, nwtol=1e-7, parallel=false) 
     end
 
     @time begin
     sol = simulate(nw, s0, nodes, lines)
     end
-    serialize("sim/btempTEST2.jld2", sol)
+    serialize("sim/cincreaseSlowFROM85UnStable.jld2", sol)
 end
 
 if abspath(PROGRAM_FILE) == @__FILE__

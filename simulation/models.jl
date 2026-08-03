@@ -21,11 +21,11 @@ end
 
 function get_other(other_plant_template, name::Symbol, P, v)
     bus = compile_bus(other_plant_template; name=name)
-    set_default!(bus, Regex("ctrld_gen₊other₊P_max\$"), 1.3)
-    set_default!(bus, Regex("ctrld_gen₊other₊Sn\$"), P * 1000)
+    # set_default!(bus, Regex("ctrld_gen₊other₊P_max\$"), 1.3)
+    set_default!(bus, Regex("ctrld_gen₊other₊Sn\$"), P * 1000 / 0.9)
 
-    # set_default!(bus, Regex("ctrld_gen₊gov₊V_min\$"), 0.0)
-    # set_default!(bus, Regex("ctrld_gen₊gov₊V_max\$"), 1.0)
+    set_default!(bus, Regex("ctrld_gen₊gov₊V_min\$"), 0.0)
+    set_default!(bus, Regex("ctrld_gen₊gov₊V_max\$"), 1.00)
     
     # set_default!(bus, Regex("ctrld_gen₊other₊Vn\$"), parse.(Float64, v) / 1000)
     # set_default!(bus, Regex("ctrld_gen₊other₊V_b\$"), parse.(Float64, v) / 1000)
@@ -108,7 +108,7 @@ function initialize_templates()
         τ_m_input=true, 
         S_b=1000.0, 
         V_b=16.5, 
-        ω_b=1.0,
+        ω_b=2π*50,
         Vn=16.5, 
         R_s=0.0, 
         X_ls=0.125, 
@@ -135,8 +135,8 @@ function initialize_templates()
         Tf=1.0, 
         Te=0.8, 
         Tr=0.01,
-        vr_min=-1.0, 
-        vr_max=1.00, 
+        vr_min=-5.0, 
+        vr_max=5.00, 
         E1=2.342286, 
         Se1=0.07, 
         E2=3.123048, 
@@ -147,7 +147,7 @@ function initialize_templates()
     _gov = Library.TGOV1(; name=:gov, 
     R=0.05, 
     V_min=0.0, 
-    V_max=1.0, 
+    V_max=5.0, 
     T1=0.5, 
     T2=2.1, 
     T3=7.2, 
