@@ -1,6 +1,8 @@
 @enum PlantType solar_wind hydro other
 
 function short_circuit(line)
+    ge = line.metadata[:graphelement]
+    println([ge.src, ge.dst])
     _enable_short = ComponentAffect([], [:piline₊shortcircuit]) do u, p, ctx
         @info "Short circuit activated on line $(ctx.src)→$(ctx.dst) at t = $(ctx.t)s"
         p[:piline₊shortcircuit] = 1
@@ -196,28 +198,9 @@ function get_global_callbacks(nodes, sol)
     for (i, node) in enumerate(nodes)
         parts = split(string(node.name), "_")
         if length(parts) == 2
-            if parts[2] == "plant"
-                try 
-                    println(sol.v[node.name][:ctrld_gen₊gov₊V_max])
-                    push!(plant_vidxs,VIndex(i))
-                catch
-                end
-            elseif parts[2] == "load"
+            if parts[2] == "load"
                 push!(load_vidxs, VIndex(i))
             end
-        end
-    end
-
-    # 2. Define standard SciML affect for Plants
-    plant_affect! = let plant_vidxs = plant_vidxs
-        function (integrator)
-            @info "Triggered plant_Max at t=$(integrator.t)"
-            p_net = NWParameter(integrator)
-            for vidx in plant_vidxs
-                p_net.v[vidx, :ctrld_gen₊gov₊V_max] = 1.0
-            end         
-            SciMLBase.auto_dt_reset!(integrator)
-            save_parameters!(integrator)
         end
     end
 
@@ -236,7 +219,7 @@ function get_global_callbacks(nodes, sol)
     end
 
     # cb_plant = PresetTimeCallback([0.0], plant_affect!)
-    cb_load  = PresetTimeCallback(collect(1.0:60.0:361.0), load_affect!)
+    cb_load  = PresetTimeCallback(collect(1.0:10.0:71.0), load_affect!)
 
     return CallbackSet(cb_load)
 end
@@ -244,15 +227,15 @@ end
 # Usage when solving:
 function simulate(nw, s0, nodes, lines)
     # shut_down_inits(nodes)
-    # short_circuit(lines[142])
+    short_circuit(lines[293])
 
     # plant_Max(nodes, s0)
-    cb = get_global_callbacks(nodes,s0)
+    # cb = get_global_callbacks(nodes,s0)
     # change_load_all(nodes)
-
-
-    prob = ODEProblem(nw, s0, (0.0, 500);add_nw_cb=cb)
-    sol = solve(prob, Rodas5P())
-    # sol = solve(prob, FBDF())
+        
+    # prob = ODEProblem(nw, s0, (0.0, 81);add_nw_cb=cb)
+    prob = ODEProblem(nw, s0, (0.0, 10))
+    # sol = solve(prob, FBDF(); abstol=1e-8, reltol=1e-6)
+    sol = solve(prob, Rodas5P(linsolve = KLUFactorization()), saveat = 0.01)
     return sol
 end

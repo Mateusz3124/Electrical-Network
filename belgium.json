@@ -5345,7 +5345,7 @@
       "maxlon": 3.7831384,
       "power": 215,
       "source": "biofuel;blast_furnance_gas",
-      "voltage": "380000"
+      "voltage": "150000"
     },
     "88054521": {
       "type": "line",
@@ -13959,7 +13959,7 @@
       "maxlon": 6.0398257,
       "power": 9.2,
       "source": "hydro",
-      "voltage": "70000"
+      "voltage": "150000"
     },
     "185485357": {
       "type": "substation",
@@ -17754,7 +17754,7 @@
       "maxlon": 3.2219534,
       "power": 40,
       "source": "gas",
-      "voltage": "36000"
+      "voltage": "150000"
     },
     "207089501": {
       "type": "line",
@@ -24964,7 +24964,7 @@
       "maxlon": 5.862744,
       "power": 1164,
       "source": "hydro",
-      "voltage": "380000"
+      "voltage": "150000"
     },
     "430151367": {
       "type": "line",
@@ -28618,7 +28618,7 @@
       "maxlon": 3.2113626,
       "power": 4.2,
       "source": "waste",
-      "voltage": "36000"
+      "voltage": "150000"
     },
     "738918451": {
       "type": "line",
@@ -30128,7 +30128,7 @@
       "maxlon": 3.0926644,
       "power": 370,
       "source": "wind",
-      "voltage": "220000"
+      "voltage": "150000"
     },
     "792949382": {
       "type": "plant",
@@ -30152,7 +30152,7 @@
       "maxlon": 3.8548235,
       "power": 50,
       "source": "battery",
-      "voltage": "70000"
+      "voltage": "150000"
     },
     "800316655": {
       "type": "substation",

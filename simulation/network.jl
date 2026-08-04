@@ -29,16 +29,21 @@ function handle_plant!(id, info, network, nodes, lines, tpl, p_base)
   p /= p_base
 
   if info.source == "wind" || info.source == "solar"
-    push!(nodes, get_wind(tpl.solar_wind, Symbol(id, :_plant), p, info.voltage))
+    push!(nodes, get_other(tpl.other, Symbol(id, :_plant), p, info.voltage))
+    # push!(nodes, get_wind(tpl.solar_wind, Symbol(id, :_plant), p, info.voltage))
   elseif info.source == "hydro"
-    push!(nodes, get_hydro(tpl.hydro, Symbol(id, :_plant), p, info.voltage))
+    push!(nodes, get_other(tpl.other, Symbol(id, :_plant), p, info.voltage))
+    # push!(nodes, get_hydro(tpl.hydro, Symbol(id, :_plant), p, info.voltage))
   else
     push!(nodes, get_other(tpl.other, Symbol(id, :_plant), p, info.voltage))
   end
+
+  16.5
+  info.voltage
   
   push!(nodes, get_junction(tpl.junction, id))
-  push!(lines, get_line(tpl.line, Symbol(id, :_plant), Symbol(id, :_temp)))
   push!(nodes, get_junction(tpl.junction, Symbol(id, :_temp)))
+  push!(lines, get_line(tpl.line, Symbol(id, :_temp), Symbol(id, :_plant)))
   push!(lines, get_line(tpl.breaker, Symbol(id, :_temp), id))
   
   return p
@@ -213,6 +218,8 @@ function create_network(data, p_base)
   push!(nodes, get_slack(tpl.other, :Netherlands, 1.0))
   push!(unique_lines, get_line(tpl.line, Symbol("Netherlands"), Symbol("825954426")))
 
-  nw = Network(nodes, unique_lines)
+nw = Network(nodes, unique_lines;
+             execution=PolyesterExecution{true}(),
+             aggregator=PolyesterAggregator(+))
   return (nw, nodes, unique_lines)
 end

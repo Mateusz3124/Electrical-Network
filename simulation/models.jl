@@ -2,20 +2,21 @@ include("RenewableModel.jl")
 
 function get_solar(solar_plant_template, name::Symbol, P, v)
     bus = compile_bus(solar_plant_template; name=name)
-    set_pfmodel!(bus, pfPV(P = P, V = 1.0))
+    set_pfmodel!(bus, pfPQ(P = P, Q = 0.0))
     return bus
 end
 
 function get_wind(wind_plant_template, name::Symbol, P, v)
     bus = compile_bus(wind_plant_template; name=name) 
-    set_pfmodel!(bus, pfPV(P = P, V = 1.0))
+    set_pfmodel!(bus, pfPQ(P = P, Q = 0.0))
     return bus
 end
 
 function get_hydro(hydro_plant_template, name::Symbol, P, v)
     bus = compile_bus(hydro_plant_template; name=name)
-    set_default!(bus, Regex("gensal₊M_b\$"), P * 1000)
-    set_pfmodel!(bus, pfPV(P = P, V = 1.0))
+    set_default!(bus, Regex("gensal₊M_b\$"), P * 1000 / 0.9)
+    # set_pfmodel!(bus, pfPV(P = P, V = 1.0))
+    set_pfmodel!(bus, P*1000 < 50 ? pfPQ(P=P, Q=0.0) : pfPV(P=P, V=1.0))
     return bus
 end
 
@@ -24,13 +25,14 @@ function get_other(other_plant_template, name::Symbol, P, v)
     # set_default!(bus, Regex("ctrld_gen₊other₊P_max\$"), 1.3)
     set_default!(bus, Regex("ctrld_gen₊other₊Sn\$"), P * 1000 / 0.9)
 
-    set_default!(bus, Regex("ctrld_gen₊gov₊V_min\$"), 0.0)
+    set_default!(bus, Regex("ctrld_gen₊gov₊V_min\$"), -1.0)
     set_default!(bus, Regex("ctrld_gen₊gov₊V_max\$"), 1.00)
     
     # set_default!(bus, Regex("ctrld_gen₊other₊Vn\$"), parse.(Float64, v) / 1000)
     # set_default!(bus, Regex("ctrld_gen₊other₊V_b\$"), parse.(Float64, v) / 1000)
     
-    set_pfmodel!(bus, pfPV(P = P, V = 1.0))
+    # set_pfmodel!(bus, P*1000 < 50 ? pfPQ(P=P, Q=0.0) : pfPV(P=P, V=1.0))
+    set_pfmodel!(bus, pfPV(P=P, V=1.0))
     return bus
 end
 
@@ -59,7 +61,7 @@ end
 
 function get_slack(slack_plant_template, name::Symbol, V=1.0)
     bus = compile_bus(slack_plant_template; name=name)
-    set_default!(bus, Regex("ctrld_gen₊gov₊V_min\$"), -1.0)
+    set_default!(bus, Regex("ctrld_gen₊gov₊V_min\$"), -5.0)
     set_default!(bus, Regex("ctrld_gen₊avr₊vr_min\$"), -5.0)
     set_default!(bus, Regex("ctrld_gen₊avr₊vr_max\$"), 5.0)
     set_pfmodel!(bus, pfSlack(V=V))
@@ -72,7 +74,7 @@ function get_line(line_template, src, dst)
 end
 
 function initialize_templates()
-    solar_wind_plant = CustomRenewable(name=:solar_wind, kp_v_dc=2.0, ki_v_dc=50.0)
+    solar_wind_plant = CustomRenewable(name=:solar_wind, kp_v_dc=0.785, ki_v_dc=6.17, CC1_KI=339.3, C_dc=0.01)
 
     gensal = Library.PSSE_GENSAL(;
         name=:gensal,
@@ -93,11 +95,30 @@ function initialize_templates()
         S12=0.802, 
         R_a=1e-5, 
         pmech_input=true, 
-        efd_input=false
+        efd_input=true
+    )
+
+    @named scrx = PSSE_SCRX(;
+        T_B = 10,
+        K = 100,
+        T_E = 0.05,
+        E_MIN = -10,
+        E_MAX = 10,
+        r_cr_fd = 0,
+        C_SWITCH = false,  # Bus fed mode
+        vothsg_input = false,  # No other signal input
+        vuel_input = false,    # No under-excitation limiter
+        voel_input = false     # No over-excitation limiter
     )
 
     hygov = Library.PSSE_HYGOV(name=:swing_hydro_gov, G_MAX=1.0)
     con = [
+        # Exciter connections (SCRX to GENSAL)
+        connect(scrx.EFD_out, gensal.EFD_in)
+        connect(gensal.XADIFD_out, scrx.XADIFD_in)
+        connect(gensal.ETERM_out, scrx.ECOMP_in)
+
+        # Governor connections (HYGOV to GENSAL)
         connect(hygov.PMECH_out, gensal.PMECH_in)
         connect(gensal.SPEED_out, hygov.SPEED_in)
     ]
@@ -109,6 +130,7 @@ function initialize_templates()
         S_b=1000.0, 
         V_b=16.5, 
         ω_b=2π*50,
+        # ω_b=1,
         Vn=16.5, 
         R_s=0.0, 
         X_ls=0.125, 
@@ -166,7 +188,7 @@ function initialize_templates()
 
     return (
         solar_wind    = compile_bus(MTKBus(solar_wind_plant; name=:solar_plant_template); assume_io_coupling=true),
-        hydro    = compile_bus(MTKBus([gensal, hygov], con; name=:hydro_plant_template); assume_io_coupling=true),
+        hydro    = compile_bus(MTKBus([gensal, scrx, hygov], con; name=:hydro_plant_template); assume_io_coupling=true),
         other    = compile_bus(MTKBus(other_farm; name=:other_plant_template); assume_io_coupling=true),
         load     = compile_bus(MTKBus(zipload; name=:load_template); assume_io_coupling=true),
         junction = compile_bus(MTKBus(; name=:junction_bus_template)),

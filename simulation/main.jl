@@ -1,5 +1,6 @@
 using PowerDynamics
-using PowerDynamics: Library, initialize_from_pf, Network
+using PowerDynamics: Library, initialize_from_pf, Network, PSSE_SCRX
+using PowerDynamics.Library: PSSE_SCRX
 using PowerDynamics.Library.ComposableInverter: SimpleGFLDC, LFilter, PLL_LPF, CC1
 using ModelingToolkit
 using ModelingToolkit: t_nounits as t, D_nounits as Dt
@@ -11,6 +12,8 @@ using DifferentialEquations: Rodas5P
 using JSON3
 using Serialization
 using Graphs
+using DifferentialEquations
+using NonlinearSolve
 
 include("models.jl")
 include("network.jl")
@@ -113,6 +116,9 @@ function main()
     @time begin
 
     nw, nodes, lines = create_network(data, p_base)
+
+    nw = set_jac_prototype!(nw)
+
     pfnw = powerflow_model(nw)
     pfs0 = NWState(pfnw)
     s = solve_powerflow(nw; pfnw, pfs0, verbose=false, sparse=true)
@@ -132,14 +138,13 @@ function main()
             end
         end
     end
-
-    s0 = initialize_from_pf(nw; pfs=s, verbose=false, tol=1e-7, nwtol=1e-7, parallel=false) 
+    s0 = initialize_from_pf(nw; pfs=s, verbose=true, tol=1e-6, nwtol=1e-6, parallel=false) 
     end
 
     @time begin
     sol = simulate(nw, s0, nodes, lines)
     end
-    serialize("sim/cincreaseSlowFROM85UnStable.jld2", sol)
+    serialize("sim/dsc3.jld2", sol)
 end
 
 if abspath(PROGRAM_FILE) == @__FILE__
