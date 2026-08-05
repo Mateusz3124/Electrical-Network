@@ -1,1 +1,1 @@
-julia --project="." main.jl
+julia --sysimage powerdynamics.so --project="." main.jl

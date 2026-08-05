@@ -19,7 +19,7 @@ include("models.jl")
 include("network.jl")
 include("simulation.jl")
 
-function save_names()
+function save_names(nodes, lines)
     names = Dict()
     names_nodes = []
     names_lines = []
@@ -61,29 +61,6 @@ industry = Set([
     Symbol("168872812_load"),
     Symbol("161234130_load"),
 ])
-
-# function update_load(bus_load, s, k, KpZ, KpI, KqZ, KqI)
-#     u_r = s[VIndex(k, :busbar₊u_r)]  
-#     u_i = s[VIndex(k, :busbar₊u_i)]  
-#     i_r = s[VIndex(k, :busbar₊i_r)]  
-#     i_i = s[VIndex(k, :busbar₊i_i)]  
-
-#     Vset = 1.0
-
-#     Vrel = sqrt(u_r^2 + u_i^2)/Vset
-#     i_r ~  simplify(real((P + im*Q)/(u_r + im*u_i)))
-#     i_i ~ -simplify(imag((P + im*Q)/(u_r + im*u_i)))
-#     # At t=0, Vset = V_pf makes Vrel = 1.0.
-#     # Therefore Pset and Qset are simply the power flow active/reactive powers!
-#     set_default!(bus_load, Regex("load₊Pset\$"), p_pf)
-#     set_default!(bus_load, Regex("load₊Qset\$"), q_pf)
-#     set_default!(bus_load, Regex("load₊Vset\$"), V_pf)
-
-#     set_default!(bus_load, Regex("load₊KpZ\$"), KpZ)
-#     set_default!(bus_load, Regex("load₊KpI\$"), KpI)
-#     set_default!(bus_load, Regex("load₊KqZ\$"), KqZ)
-#     set_default!(bus_load, Regex("load₊KqI\$"), KqI)
-# end
 
 function update_load(bus_load, s, k, KpZ, KpI, KqZ, KqI)
     V_pf = s[VIndex(k, :busbar₊u_mag)] 
@@ -138,7 +115,7 @@ function main()
             end
         end
     end
-    s0 = initialize_from_pf(nw; pfs=s, verbose=true, tol=1e-6, nwtol=1e-6, parallel=false) 
+    s0 = initialize_from_pf(nw; pfs=s, verbose=false, tol=1e-6, nwtol=1e-6, parallel=false) 
     end
 
     @time begin

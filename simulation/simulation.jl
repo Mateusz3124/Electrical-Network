@@ -3,8 +3,10 @@
 function short_circuit(line)
     ge = line.metadata[:graphelement]
     println([ge.src, ge.dst])
-    _enable_short = ComponentAffect([], [:piline₊shortcircuit]) do u, p, ctx
+    _enable_short = ComponentAffect([], [:piline₊R_fault,:piline₊X_fault,:piline₊shortcircuit]) do u, p, ctx
         @info "Short circuit activated on line $(ctx.src)→$(ctx.dst) at t = $(ctx.t)s"
+        p[:piline₊R_fault] = 0.01
+        p[:piline₊X_fault] = 0.02
         p[:piline₊shortcircuit] = 1
     end
 
@@ -227,7 +229,7 @@ end
 # Usage when solving:
 function simulate(nw, s0, nodes, lines)
     # shut_down_inits(nodes)
-    short_circuit(lines[293])
+    short_circuit(lines[142])
 
     # plant_Max(nodes, s0)
     # cb = get_global_callbacks(nodes,s0)
@@ -235,7 +237,11 @@ function simulate(nw, s0, nodes, lines)
         
     # prob = ODEProblem(nw, s0, (0.0, 81);add_nw_cb=cb)
     prob = ODEProblem(nw, s0, (0.0, 10))
-    # sol = solve(prob, FBDF(); abstol=1e-8, reltol=1e-6)
-    sol = solve(prob, Rodas5P(linsolve = KLUFactorization()), saveat = 0.01)
+    print_cb = FunctionCallingCallback((u, t, integrator) -> println("t = $t, dt = $(integrator.dt)");
+                                    func_everystep = true, func_start = true)
+
+    sol = solve(prob, FBDF(); callback = print_cb)
+    # sol = solve(prob, FBDF(); abstol=1e-8, reltol=1e-6) , saveat = 0.01
+    # sol = solve(prob, Rodas5P(linsolve = KLUFactorization()), dtmin = 1e-10, force_dtmin = false)
     return sol
 end

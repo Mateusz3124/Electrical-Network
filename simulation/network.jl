@@ -29,21 +29,18 @@ function handle_plant!(id, info, network, nodes, lines, tpl, p_base)
   p /= p_base
 
   if info.source == "wind" || info.source == "solar"
-    push!(nodes, get_other(tpl.other, Symbol(id, :_plant), p, info.voltage))
-    # push!(nodes, get_wind(tpl.solar_wind, Symbol(id, :_plant), p, info.voltage))
+    push!(nodes, get_other(tpl.other, Symbol(id, :_plant), p, 1.0))
+    # push!(nodes, get_wind(tpl.solar_wind, Symbol(id, :_plant), p, 1.0))
   elseif info.source == "hydro"
-    push!(nodes, get_other(tpl.other, Symbol(id, :_plant), p, info.voltage))
-    # push!(nodes, get_hydro(tpl.hydro, Symbol(id, :_plant), p, info.voltage))
+    push!(nodes, get_other(tpl.other, Symbol(id, :_plant), p, 1.0))
+    # push!(nodes, get_hydro(tpl.hydro, Symbol(id, :_plant), p, 1.0))
   else
-    push!(nodes, get_other(tpl.other, Symbol(id, :_plant), p, info.voltage))
+    push!(nodes, get_other(tpl.other, Symbol(id, :_plant), p, 1.0))
   end
-
-  16.5
-  info.voltage
   
   push!(nodes, get_junction(tpl.junction, id))
-  push!(nodes, get_junction(tpl.junction, Symbol(id, :_temp)))
   push!(lines, get_line(tpl.line, Symbol(id, :_temp), Symbol(id, :_plant)))
+  push!(nodes, get_junction(tpl.junction, Symbol(id, :_temp)))
   push!(lines, get_line(tpl.breaker, Symbol(id, :_temp), id))
   
   return p
@@ -78,11 +75,11 @@ function handle_subsation!(id, info, network, nodes, lines, tpl, p, q)
   global i
   if should_have_load(info) == 1
     if Symbol(id, :_load) in industry
-	    push!(nodes, get_load(tpl.load, Symbol(id, :_load), q , q * 0.005, 1.21, -1.61, 4.35, -7.08))
+	    push!(nodes, get_load(tpl.load, Symbol(id, :_load), q , q * 0.005))
     elseif i % 2 == 0
-      push!(nodes, get_load(tpl.load, Symbol(id, :_load), p , p * 0.005, 1.31, -1.94, 9.20, -15.27))
+      push!(nodes, get_load(tpl.load, Symbol(id, :_load), p , p * 0.005))
     else
-      push!(nodes, get_load(tpl.load, Symbol(id, :_load), p , p * 0.005, 0.76, -0.52, 6.92, -11.75))
+      push!(nodes, get_load(tpl.load, Symbol(id, :_load), p , p * 0.005))
     end
     push!(lines, get_line(tpl.line, id, Symbol(id, :_load)))
     i += 1
@@ -218,8 +215,6 @@ function create_network(data, p_base)
   push!(nodes, get_slack(tpl.other, :Netherlands, 1.0))
   push!(unique_lines, get_line(tpl.line, Symbol("Netherlands"), Symbol("825954426")))
 
-nw = Network(nodes, unique_lines;
-             execution=PolyesterExecution{true}(),
-             aggregator=PolyesterAggregator(+))
+  nw = Network(nodes, unique_lines)
   return (nw, nodes, unique_lines)
 end
