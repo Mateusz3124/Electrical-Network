@@ -21,7 +21,7 @@ end
 
 function get_other(other_plant_template, name::Symbol, P, v)
     bus = compile_bus(other_plant_template; name=name)
-    set_default!(bus, Regex("ctrld_gen₊other₊Sn\$"), P * 1000)
+    set_default!(bus, Regex("ctrld_gen₊other₊Sn\$"), P * 1000 / 0.9)
 
     set_default!(bus, Regex("ctrld_gen₊gov₊V_min\$"), 0.0)
     set_default!(bus, Regex("ctrld_gen₊gov₊V_max\$"), 1.00)
@@ -32,7 +32,7 @@ end
 function get_load(bus_load_template, name::Symbol, P, Q) 
     bus_load = compile_bus(bus_load_template; name=name)
     
-    set_pfmodel!(bus_load, pfPQ(P = -P, Q = -Q))
+    set_pfmodel!(bus_load, pfPQ(P = -P * 1000, Q = -Q))
     return bus_load
 end
 
@@ -52,7 +52,7 @@ function get_slack(slack_plant_template, name::Symbol, V=1.0)
 end
 
 function get_line(line_template, src, dst)
-    line = compile_line(line_template; src=src, dst=dst)
+    line = compile_line(line_template; src=src, dst=dst, name=Symbol(src,dst))
     return line
 end
 
@@ -191,13 +191,13 @@ function initialize_templates()
 
     other_farm = CompositeInjector([_machine, _gov, _avr], name=:ctrld_gen)
 
-    zipload = ZIPLoadSafe(name=:load, 
-    Pset=0, 
-    Qset=0, 
-    KpZ=1.0, KqZ=1.0, 
-    KpI=0.0, KqI=0.0)
+    zipload = Library.PSSE_Load(
+        name=:load, 
+        S_b=1000,
+        v_0=1
+    )
     
-    piline_fault = Library.PiLine_fault(;R=0.001, X=0.002, G_src=0, B_src=0, G_dst=0, B_dst=0, name=:piline)
+    piline_fault = Library.PiLine_fault(;R=0.001, X=0.02, G_src=0, B_src=0, G_dst=0, B_dst=0, name=:piline)
     breaker = Library.Breaker(; name=:breaker)
 
     return (

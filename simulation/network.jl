@@ -29,11 +29,10 @@ function handle_plant!(id, info, network, nodes, lines, tpl, p_base)
   p /= p_base
 
   if info.source == "wind" || info.source == "solar"
-    push!(nodes, get_other(tpl.other, Symbol(id, :_plant), p, 1.0))
-    # push!(nodes, get_wind(tpl.solar_wind, Symbol(id, :_plant), p, 1.0))
+    # push!(nodes, get_other(tpl.other, Symbol(id, :_plant), p, 1.0))
+    push!(nodes, get_wind(tpl.solar_wind, Symbol(id, :_plant), p, 1.0))
   elseif info.source == "hydro"
-    push!(nodes, get_other(tpl.other, Symbol(id, :_plant), p, 1.0))
-    # push!(nodes, get_hydro(tpl.hydro, Symbol(id, :_plant), p, 1.0))
+      push!(nodes, get_hydro(tpl.hydro, Symbol(id, :_plant), p, 1.0))
   else
     push!(nodes, get_other(tpl.other, Symbol(id, :_plant), p, 1.0))
   end

@@ -19,13 +19,98 @@ include("models.jl")
 include("network.jl")
 include("simulation.jl")
 
-function save_names(nodes, lines)
+function save_names(nodes, lines, data)
     names = Dict()
-    names_nodes = []
     names_lines = []
 
-    for el in nodes
-        push!(names_nodes, el.name)
+    for (i, node) in enumerate(nodes)
+        if(node.name == :Netherlands)
+            idx = Symbol("656866098")
+            names[node.name] = Dict(
+                :name => node.name,
+                :position => [data.network[idx].position[2][1] + 0.001, data.network[idx].position[2][2] + 0.001],
+                :type => "slack",
+                :voltage => nothing
+            )
+            continue
+        end
+        if(node.name == :Germany)
+            idx = Symbol("214288187")
+            names[node.name] = Dict(
+                :name => node.name,
+                :position => [data.network[idx].lat + 0.001, data.network[idx].lon + 0.001],
+                :type => "slack",
+                :voltage => nothing
+            )
+            continue
+        end
+        if(node.name == :France)
+            idx = Symbol("87528529")
+            names[node.name] = Dict(
+                :name => node.name,
+                :position => [data.network[idx].position[1][1] + 0.001, data.network[idx].position[1][2] + 0.001],
+                :type => "slack",
+                :voltage => nothing
+            )
+            continue
+        end
+        parts = split(string(node.name), "_")
+        v = get(data.network[parts[1]], :voltage, nothing)
+
+        if length(parts) == 2
+            if parts[2] == "low"
+                names[node.name] = Dict(
+                    :name => node.name,
+                    :position => [data.network[parts[1]].lat + 0.001, data.network[parts[1]].lon + 0.001],
+                    :type => data.network[parts[1]].type,
+                    :voltage => v
+                )
+                continue
+            end
+            if parts[2] == "load"
+                names[node.name] = Dict(
+                    :name => node.name,
+                    :position => [data.network[parts[1]].lat + 0.001, data.network[parts[1]].lon + 0.001],
+                    :type => "load",
+                    :voltage => v
+                )
+                continue
+            end
+            if parts[2] == "plant"
+                names[node.name] = Dict(
+                    :name => node.name,
+                    :position => [data.network[parts[1]].lat + 0.001, data.network[parts[1]].lon + 0.001],
+                    :type => "plant",
+                    :voltage => v
+                )
+                continue
+            end
+        end
+        
+        if length(parts) == 3
+            if parts[3] == "start"
+                names[node.name] = Dict(
+                    :name => node.name,
+                    :position => [data.network[parts[1]].position[1][1], data.network[parts[1]].position[1][2]],
+                    :type => data.network[parts[1]].type,
+                    :voltage => v
+                )
+            else
+                names[node.name] = Dict(
+                    :name => node.name,
+                    :position => [data.network[parts[1]].position[2][1], data.network[parts[1]].position[2][2]],
+                    :type => data.network[parts[1]].type,
+                    :voltage => v
+                )
+            end
+            continue
+        end
+        names[node.name] = Dict(
+            :name => node.name,
+            :position => [data.network[parts[1]].lat, data.network[parts[1]].lon],
+            :type => data.network[parts[1]].type,
+            :voltage => v
+        )
     end
 
     for el in lines
@@ -33,10 +118,12 @@ function save_names(nodes, lines)
         push!(names_lines, [ge.src, ge.dst])
     end
 
-    names[:nodes] = names_nodes
-    names[:lines] = names_lines
+    namesr = Dict()
+
+    namesr[:nodes] = names
+    namesr[:lines] = names_lines
     open("names.json", "w") do io
-        JSON3.write(io, names)
+        JSON3.write(io, namesr)
     end
 end
 
@@ -67,24 +154,27 @@ function update_load(bus_load, s, k, KpZ, KpI, KqZ, KqI)
     p_pf = s[VIndex(k, :busbar₊P)]
     q_pf = s[VIndex(k, :busbar₊Q)]
 
-    println(p_pf)
+    Sbase = 1000
 
-    # Set parameters
-    set_default!(bus_load, Regex("Pset"), p_pf)
-    set_default!(bus_load, Regex("Qset"), q_pf)
-    set_default!(bus_load, Regex("Vset"), V_pf)
-    set_default!(bus_load, Regex("KpZ"), KpZ)
-    set_default!(bus_load, Regex("KpI"), KpI)
-    set_default!(bus_load, Regex("KpC"), 1 - KpZ - KpI)
+    set_default!(bus_load, Regex("load₊v_0\$"),    V_pf)
+    set_default!(bus_load, Regex("load₊S_p_re\$"), -p_pf * Sbase)  # see sign note below
+    set_default!(bus_load, Regex("load₊S_p_im\$"), -q_pf * Sbase)
 
-    set_default!(bus_load, Regex("KqZ"), KqZ)
-    set_default!(bus_load, Regex("KqI"), KqI)
-    set_default!(bus_load, Regex("KqC"), 1 - KqZ - KqI)
+    set_default!(bus_load, Regex("load₊a_re\$"),   KpI)
+    set_default!(bus_load, Regex("load₊a_im\$"),   KqI)
+    set_default!(bus_load, Regex("load₊b_re\$"),   KpZ)
+    set_default!(bus_load, Regex("load₊b_im\$"),   KqZ)
+    set_default!(bus_load, Regex("load₊S_b\$"),  Sbase)
     
-    set_default!(bus_load, :load₊P, p_pf)
-    set_default!(bus_load, :load₊Q, q_pf)
-    
-    set_default!(bus_load, Regex("load₊Vrel\$"), 1.0)
+    set_default!(bus_load, Regex("load₊characteristic\$"), 2)   # see note below — important for your case
+    set_default!(bus_load, Regex("load₊PQBRAK\$"), 0.7)
+
+    # algebraic-state guesses, avoid cold-start init failures
+    set_default!(bus_load, Regex("load₊v\$"),  V_pf)
+    set_default!(bus_load, Regex("load₊P\$"), -p_pf)
+    set_default!(bus_load, Regex("load₊Q\$"), -q_pf)
+    set_default!(bus_load, Regex("load₊kP\$"), 1.0)
+    set_default!(bus_load, Regex("load₊kI\$"), 1.0)
 end
 
 function main()
@@ -121,7 +211,8 @@ function main()
     @time begin
     sol = simulate(nw, s0, nodes, lines)
     end
-    serialize("sim/dsc3.jld2", sol)
+    serialize("sim/aashort8.jld2", sol)
+    # save_names(nodes, lines, data)
 end
 
 if abspath(PROGRAM_FILE) == @__FILE__

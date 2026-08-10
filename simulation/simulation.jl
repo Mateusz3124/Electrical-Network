@@ -3,10 +3,9 @@
 function short_circuit(line)
     ge = line.metadata[:graphelement]
     println([ge.src, ge.dst])
+
     _enable_short = ComponentAffect([], [:piline₊R_fault,:piline₊X_fault,:piline₊shortcircuit]) do u, p, ctx
         @info "Short circuit activated on line $(ctx.src)→$(ctx.dst) at t = $(ctx.t)s"
-        p[:piline₊R_fault] = 0.01
-        p[:piline₊X_fault] = 0.02
         p[:piline₊shortcircuit] = 1
     end
 
@@ -212,8 +211,8 @@ function get_global_callbacks(nodes, sol)
             @info "Increased loads at t = $(integrator.t)s"
             p_net = NWParameter(integrator)
             for vidx in load_vidxs
-                p_net.v[vidx, :load₊Pset] -= 0.01
-                p_net.v[vidx, :load₊Qset] -= 0.01 * 0.005
+                p_net.v[vidx, :load₊S_p_re] += 0.02 * 1000
+                p_net.v[vidx, :load₊S_p_im] += 0.02 * 0.005 * 1000
             end
             SciMLBase.auto_dt_reset!(integrator)
             save_parameters!(integrator)
@@ -221,7 +220,7 @@ function get_global_callbacks(nodes, sol)
     end
 
     # cb_plant = PresetTimeCallback([0.0], plant_affect!)
-    cb_load  = PresetTimeCallback(collect(1.0:10.0:71.0), load_affect!)
+    cb_load  = PresetTimeCallback(collect(1.0:40.0:321.0), load_affect!)
 
     return CallbackSet(cb_load)
 end
@@ -235,12 +234,18 @@ function simulate(nw, s0, nodes, lines)
     # cb = get_global_callbacks(nodes,s0)
     # change_load_all(nodes)
         
-    # prob = ODEProblem(nw, s0, (0.0, 81);add_nw_cb=cb)
-    prob = ODEProblem(nw, s0, (0.0, 10))
+    # prob = ODEProblem(nw, s0, (0.0, 400);add_nw_cb=cb)
+    
+    prob = ODEProblem(nw, s0, (0.0, 15))
     print_cb = FunctionCallingCallback((u, t, integrator) -> println("t = $t, dt = $(integrator.dt)");
                                     func_everystep = true, func_start = true)
 
     sol = solve(prob, FBDF(); callback = print_cb)
+
+    # sol = solve(prob, FBDF(); abstol=1e-7, reltol=1e-7, callback = print_cb)
+    # sol = solve(prob, FBDF(); abstol=1e-7, reltol=1e-7, callback = print_cb)
+
+    # sol = solve(prob, FBDF(linsolve = KLUFactorization()); abstol=1e-6, reltol=1e-8, saveat = 0.01, callback = print_cb)
     # sol = solve(prob, FBDF(); abstol=1e-8, reltol=1e-6) , saveat = 0.01
     # sol = solve(prob, Rodas5P(linsolve = KLUFactorization()), dtmin = 1e-10, force_dtmin = false)
     return sol
