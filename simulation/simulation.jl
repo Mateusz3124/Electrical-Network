@@ -1,4 +1,5 @@
 @enum PlantType solar_wind hydro other
+using SymbolicIndexingInterface
 
 function short_circuit(line)
     ge = line.metadata[:graphelement]
@@ -18,7 +19,7 @@ function short_circuit(line)
 
     deactivate_cb = PresetTimeComponentCallback(0.2, _disable_line)
 
-    set_callback!(line, (shortcircuit_cb, deactivate_cb))
+    set_callback!(line, (shortcircuit_cb))
 end
 
 function shut_down_procedure(plant, line_to_close, type = other)
@@ -187,7 +188,6 @@ function create_plant_max_callback(nodes)
         end
     end
 
-    # 3. Exactly ONE callback created
     return PresetTimeCallback(0.0, affect)
 end
 
@@ -195,7 +195,6 @@ function get_global_callbacks(nodes, sol)
     plant_vidxs = []
     load_vidxs = []
     
-    # 1. Gather all indices ONCE
     for (i, node) in enumerate(nodes)
         parts = split(string(node.name), "_")
         if length(parts) == 2
@@ -205,7 +204,6 @@ function get_global_callbacks(nodes, sol)
         end
     end
 
-    # 3. Define standard SciML affect for Loads
     load_affect! = let load_vidxs = load_vidxs
         function (integrator)
             @info "Increased loads at t = $(integrator.t)s"
@@ -225,10 +223,142 @@ function get_global_callbacks(nodes, sol)
     return CallbackSet(cb_load)
 end
 
-# Usage when solving:
-function simulate(nw, s0, nodes, lines)
+using NetworkDynamics, SciMLBase
+
+const K, ALPHA = 0.14, 0.02    
+const TMS      = 0.1
+const PICKUP   = 1.3       
+const T_MIN    = 0.00000000000001        
+const KR       = 9.7 
+
+t_iec(M)   = TMS * K / (M^ALPHA - 1)
+t_reset(M) = TMS * KR / (1 - min(M, 0.99)^2)
+
+function trip_wire(nw, s0, plant_types; eidxs = 1:ne(nw))
+    get_i = getu(nw, [EIndex(i, :src₊i_mag) for i in eidxs])
+
+    Is    = max.(PICKUP .* abs.(get_i(s0)), 0.1)
+    S     = zeros(length(eidxs))
+    alive = trues(length(eidxs))
+    tlast = Ref(0.0)
+
+    adj       = Dict{Symbol,Vector{Int}}()
+    graphelem = Dict{Int,Tuple{Symbol,Symbol}}()
+    for i in eidxs
+        ge = get_graphelement(nw, EIndex(i))
+        push!(get!(() -> Int[], adj, ge.src), i)
+        push!(get!(() -> Int[], adj, ge.dst), i)
+        graphelem[i] = (ge.src, ge.dst)
+    end
+
+    is_plant(name) = haskey(plant_types, name)
+    is_load(name)  = endswith(string(name), "_load")
+
+    function explore(start, excl, p)
+        visited = Set{Symbol}((start,))
+        queue = [start]
+        has_ref = is_plant(start)
+        while !isempty(queue)
+            cur = popfirst!(queue)
+            for k in adj[cur]
+                k == excl && continue
+                p.e[k, :piline₊active] == 1 || continue
+                (s, d) = graphelem[k]
+                nxt = s == cur ? d : s
+                nxt in visited && continue
+                push!(visited, nxt)
+                is_plant(nxt) && (has_ref = true)
+                push!(queue, nxt)
+            end
+        end
+        return visited, has_ref
+    end
+
+    affect! = function (integrator)
+        dt = integrator.t - tlast[]
+        tlast[] = integrator.t
+        dt <= 0 && return
+
+        I = abs.(get_i(integrator))
+        p = NWParameter(integrator)
+        tripped = false
+
+        for (j, i) in enumerate(eidxs)
+            alive[j] || continue
+            M = I[j] / Is[j]
+
+            if M > 1.0
+                S[j] += dt / t_iec(M)
+            elseif S[j] > 0.0
+                S[j] = max(S[j] - dt / t_reset(M), 0.0)
+            end
+            if S[j] >= 1.0
+                (src, dst) = graphelem[i]
+                block_trip = false
+                changed = false
+                seen = Set{Symbol}()
+
+                for name in (src, dst)
+                    name in seen && continue
+                    comp, has_ref = explore(name, i, p)
+                    union!(seen, comp)
+                    has_ref && continue
+
+                    for member in comp
+                        if is_plant(member)
+                            type = get(plant_types, member, :other)
+                            if type == :solar_wind
+                                p.v[member, :solar_wind₊status] = 0.0
+                                @info "Elektrownia $member (solar/wind) wyłączona wewnętrznie przed izolacją wyspy, linia $i, t = $(round(integrator.t, digits=4)) s"
+                                changed = true
+                            elseif type == :hydro
+                                p.v[member, :gensal₊status] = 0.0
+                                @info "Elektrownia $member (hydro) wyłączona wewnętrznie przed izolacją wyspy, linia $i, t = $(round(integrator.t, digits=4)) s"
+                                changed = true
+                            else
+                                @info "Elektrownia $member (other) - brak bezpiecznego wyłącznika, linia $i pozostaje zamknięta, t = $(round(integrator.t, digits=4)) s"
+                                block_trip = true
+                            end
+                        elseif is_load(member)
+                            p.v[member, :load₊Pset] = 0.0
+                            p.v[member, :load₊Qset] = 0.0
+                            @info "Odbiór $member odciążony (Pset=Qset=0) przed izolacją wyspy, linia $i, t = $(round(integrator.t, digits=4)) s"
+                            changed = true
+                        end
+                    end
+
+                    if !any(m -> is_plant(m) || is_load(m), comp)
+                        @info "Wyspa wokół $name (linia $i) złożona wyłącznie z węzłów - brak sposobu na wygaszenie, linia pozostaje zamknięta, t = $(round(integrator.t, digits=4)) s"
+                        block_trip = true
+                    end
+                end
+
+                if !block_trip
+                    @info "Linia $i ($src→$dst) wyłączona w t = $(round(integrator.t, digits=4)) s (M = $(round(M, digits=2)))"
+                    p.e[i, :piline₊active] = 0
+                    changed = true
+                end
+
+                alive[j] = false
+                tripped |= changed
+            end
+        end
+
+        if tripped
+            SciMLBase.auto_dt_reset!(integrator)
+            save_parameters!(integrator)
+        end
+    end
+
+    DiscreteCallback((u, t, integ) -> true, affect!; save_positions = (false, false))
+end
+
+function simulate(nw, s0, nodes, lines, plant_types)
     # shut_down_inits(nodes)
+    # short_circuit(lines[417])
     short_circuit(lines[142])
+
+    cb = trip_wire(nw, s0, plant_types)
 
     # plant_Max(nodes, s0)
     # cb = get_global_callbacks(nodes,s0)
@@ -236,11 +366,16 @@ function simulate(nw, s0, nodes, lines)
         
     # prob = ODEProblem(nw, s0, (0.0, 400);add_nw_cb=cb)
     
-    prob = ODEProblem(nw, s0, (0.0, 15))
+    # prob = ODEProblem(nw, s0, (0.0, 15))
+    prob = ODEProblem(nw, s0, (0.0, 2);add_nw_cb=cb)
+
     print_cb = FunctionCallingCallback((u, t, integrator) -> println("t = $t, dt = $(integrator.dt)");
                                     func_everystep = true, func_start = true)
 
-    sol = solve(prob, FBDF(); callback = print_cb)
+    # sol = solve(prob, FBDF(linsolve = KLUFactorization()); callback = print_cb)
+    sol = solve(prob, FBDF(linsolve = KLUFactorization()))
+    println(sol.t[end])
+    # sol = solve(prob, FBDF(); callback = print_cb, dtmin = 1e-7, force_dtmin = true, verbose=true)
 
     # sol = solve(prob, FBDF(); abstol=1e-7, reltol=1e-7, callback = print_cb)
     # sol = solve(prob, FBDF(); abstol=1e-7, reltol=1e-7, callback = print_cb)

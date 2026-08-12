@@ -32,7 +32,7 @@ end
 function get_load(bus_load_template, name::Symbol, P, Q) 
     bus_load = compile_bus(bus_load_template; name=name)
     
-    set_pfmodel!(bus_load, pfPQ(P = -P * 1000, Q = -Q))
+    set_pfmodel!(bus_load, pfPQ(P = -P, Q = -Q))
     return bus_load
 end
 
@@ -197,7 +197,7 @@ function initialize_templates()
         v_0=1
     )
     
-    piline_fault = Library.PiLine_fault(;R=0.001, X=0.02, G_src=0, B_src=0, G_dst=0, B_dst=0, name=:piline)
+    piline_fault = Library.PiLine_fault(;R=0.001, X=0.002, G_src=0, B_src=0, G_dst=0, B_dst=0, name=:piline)
     breaker = Library.Breaker(; name=:breaker)
 
     return (

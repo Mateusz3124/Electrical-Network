@@ -18,7 +18,7 @@ function should_have_load(info)
   return 0
 end
 
-function handle_plant!(id, info, network, nodes, lines, tpl, p_base)
+function handle_plant!(id, info, network, nodes, lines, tpl, p_base, plant_types)
   v = 1.0
   p = parse(Float64, string(info.power))
 
@@ -31,12 +31,19 @@ function handle_plant!(id, info, network, nodes, lines, tpl, p_base)
   if info.source == "wind" || info.source == "solar"
     # push!(nodes, get_other(tpl.other, Symbol(id, :_plant), p, 1.0))
     push!(nodes, get_wind(tpl.solar_wind, Symbol(id, :_plant), p, 1.0))
+    plant_types[Symbol(id, :_plant)] = :solar_wind
+    # push!(nodes, get_other(tpl.other, Symbol(id, :_plant), p, 1.0))
+    # plant_types[Symbol(id, :_plant)] = :other
   elseif info.source == "hydro"
-      push!(nodes, get_hydro(tpl.hydro, Symbol(id, :_plant), p, 1.0))
+    push!(nodes, get_hydro(tpl.hydro, Symbol(id, :_plant), p, 1.0))
+    plant_types[Symbol(id, :_plant)] = :hydro
+    # push!(nodes, get_other(tpl.other, Symbol(id, :_plant), p, 1.0))
+    # plant_types[Symbol(id, :_plant)] = :other
   else
     push!(nodes, get_other(tpl.other, Symbol(id, :_plant), p, 1.0))
+    plant_types[Symbol(id, :_plant)] = :other
   end
-  
+
   push!(nodes, get_junction(tpl.junction, id))
   push!(lines, get_line(tpl.line, Symbol(id, :_temp), Symbol(id, :_plant)))
   push!(nodes, get_junction(tpl.junction, Symbol(id, :_temp)))
@@ -157,12 +164,13 @@ function create_network(data, p_base)
 
   nodes = []
   lines = []
+  plant_types = Dict{Symbol,Symbol}()
 
   tpl = initialize_templates()
 
   for (id, info) in data.network
     if info.type == "plant"
-      power_sum += handle_plant!(id, info, data.network, nodes, lines, tpl, p_base)
+      power_sum += handle_plant!(id, info, data.network, nodes, lines, tpl, p_base, plant_types)
     end
     if info.type == "substation"
       load_count += should_have_load(info)
@@ -204,16 +212,18 @@ function create_network(data, p_base)
     !(node.name == Symbol(932604234) || node.name == Symbol("932604234_load"))
   end, nodes)
 
-  #symbolise networks from outside country can consume power or give
   push!(nodes, get_slack(tpl.other, :Germany, 1.0))
   push!(unique_lines, get_line(tpl.line, Symbol("Germany"), Symbol("214288187")))
+  plant_types[:Germany] = :other
 
   push!(nodes, get_slack(tpl.other, :France, 1.0))
   push!(unique_lines, get_line(tpl.line, Symbol("France"), Symbol("239441587")))
+  plant_types[:France] = :other
 
   push!(nodes, get_slack(tpl.other, :Netherlands, 1.0))
   push!(unique_lines, get_line(tpl.line, Symbol("Netherlands"), Symbol("825954426")))
+  plant_types[:Netherlands] = :other
 
   nw = Network(nodes, unique_lines)
-  return (nw, nodes, unique_lines)
+  return (nw, nodes, unique_lines, plant_types)
 end

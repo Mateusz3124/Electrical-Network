@@ -182,7 +182,7 @@ function main()
     p_base = 1000
     @time begin
 
-    nw, nodes, lines = create_network(data, p_base)
+    nw, nodes, lines, plant_types = create_network(data, p_base)
 
     nw = set_jac_prototype!(nw)
 
@@ -209,9 +209,11 @@ function main()
     end
 
     @time begin
-    sol = simulate(nw, s0, nodes, lines)
+    sol = simulate(nw, s0, nodes, lines, plant_types)
     end
-    serialize("sim/aashort8.jld2", sol)
+    serialize("../../project/aashort12.jld2", sol)
+    serialize("sims/aashort11.jld2", sol)
+    println("Finished")
     # save_names(nodes, lines, data)
 end
 
