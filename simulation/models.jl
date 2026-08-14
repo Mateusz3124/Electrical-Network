@@ -199,12 +199,14 @@ function initialize_templates()
     
     piline_fault = Library.PiLine_fault(;R=0.001, X=0.002, G_src=0, B_src=0, G_dst=0, B_dst=0, name=:piline)
     breaker = Library.Breaker(; name=:breaker)
-
+    shunt = Library.ConstantYLoad(; name=:shunt,
+                                       allow_zero_conductance=true)
     return (
         solar_wind    = compile_bus(MTKBus(solar_wind_plant; name=:solar_plant_template); assume_io_coupling=true),
         hydro    = compile_bus(MTKBus([gensal, scrx, hygov], con; name=:hydro_plant_template); assume_io_coupling=true),
         other    = compile_bus(MTKBus(other_farm; name=:other_plant_template); assume_io_coupling=true),
         load     = compile_bus(MTKBus(zipload; name=:load_template); assume_io_coupling=true),
+        # junction = compile_bus(MTKBus(Library.ZIPLoad(Pset=0.0, Qset=0.0, Vset=1.0, KpZ=0.0, KqZ=0.0, KpI=0.0, KqI=0.0, name=:junction_zip); name=:junction_bus_template)),
         junction = compile_bus(MTKBus(; name=:junction_bus_template)),
         slack = compile_bus(Library.SlackAlgebraic(; name=:slack_bus_template)),
         

@@ -177,6 +177,12 @@ function update_load(bus_load, s, k, KpZ, KpI, KqZ, KqI)
     set_default!(bus_load, Regex("load₊kI\$"), 1.0)
 end
 
+function update_junction(bus_junction, s, k)
+    # V² = s.v[k, :busbar₊u_mag]^2
+    # set_default!(bus_junction, Regex("shunt₊B\$"),  1e-3 / V²)
+    # set_default!(bus_junction, Regex("shunt₊Q\$"),  1e-3 * V²)
+end
+
 function main()
     data = JSON3.read(read("../data/calculated/belgium.json", String))
     p_base = 1000
@@ -211,10 +217,9 @@ function main()
     @time begin
     sol = simulate(nw, s0, nodes, lines, plant_types)
     end
-    serialize("../../project/aashort12.jld2", sol)
-    serialize("sims/aashort11.jld2", sol)
+    serialize("../../project/aashort16.jld2", sol)
+    serialize("sims/aashort17.jld2", sol)
     println("Finished")
-    # save_names(nodes, lines, data)
 end
 
 if abspath(PROGRAM_FILE) == @__FILE__

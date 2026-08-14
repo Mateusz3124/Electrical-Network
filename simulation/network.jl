@@ -186,9 +186,9 @@ function create_network(data, p_base)
   p = power_used * 0.5 / (load_count - 19)
   q = power_used * 0.5 / 19.0
 
-  println(p)
-  println(power_sum * 0.97 / load_count)
-  println(q)
+  # println(p)
+  # println(power_sum * 0.97 / load_count)
+  # println(q)
         
   for (id, info) in data.network
     if info.type == "substation"

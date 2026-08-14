@@ -17,7 +17,7 @@ function short_circuit(line)
         p[:piline₊active] = 0
     end
 
-    deactivate_cb = PresetTimeComponentCallback(0.2, _disable_line)
+    deactivate_cb = PresetTimeComponentCallback(0.2706, _disable_line)
 
     set_callback!(line, (shortcircuit_cb))
 end
@@ -227,8 +227,7 @@ using NetworkDynamics, SciMLBase
 
 const K, ALPHA = 0.14, 0.02    
 const TMS      = 0.1
-const PICKUP   = 1.3       
-const T_MIN    = 0.00000000000001        
+const PICKUP   = 1.15               
 const KR       = 9.7 
 
 t_iec(M)   = TMS * K / (M^ALPHA - 1)
@@ -237,10 +236,11 @@ t_reset(M) = TMS * KR / (1 - min(M, 0.99)^2)
 function trip_wire(nw, s0, plant_types; eidxs = 1:ne(nw))
     get_i = getu(nw, [EIndex(i, :src₊i_mag) for i in eidxs])
 
-    Is    = max.(PICKUP .* abs.(get_i(s0)), 0.1)
-    S     = zeros(length(eidxs))
-    alive = trues(length(eidxs))
-    tlast = Ref(0.0)
+    Is      = max.(PICKUP .* abs.(get_i(s0)), 0.3)
+    S       = zeros(length(eidxs))
+    alive   = trues(length(eidxs))
+    tlast   = Ref(0.0)
+    pending = Tuple{Int,Float64,Bool}[]
 
     adj       = Dict{Symbol,Vector{Int}}()
     graphelem = Dict{Int,Tuple{Symbol,Symbol}}()
@@ -253,6 +253,59 @@ function trip_wire(nw, s0, plant_types; eidxs = 1:ne(nw))
 
     is_plant(name) = haskey(plant_types, name)
     is_load(name)  = endswith(string(name), "_load")
+
+    quieted = Set{Symbol}()
+
+    function sweep_islands(t, p)
+        visited = Set{Symbol}()
+        for start in keys(adj)
+            start in visited && continue
+            comp = Set{Symbol}((start,))
+            queue = [start]
+            has_ref = is_plant(start)
+            while !isempty(queue)
+                cur = popfirst!(queue)
+                for k in adj[cur]
+                    p.e[k, :piline₊active] == 1 || continue
+                    (s, d) = graphelem[k]
+                    nxt = s == cur ? d : s
+                    nxt in comp && continue
+                    push!(comp, nxt)
+                    is_plant(nxt) && (has_ref = true)
+                    push!(queue, nxt)
+                end
+            end
+            union!(visited, comp)
+            has_ref && continue
+
+            for member in comp
+                member in quieted && continue
+                if is_plant(member)
+                    type = get(plant_types, member, :other)
+                    if type == :solar_wind
+                        p.v[member, :solar_wind₊status] = 0.0
+                        @info "Elektrownia $member (solar/wind) wyłączona wewnętrznie (odizolowana wyspa wykryta poza bezpośrednim sprawdzeniem), t = $(round(t, digits=4)) s"
+                        push!(quieted, member)
+                    elseif type == :hydro
+                        p.v[member, :gensal₊status] = 0.0
+                        @info "Elektrownia $member (hydro) wyłączona wewnętrznie (odizolowana wyspa wykryta poza bezpośrednim sprawdzeniem), t = $(round(t, digits=4)) s"
+                        push!(quieted, member)
+                    else
+                        @info "Elektrownia $member (other) w odizolowanej wyspie - brak bezpiecznego wyłącznika, t = $(round(t, digits=4)) s"
+                        push!(quieted, member)
+                    end
+                elseif is_load(member)
+                    p.v[member, :load₊S_p_re] = 0.0
+                    p.v[member, :load₊S_p_im] = 0.0
+                    @info "Odbiór $member odciążony (odizolowana wyspa wykryta poza bezpośrednim sprawdzeniem), t = $(round(t, digits=4)) s"
+                    push!(quieted, member)
+                # else
+                #     @info "Węzeł $member odizolowany (wyspa wykryta poza bezpośrednim sprawdzeniem, brak sposobu na wygaszenie), t = $(round(t, digits=4)) s"
+                #     push!(quieted, member)
+                end
+            end
+        end
+    end
 
     function explore(start, excl, p)
         visited = Set{Symbol}((start,))
@@ -274,6 +327,50 @@ function trip_wire(nw, s0, plant_types; eidxs = 1:ne(nw))
         return visited, has_ref
     end
 
+    function attempt_trip(i, t, p)
+        (src, dst) = graphelem[i]
+        block_trip = false
+        changed = false
+        seen = Set{Symbol}()
+
+        for name in (src, dst)
+            name in seen && continue
+            comp, has_ref = explore(name, i, p)
+            union!(seen, comp)
+            has_ref && continue
+
+            for member in comp
+                if is_plant(member)
+                    type = get(plant_types, member, :other)
+                    if type == :solar_wind
+                        p.v[member, :solar_wind₊status] = 0.0
+                        @info "Elektrownia $member (solar/wind) wyłączona wewnętrznie przed izolacją wyspy, linia $i, t = $(round(t, digits=4)) s"
+                        changed = true
+                    elseif type == :hydro
+                        p.v[member, :gensal₊status] = 0.0
+                        @info "Elektrownia $member (hydro) wyłączona wewnętrznie przed izolacją wyspy, linia $i, t = $(round(t, digits=4)) s"
+                        changed = true
+                    else
+                        @info "Elektrownia $member (other) - brak bezpiecznego wyłącznika, linia $i pozostaje zamknięta, t = $(round(t, digits=4)) s"
+                        block_trip = true
+                    end
+                elseif is_load(member)
+                    p.v[member, :load₊S_p_re] = 0.0
+                    p.v[member, :load₊S_p_im] = 0.0
+                    @info "Odbiór $member odciążony (Pset=Qset=0) przed izolacją wyspy, linia $i, t = $(round(t, digits=4)) s"
+                    changed = true
+                end
+            end
+
+            # if !any(m -> is_plant(m) || is_load(m), comp)
+            #     @info "Wyspa wokół $name (linia $i) złożona wyłącznie z węzłów - brak sposobu na wygaszenie, linia pozostaje zamknięta, t = $(round(t, digits=4)) s"
+            #     block_trip = true
+            # end
+        end
+
+        return block_trip, changed
+    end
+
     affect! = function (integrator)
         dt = integrator.t - tlast[]
         tlast[] = integrator.t
@@ -282,6 +379,34 @@ function trip_wire(nw, s0, plant_types; eidxs = 1:ne(nw))
         I = abs.(get_i(integrator))
         p = NWParameter(integrator)
         tripped = false
+
+        if !isempty(pending)
+            due = findfirst(x -> x[2] <= integrator.t, pending)
+            if due !== nothing
+                (i, _, is_retry) = pending[due]
+                deleteat!(pending, due)
+                block_trip, changed = attempt_trip(i, integrator.t, p)
+                if block_trip
+                    if is_retry
+                        (src, dst) = graphelem[i]
+                        @info "Linia $i ($src→$dst) nadal odizolowałaby węzeł po ponownej próbie - pozostaje zamknięta na stałe, t = $(round(integrator.t, digits=4)) s"
+                    else
+                        push!(pending, (i, integrator.t + 0.05, true))
+                    end
+                else
+                    (src, dst) = graphelem[i]
+                    @info "Linia $i ($src→$dst) wyłączona (odroczona) w t = $(round(integrator.t, digits=4)) s"
+                    if i == 187
+                        p.e[i, :piline₊active] = 0
+                    end
+                    p.e[i, :piline₊active] = 1e-5
+                    changed = true
+                end
+                tripped |= changed
+            end
+        end
+
+        applied_now = 0
 
         for (j, i) in enumerate(eidxs)
             alive[j] || continue
@@ -293,50 +418,23 @@ function trip_wire(nw, s0, plant_types; eidxs = 1:ne(nw))
                 S[j] = max(S[j] - dt / t_reset(M), 0.0)
             end
             if S[j] >= 1.0
-                (src, dst) = graphelem[i]
-                block_trip = false
-                changed = false
-                seen = Set{Symbol}()
+                block_trip, changed = attempt_trip(i, integrator.t, p)
 
-                for name in (src, dst)
-                    name in seen && continue
-                    comp, has_ref = explore(name, i, p)
-                    union!(seen, comp)
-                    has_ref && continue
-
-                    for member in comp
-                        if is_plant(member)
-                            type = get(plant_types, member, :other)
-                            if type == :solar_wind
-                                p.v[member, :solar_wind₊status] = 0.0
-                                @info "Elektrownia $member (solar/wind) wyłączona wewnętrznie przed izolacją wyspy, linia $i, t = $(round(integrator.t, digits=4)) s"
-                                changed = true
-                            elseif type == :hydro
-                                p.v[member, :gensal₊status] = 0.0
-                                @info "Elektrownia $member (hydro) wyłączona wewnętrznie przed izolacją wyspy, linia $i, t = $(round(integrator.t, digits=4)) s"
-                                changed = true
-                            else
-                                @info "Elektrownia $member (other) - brak bezpiecznego wyłącznika, linia $i pozostaje zamknięta, t = $(round(integrator.t, digits=4)) s"
-                                block_trip = true
-                            end
-                        elseif is_load(member)
-                            p.v[member, :load₊Pset] = 0.0
-                            p.v[member, :load₊Qset] = 0.0
-                            @info "Odbiór $member odciążony (Pset=Qset=0) przed izolacją wyspy, linia $i, t = $(round(integrator.t, digits=4)) s"
-                            changed = true
+                if !block_trip && i != 1174 && i != 1173
+                    (src, dst) = graphelem[i]
+                    if applied_now < 500
+                        @info "Linia $i ($src→$dst) wyłączona w t = $(round(integrator.t, digits=4)) s (M = $(round(M, digits=2)))"
+                        if i == 187
+                            p.e[i, :piline₊active] = 0
                         end
+                        p.e[i, :piline₊active] = 1e-5
+                        changed = true
+                        applied_now += 1
+                    else
+                        @info "Linia $i ($src→$dst) odroczona (zbyt wiele jednoczesnych zmian) w t = $(round(integrator.t, digits=4)) s"
+                        push!(pending, (i, integrator.t + 0.05 + (0.04 * (applied_now - 1)), false))
+                        applied_now += 1
                     end
-
-                    if !any(m -> is_plant(m) || is_load(m), comp)
-                        @info "Wyspa wokół $name (linia $i) złożona wyłącznie z węzłów - brak sposobu na wygaszenie, linia pozostaje zamknięta, t = $(round(integrator.t, digits=4)) s"
-                        block_trip = true
-                    end
-                end
-
-                if !block_trip
-                    @info "Linia $i ($src→$dst) wyłączona w t = $(round(integrator.t, digits=4)) s (M = $(round(M, digits=2)))"
-                    p.e[i, :piline₊active] = 0
-                    changed = true
                 end
 
                 alive[j] = false
@@ -345,6 +443,7 @@ function trip_wire(nw, s0, plant_types; eidxs = 1:ne(nw))
         end
 
         if tripped
+            # sweep_islands(integrator.t, p)
             SciMLBase.auto_dt_reset!(integrator)
             save_parameters!(integrator)
         end
@@ -372,8 +471,8 @@ function simulate(nw, s0, nodes, lines, plant_types)
     print_cb = FunctionCallingCallback((u, t, integrator) -> println("t = $t, dt = $(integrator.dt)");
                                     func_everystep = true, func_start = true)
 
-    # sol = solve(prob, FBDF(linsolve = KLUFactorization()); callback = print_cb)
-    sol = solve(prob, FBDF(linsolve = KLUFactorization()))
+    sol = solve(prob, Rodas5P(); verbose = true)
+    # sol = solve(prob, FBDF(); verbose = true)
     println(sol.t[end])
     # sol = solve(prob, FBDF(); callback = print_cb, dtmin = 1e-7, force_dtmin = true, verbose=true)
 
