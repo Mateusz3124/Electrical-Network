@@ -2,6 +2,23 @@ to_int(x::Int)  = x
 to_int(x::String) = parse(Int, x)
 to_int(x::Symbol) = parse(Int, string(x))
 
+R = 0.0
+X = 0.0
+
+function get_line(line_template, src, dst, distance=0.1)
+    # println(distance)
+    line = compile_line(line_template; src=src, dst=dst, name=Symbol(src,dst))
+    global R
+    global X  
+    R += distance * 0.000205
+    X += distance * 0.00041
+    set_default!(line, Regex("piline₊R\$"), distance * 0.000205)
+    set_default!(line, Regex("piline₊X\$"), distance * 0.00041)
+    set_default!(line, Regex("piline₊B_src\$"), distance * 0.00006)
+    set_default!(line, Regex("piline₊B_dst\$"), distance * 0.00006)
+    return line
+end
+
 function has_element(array, id)
   for el in array
     if to_int(el) == to_int(id)
@@ -81,11 +98,11 @@ function handle_subsation!(id, info, network, nodes, lines, tpl, p, q)
   global i
   if should_have_load(info) == 1
     if Symbol(id, :_load) in industry
-	    push!(nodes, get_load(tpl.load, Symbol(id, :_load), q , q * 0.005))
+	    push!(nodes, get_load(tpl.load, Symbol(id, :_load), q , q * 0.0005))
     elseif i % 2 == 0
-      push!(nodes, get_load(tpl.load, Symbol(id, :_load), p , p * 0.005))
+      push!(nodes, get_load(tpl.load, Symbol(id, :_load), p , p * 0.0005))
     else
-      push!(nodes, get_load(tpl.load, Symbol(id, :_load), p , p * 0.005))
+      push!(nodes, get_load(tpl.load, Symbol(id, :_load), p , p * 0.0005))
     end
     push!(lines, get_line(tpl.line, id, Symbol(id, :_load)))
     i += 1
@@ -98,6 +115,26 @@ function handle_subsation!(id, info, network, nodes, lines, tpl, p, q)
 
   push!(nodes, get_junction(tpl.junction, Symbol(id, :_low)))
   push!(lines, get_line(tpl.line, id, Symbol(id, :_low)))
+end
+
+function haversine_distance(coord1, coord2)
+    # Mean radius of the Earth in kilometers
+    R = 6371.0
+
+    # Convert latitude and longitude from degrees to radians
+    lat1, lon1 = deg2rad(coord1[1]), deg2rad(coord1[2])
+    lat2, lon2 = deg2rad(coord2[1]), deg2rad(coord2[2])
+
+    # Calculate differences
+    dlat = lat2 - lat1
+    dlon = lon2 - lon1
+
+    # Apply the Haversine formula
+    a = sin(dlat / 2)^2 + cos(lat1) * cos(lat2) * sin(dlon / 2)^2
+    c = 2 * atan(sqrt(a), sqrt(1 - a))
+
+    # Return distance in kilometers
+    return R * c
 end
 
 function handle_line!(id, info, network, nodes, lines, tpl)
@@ -154,7 +191,10 @@ function handle_line!(id, info, network, nodes, lines, tpl)
     end
   end
 
-  push!(lines, get_line(tpl.line, start, finish))
+  lat1, lon1 = deg2rad(info.position[1][1]), deg2rad(info.position[1][2])
+  lat2, lon2 = deg2rad(info.position[2][1]), deg2rad(info.position[2][1])
+
+  push!(lines, get_line(tpl.line, start, finish, haversine_distance(info.position[1], info.position[2])))
 end
 
 
@@ -223,6 +263,9 @@ function create_network(data, p_base)
   push!(nodes, get_slack(tpl.other, :Netherlands, 1.0))
   push!(unique_lines, get_line(tpl.line, Symbol("Netherlands"), Symbol("825954426")))
   plant_types[:Netherlands] = :other
+
+  println(R)
+  println(X)
 
   nw = Network(nodes, unique_lines)
   return (nw, nodes, unique_lines, plant_types)

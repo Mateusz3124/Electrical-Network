@@ -39,6 +39,7 @@ end
 function get_junction(junction_bus_template, name::Symbol)
     bus = compile_bus(junction_bus_template; name=name)
     set_pfmodel!(bus, pfPQ(P=0.0, Q=0.0))
+    # set_pfmodel!(bus, pfShunt(B=1-e4))
     return bus
 end
 
@@ -49,11 +50,6 @@ function get_slack(slack_plant_template, name::Symbol, V=1.0)
     set_default!(bus, Regex("ctrld_gen₊avr₊vr_max\$"), 5.0)
     set_pfmodel!(bus, pfSlack(V=V))
     return bus
-end
-
-function get_line(line_template, src, dst)
-    line = compile_line(line_template; src=src, dst=dst, name=Symbol(src,dst))
-    return line
 end
 
 smooth_max(a, b; δ=1e-4) = 0.5*(a + b + sqrt((a - b)^2 + δ^2))
@@ -191,11 +187,12 @@ function initialize_templates()
 
     other_farm = CompositeInjector([_machine, _gov, _avr], name=:ctrld_gen)
 
-    zipload = Library.PSSE_Load(
-        name=:load, 
-        S_b=1000,
-        v_0=1
-    )
+    # zipload = Library.PSSE_Load(
+    #     name=:load, 
+    #     S_b=1000,
+    #     v_0=1
+    # )
+    zipload = ZIPLoadSafe(Pset=0.0, Qset=0.0, Vset=1.0, KpZ=0.0, KqZ=0.0, KpI=0.0, KqI=0.0, name=:load)
     
     piline_fault = Library.PiLine_fault(;R=0.001, X=0.002, G_src=0, B_src=0, G_dst=0, B_dst=0, name=:piline)
     breaker = Library.Breaker(; name=:breaker)
