@@ -187,12 +187,12 @@ function initialize_templates()
 
     other_farm = CompositeInjector([_machine, _gov, _avr], name=:ctrld_gen)
 
-    # zipload = Library.PSSE_Load(
-    #     name=:load, 
-    #     S_b=1000,
-    #     v_0=1
-    # )
-    zipload = ZIPLoadSafe(Pset=0.0, Qset=0.0, Vset=1.0, KpZ=0.0, KqZ=0.0, KpI=0.0, KqI=0.0, name=:load)
+    zipload = Library.PSSE_Load(
+        name=:load, 
+        S_b=1000,
+        v_0=1
+    )
+    # zipload = ZIPLoadSafe(Pset=0.0, Qset=0.0, Vset=1.0, KpZ=0.0, KqZ=0.0, KpI=0.0, KqI=0.0, name=:load)
     
     piline_fault = Library.PiLine_fault(;R=0.001, X=0.002, G_src=0, B_src=0, G_dst=0, B_dst=0, name=:piline)
     breaker = Library.Breaker(; name=:breaker)

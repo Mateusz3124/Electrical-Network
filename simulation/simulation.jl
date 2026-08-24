@@ -17,7 +17,7 @@ function short_circuit(line)
         p[:piline₊active] = 0
     end
 
-    deactivate_cb = PresetTimeComponentCallback(0.2, _disable_line)
+    deactivate_cb = PresetTimeComponentCallback(0.19, _disable_line)
 
     set_callback!(line, (shortcircuit_cb, deactivate_cb))
 end
@@ -209,8 +209,8 @@ function get_global_callbacks(nodes, sol)
             @info "Increased loads at t = $(integrator.t)s"
             p_net = NWParameter(integrator)
             for vidx in load_vidxs
-                p_net.v[vidx, :load₊S_p_re] += 0.02 * 1000
-                p_net.v[vidx, :load₊S_p_im] += 0.02 * 0.005 * 1000
+                p_net.v[vidx, :load₊S_p_re] += 0.001 * 1000
+                p_net.v[vidx, :load₊S_p_im] += 0.001 * 0.005 * 1000
             end
             SciMLBase.auto_dt_reset!(integrator)
             save_parameters!(integrator)
@@ -373,12 +373,16 @@ function simulate(nw, s0, nodes, lines, plant_types)
     
     # prob = ODEProblem(nw, s0, (0.0, 15))
     # prob = ODEProblem(nw, s0, (0.0, 2.0);add_nw_cb=cb)
-    prob = ODEProblem(nw, s0, (0.0, 0.6))
+    # prob = ODEProblem(nw, s0, (0.0, 2);add_nw_cb=cb)
+    prob = ODEProblem(nw, s0, (0.0, 2);)
 
     print_cb = FunctionCallingCallback((u, t, integrator) -> println("t = $t, dt = $(integrator.dt)");
                                     func_everystep = true, func_start = true)
 
-    sol = solve(prob, Rodas5P(); abstol=1e-6, reltol=1e-6, saveat = 0.01, callback = print_cb)
+    sol = solve(prob, Rodas5P(); abstol=1e-5, reltol=1e-7, saveat = 0.01, callback = print_cb)
+    # sol = solve(prob, Rodas5P(); saveat = 0.01, callback = print_cb)
+
+    # sol = solve(prob, Rodas5P(linsolve = KLUFactorization()), dtmin = 1e-10, force_dtmin = false)
     # sol = solve(prob, Rodas5P(); callback = print_cb)
     # sol = solve(prob, FBDF(); verbose = true)
     println(sol.t[end])

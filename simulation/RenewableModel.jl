@@ -39,6 +39,7 @@ end
     @variables begin
         v_dc_state(t), [guess=2.5, description="DC capacitor voltage"]
         v_dc_i(t), [guess=0, description="DC voltage PI integrator"]
+        v_dc_safe(t), [guess=0, description="DC voltage PI integrator safe"]
     end
 
     @named filter = LFilter(; ω0, Rf, Lf)
@@ -71,9 +72,11 @@ end
         [filter.V_I_r, filter.V_I_i] .~ _dq_to_ri(cc1.V_I_d, cc1.V_I_q, pll.θ)
         cc1.i_f_ref_d ~ status * iset_d_dc
         cc1.i_f_ref_q ~ status * iset_q
-        
+
+        v_dc_safe ~ max(v_dc_state, 0.1*V_dc)
+
         # DC link dynamics: Frozen when status is 0.0 to prevent windup and extreme discharge
-        C_dc * Dt(v_dc_state) ~ status * (P_ac - P_dc) / v_dc_state
+        C_dc * Dt(v_dc_state) ~ status * (P_ac - P_dc) / v_dc_safe
         Dt(v_dc_i) ~ status * (V_dc - v_dc_state) * ki_v_dc
     ]
     sys = System(eqs, t; name, systems)

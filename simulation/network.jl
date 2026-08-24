@@ -35,31 +35,55 @@ function should_have_load(info)
   return 0
 end
 
+counter = 1
+
+
+sum_solar = 0
+sum_other = 0
+
 function handle_plant!(id, info, network, nodes, lines, tpl, p_base, plant_types)
   v = 1.0
   p = parse(Float64, string(info.power))
-
+  global sum_solar
+  global sum_other
   if p == 0
     p = 100.0
   end
 
   p /= p_base
 
-  if info.source == "wind" || info.source == "solar"
-    # push!(nodes, get_other(tpl.other, Symbol(id, :_plant), p, 1.0))
-    push!(nodes, get_wind(tpl.solar_wind, Symbol(id, :_plant), p, 1.0))
-    plant_types[Symbol(id, :_plant)] = :solar_wind
-    # push!(nodes, get_other(tpl.other, Symbol(id, :_plant), p, 1.0))
-    # plant_types[Symbol(id, :_plant)] = :other
-  elseif info.source == "hydro"
-    push!(nodes, get_hydro(tpl.hydro, Symbol(id, :_plant), p, 1.0))
-    plant_types[Symbol(id, :_plant)] = :hydro
-    # push!(nodes, get_other(tpl.other, Symbol(id, :_plant), p, 1.0))
-    # plant_types[Symbol(id, :_plant)] = :other
-  else
+  # if info.source == "wind" || info.source == "solar"
+  #   # push!(nodes, get_other(tpl.other, Symbol(id, :_plant), p, 1.0))
+  #   push!(nodes, get_wind(tpl.solar_wind, Symbol(id, :_plant), p, 1.0))
+  #   plant_types[Symbol(id, :_plant)] = :solar_wind
+  #   # push!(nodes, get_other(tpl.other, Symbol(id, :_plant), p, 1.0))
+  #   # plant_types[Symbol(id, :_plant)] = :other
+  # elseif info.source == "hydro"
+  #   push!(nodes, get_hydro(tpl.hydro, Symbol(id, :_plant), p, 1.0))
+  #   plant_types[Symbol(id, :_plant)] = :hydro
+  #   # push!(nodes, get_other(tpl.other, Symbol(id, :_plant), p, 1.0))
+  #   # plant_types[Symbol(id, :_plant)] = :other
+  # else
+  #   push!(nodes, get_other(tpl.other, Symbol(id, :_plant), p, 1.0))
+  #   plant_types[Symbol(id, :_plant)] = :other
+  # end
+
+  global counter
+
+  # if counter % 4 < 3 && p > 1
+  if counter % 4 > 0 && p > 0.05
+    println("other ", id)
+    sum_other += p
     push!(nodes, get_other(tpl.other, Symbol(id, :_plant), p, 1.0))
     plant_types[Symbol(id, :_plant)] = :other
+  else
+    println("solar ", id)
+    sum_solar += p
+    push!(nodes, get_wind(tpl.solar_wind, Symbol(id, :_plant), p, 1.0))
+    plant_types[Symbol(id, :_plant)] = :solar_wind
   end
+
+  counter += 1
 
   push!(nodes, get_junction(tpl.junction, id))
   push!(lines, get_line(tpl.line, Symbol(id, :_temp), Symbol(id, :_plant)))
@@ -118,22 +142,13 @@ function handle_subsation!(id, info, network, nodes, lines, tpl, p, q)
 end
 
 function haversine_distance(coord1, coord2)
-    # Mean radius of the Earth in kilometers
     R = 6371.0
-
-    # Convert latitude and longitude from degrees to radians
     lat1, lon1 = deg2rad(coord1[1]), deg2rad(coord1[2])
     lat2, lon2 = deg2rad(coord2[1]), deg2rad(coord2[2])
-
-    # Calculate differences
     dlat = lat2 - lat1
     dlon = lon2 - lon1
-
-    # Apply the Haversine formula
     a = sin(dlat / 2)^2 + cos(lat1) * cos(lat2) * sin(dlon / 2)^2
     c = 2 * atan(sqrt(a), sqrt(1 - a))
-
-    # Return distance in kilometers
     return R * c
 end
 
@@ -264,8 +279,11 @@ function create_network(data, p_base)
   push!(unique_lines, get_line(tpl.line, Symbol("Netherlands"), Symbol("825954426")))
   plant_types[:Netherlands] = :other
 
-  println(R)
-  println(X)
+  global sum_solar
+  global sum_other
+  
+  println(sum_solar)
+  println(sum_other)
 
   nw = Network(nodes, unique_lines)
   return (nw, nodes, unique_lines, plant_types)

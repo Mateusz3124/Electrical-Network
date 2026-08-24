@@ -149,55 +149,55 @@ industry = Set([
     Symbol("161234130_load"),
 ])
 
-# function update_load(bus_load, s, k, KpZ, KpI, KqZ, KqI)
-#     V_pf = s[VIndex(k, :busbar₊u_mag)] 
-#     p_pf = s[VIndex(k, :busbar₊P)]
-#     q_pf = s[VIndex(k, :busbar₊Q)]
-
-#     Sbase = 1000
-
-#     set_default!(bus_load, Regex("load₊v_0\$"),    V_pf)
-#     set_default!(bus_load, Regex("load₊S_p_re\$"), -p_pf * Sbase)
-#     set_default!(bus_load, Regex("load₊S_p_im\$"), -q_pf * Sbase)
-
-#     set_default!(bus_load, Regex("load₊a_re\$"),   KpI)
-#     set_default!(bus_load, Regex("load₊a_im\$"),   KqI)
-#     set_default!(bus_load, Regex("load₊b_re\$"),   KpZ)
-#     set_default!(bus_load, Regex("load₊b_im\$"),   KqZ)
-#     set_default!(bus_load, Regex("load₊S_b\$"),  Sbase)
-    
-#     set_default!(bus_load, Regex("load₊characteristic\$"), 2)
-#     set_default!(bus_load, Regex("load₊PQBRAK\$"), 0.7)
-
-#     set_default!(bus_load, Regex("load₊v\$"),  V_pf)
-#     set_default!(bus_load, Regex("load₊P\$"), -p_pf)
-#     set_default!(bus_load, Regex("load₊Q\$"), -q_pf)
-#     set_default!(bus_load, Regex("load₊kP\$"), 1.0)
-#     set_default!(bus_load, Regex("load₊kI\$"), 1.0)
-# end
-
 function update_load(bus_load, s, k, KpZ, KpI, KqZ, KqI)
     V_pf = s[VIndex(k, :busbar₊u_mag)] 
     p_pf = s[VIndex(k, :busbar₊P)]
     q_pf = s[VIndex(k, :busbar₊Q)]
 
-    # Set parameters
-    set_default!(bus_load, Regex("Pset"), p_pf)
-    set_default!(bus_load, Regex("Qset"), q_pf)
-    set_default!(bus_load, Regex("Vset"), V_pf)
-    set_default!(bus_load, Regex("KpZ"), KpZ)
-    set_default!(bus_load, Regex("KpI"), KpI)
-    set_default!(bus_load, Regex("KpC"), 1 - KpZ - KpI)
+    Sbase = 1000
 
-    set_default!(bus_load, Regex("KqZ"), KqZ)
-    set_default!(bus_load, Regex("KqI"), KqI)
-    set_default!(bus_load, Regex("KqC"), 1 - KqZ - KqI)
+    set_default!(bus_load, Regex("load₊v_0\$"),    V_pf)
+    set_default!(bus_load, Regex("load₊S_p_re\$"), -p_pf * Sbase)
+    set_default!(bus_load, Regex("load₊S_p_im\$"), -q_pf * Sbase)
+
+    set_default!(bus_load, Regex("load₊a_re\$"),   KpI)
+    set_default!(bus_load, Regex("load₊a_im\$"),   KqI)
+    set_default!(bus_load, Regex("load₊b_re\$"),   KpZ)
+    set_default!(bus_load, Regex("load₊b_im\$"),   KqZ)
+    set_default!(bus_load, Regex("load₊S_b\$"),  Sbase)
     
-    set_default!(bus_load, :load₊P, p_pf)
-    set_default!(bus_load, :load₊Q, q_pf)
-    
-    set_default!(bus_load, Regex("load₊Vrel\$"), 1.0)
+    set_default!(bus_load, Regex("load₊characteristic\$"), 2)
+    set_default!(bus_load, Regex("load₊PQBRAK\$"), 0.7)
+
+    set_default!(bus_load, Regex("load₊v\$"),  V_pf)
+    set_default!(bus_load, Regex("load₊P\$"), -p_pf)
+    set_default!(bus_load, Regex("load₊Q\$"), -q_pf)
+    set_default!(bus_load, Regex("load₊kP\$"), 1.0)
+    set_default!(bus_load, Regex("load₊kI\$"), 1.0)
 end
+
+# function update_load(bus_load, s, k, KpZ, KpI, KqZ, KqI)
+#     V_pf = s[VIndex(k, :busbar₊u_mag)] 
+#     p_pf = s[VIndex(k, :busbar₊P)]
+#     q_pf = s[VIndex(k, :busbar₊Q)]
+
+#     # Set parameters
+#     set_default!(bus_load, Regex("Pset"), p_pf)
+#     set_default!(bus_load, Regex("Qset"), q_pf)
+#     set_default!(bus_load, Regex("Vset"), V_pf)
+#     set_default!(bus_load, Regex("KpZ"), KpZ)
+#     set_default!(bus_load, Regex("KpI"), KpI)
+#     set_default!(bus_load, Regex("KpC"), 1 - KpZ - KpI)
+
+#     set_default!(bus_load, Regex("KqZ"), KqZ)
+#     set_default!(bus_load, Regex("KqI"), KqI)
+#     set_default!(bus_load, Regex("KqC"), 1 - KqZ - KqI)
+    
+#     set_default!(bus_load, :load₊P, p_pf)
+#     set_default!(bus_load, :load₊Q, q_pf)
+    
+#     set_default!(bus_load, Regex("load₊Vrel\$"), 1.0)
+# end
 
 function update_junction(bus_junction, s, k)
     # V² = s.v[k, :busbar₊u_mag]^2
@@ -240,7 +240,7 @@ function main()
     sol = simulate(nw, s0, nodes, lines, plant_types)
     end
     # serialize("../../project/example5.jld2", sol)
-    serialize("sims/tester1231.jld2", sol)
+    serialize("sims/exampleTestIfCorrectNow100(tests_for_when_simplegfdc)Fixed.jld2", sol)
     println("Finished")
 end
 
