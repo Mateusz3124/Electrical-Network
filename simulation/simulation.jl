@@ -209,8 +209,8 @@ function get_global_callbacks(nodes, sol)
             @info "Increased loads at t = $(integrator.t)s"
             p_net = NWParameter(integrator)
             for vidx in load_vidxs
-                p_net.v[vidx, :load₊S_p_re] += 0.001 * 1000
-                p_net.v[vidx, :load₊S_p_im] += 0.001 * 0.005 * 1000
+                p_net.v[vidx, :load₊S_p_re] -= 0.01 * 1000
+                p_net.v[vidx, :load₊S_p_im] -= 0.01 * 0.005 * 1000
             end
             SciMLBase.auto_dt_reset!(integrator)
             save_parameters!(integrator)
@@ -360,26 +360,26 @@ end
 function simulate(nw, s0, nodes, lines, plant_types)
     # shut_down_inits(nodes)
     # short_circuit(lines[417])
-    short_circuit(lines[142])
+    # short_circuit(lines[142])
     # short_circuit(lines[1])
 
     # cb = trip_wire(nw, s0, plant_types)
 
     # plant_Max(nodes, s0)
-    # cb = get_global_callbacks(nodes,s0)
+    cb = get_global_callbacks(nodes,s0)
     # change_load_all(nodes)
         
-    # prob = ODEProblem(nw, s0, (0.0, 400);add_nw_cb=cb)
+    prob = ODEProblem(nw, s0, (0.0, 400);add_nw_cb=cb)
     
     # prob = ODEProblem(nw, s0, (0.0, 15))
     # prob = ODEProblem(nw, s0, (0.0, 2.0);add_nw_cb=cb)
     # prob = ODEProblem(nw, s0, (0.0, 2);add_nw_cb=cb)
-    prob = ODEProblem(nw, s0, (0.0, 2);)
+    # prob = ODEProblem(nw, s0, (0.0, 2);)
 
     print_cb = FunctionCallingCallback((u, t, integrator) -> println("t = $t, dt = $(integrator.dt)");
                                     func_everystep = true, func_start = true)
 
-    sol = solve(prob, Rodas5P(); abstol=1e-5, reltol=1e-7, saveat = 0.01, callback = print_cb)
+    sol = solve(prob, Rodas5P(); abstol=1e-7, reltol=1e-7, saveat = 0.01, callback = print_cb)
     # sol = solve(prob, Rodas5P(); saveat = 0.01, callback = print_cb)
 
     # sol = solve(prob, Rodas5P(linsolve = KLUFactorization()), dtmin = 1e-10, force_dtmin = false)
