@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Map with Points</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+  </head>
+  <body>
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+      }
+      #map {
+        height: 100%;
+      }
+    </style>
+
+    <div id="map"></div>
+
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+
+    <script>
+      const map = L.map("map").setView([51.948, 10.265], 6);
+      const neighbours = new Set(["Germany", "France", "Netherlands"]);
+      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution:
+          '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      }).addTo(map);
+
+      const drawPoint = (key, element, color = "#3388ff") => {
+        if (element.type === "slack") {
+          color = "#800080";
+        }
+        if (element.type === "plant") {
+          color = "#770000";
+        }
+        if (element.type === "load") {
+          color = "#008000";
+        }
+        // if(element.name === "Germany" || element.name === "France" || element.name === "Netherlands"){
+
+        // }
+        const circle = L.circle(element.position, {
+          color: color,
+          fillColor: color,
+          radius: neighbours.has(element.name) ? 10000 : 50,
+        }).addTo(map);
+        circle.on("click", (e) => {
+          console.log(key, element);
+        });
+      };
+
+      // const trippedLines = new Set([
+      //   "88799384→87772591",
+      //   "Netherlands→825954426",
+      //   "103041296_junction_start→24394061",
+      //   "24552827→24552827_low",
+      //   "38188076_junction_start→86013779_junction_end",
+      //   "86013779_junction_end→135193936",
+      //   "135193936→135193936_low",
+      //   "88382379_junction_start→1030917105",
+      //   "239279176→239281817_junction_end",
+      //   "1030917105→239279176",
+      //   "87772591→87772591_low",
+      //   "32009946_junction_start→88092061_junction_end",
+      //   "238857406_junction_end→103728377_low",
+      //   "115017366→32002039",
+      //   "23148277_junction_start→23587437_junction_end",
+      //   "23148277_junction_start→48521014_junction_start",
+      //   "23587437_junction_end→82480435",
+      //   "8591150→87772591",
+      //   "23154962_low→29498205_junction_end",
+      //   "88293709_junction_end→204985697_junction_end",
+      //   "204985694_junction_end→204985697_junction_end",
+      //   "111312142_junction_start→24552827_low",
+      // ]);
+
+      const trippedLines = new Set([
+        "87772595_junction_end→87761208",
+        "87772593→87772595_junction_end",
+        "87772589_junction_start→87772593",
+        "182944051→118351379_junction_end",
+        "91752661→118351379_junction_end",
+        "Netherlands→825954426",
+        "88799384→87772591",
+        "98411324_junction_start→98411324_junction_end",
+      ]);
+
+      const isTripped = (key1, key2) =>
+        trippedLines.has(`${key1}→${key2}`) ||
+        trippedLines.has(`${key2}→${key1}`);
+
+      const drawLine = (line, key1, key2) => {
+        const color = "blue";
+
+        const polyline = L.polyline(line, {
+          color: color,
+          weight: 2,
+        }).addTo(map);
+
+        polyline.on("click", (e) => {
+          console.log(key1, key2, tripped ? "(wyłączona)" : "");
+          e.target.setStyle({ color: "#ff9900" });
+        });
+      };
+
+      fetch(`/grid-points2`)
+        .then((response) => response.json())
+        .then((data) => {
+          for (element of data.nodes) {
+            drawPoint(element.name, element);
+          }
+          for (const [key11, key21] of data.edges) {
+            const key1 = data.keys[key11];
+            const key2 = data.keys[key21];
+            drawLine(
+              [data.nodes[key1].position, data.nodes[key2].position],
+              key11,
+              key21,
+            );
+          }
+        });
+    </script>
+  </body>
+</html>

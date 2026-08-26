@@ -1,3 +1,5 @@
 simulation/sims/*
 simulation/sim/*
 simulation/powerdynamics.so
+map/example.jld2
+map/node_modules

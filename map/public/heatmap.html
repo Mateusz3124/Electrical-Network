@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Map with Plant Heatmap</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+  </head>
+  <body>
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+      }
+      #map {
+        height: 100%;
+      }
+    </style>
+
+    <div id="map"></div>
+
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+
+    <!-- Leaflet.heat plugin for heatmap rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
+
+    <script>
+      const map = L.map("map").setView([51.948, 10.265], 6);
+
+      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution:
+          '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      }).addTo(map);
+
+      const drawLine = (line, key1, key2) => {
+        const color = "blue";
+        const polyline = L.polyline(line, {
+          color: color,
+          weight: 2,
+        }).addTo(map);
+
+        polyline.on("click", (e) => {
+          console.log(key1, key2);
+        });
+      };
+
+      const plantPoints = [];
+
+      const plantClickLayer = L.layerGroup().addTo(map);
+
+      fetch(`/points/belgium`)
+        .then((response) => response.json())
+        .then((data) => {
+          if (data) {
+            const nodesEntries = Array.isArray(data.network)
+              ? data.network.entries()
+              : Object.entries(data.network);
+
+            const plants = [];
+            let minPower = Infinity;
+            let maxPower = -Infinity;
+
+            for (const [key, element] of nodesEntries) {
+              if (element && element.type === "plant" && element.lat && element.lon) {
+                const power = typeof element.power === "number" ? element.power : 0;
+                plants.push({ key, element, power });
+                if (power < minPower) minPower = power;
+                if (power > maxPower) maxPower = power;
+
+                plantPoints.push({ key, element });
+
+                const marker = L.circleMarker([element.lat, element.lon], {
+                  radius: 8,
+                  opacity: 0,
+                  fillOpacity: 0,
+                }).addTo(plantClickLayer);
+
+                marker.on("click", (e) => {
+                  console.log(key, element);
+                });
+              }
+            }
+
+            const heatData = plants.map(({ element, power }) => {
+              const normalized =
+                0.3 + 0.7 * Math.pow((power - minPower) / (maxPower - minPower || 1), 0.25);
+              return [element.lat, element.lon, normalized];
+            });
+
+            console.log(heatData);
+
+            L.heatLayer(heatData, {
+              radius: 25,
+              blur: 8,
+              maxZoom: 12,
+              minOpacity: 0.3,
+              max: 1.0,
+              gradient: {
+                0.1: "blue",
+                0.2: "lime",
+                0.3: "yellow",
+                0.45: "orange",
+                0.6: "red",
+              },
+            }).addTo(map);
+          }
+
+          if (data && data.edges && data.keys && data.nodes) {
+            for (const [key11, key21] of data.edges) {
+              const key1 = data.keys[key11];
+              const key2 = data.keys[key21];
+              if (data.nodes[key1] && data.nodes[key2]) {
+                drawLine(
+                  [
+                    [data.nodes[key1].lat, data.nodes[key1].lon],
+                    [data.nodes[key2].lat, data.nodes[key2].lon]
+                  ],
+                  key1,
+                  key2,
+                );
+              }
+            }
+          }
+        });
+    </script>
+  </body>
+</html>

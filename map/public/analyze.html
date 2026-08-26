@@ -1,0 +1,313 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Map with Points</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+  </head>
+  <body>
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+      }
+      #map {
+        height: 100%;
+      }
+
+      .info.legend,
+      .info.slider-control {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 12px;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+        line-height: 20px;
+      }
+
+      .info.slider-control {
+        width: 180px;
+      }
+      .slider-title {
+        font-weight: bold;
+        margin-bottom: 8px;
+      }
+      .slider-control input {
+        width: 100%;
+        cursor: pointer;
+      }
+      .slider-value-display {
+        font-size: 12px;
+        color: #333;
+        margin-top: 4px;
+        text-align: right;
+      }
+
+      .info.legend {
+        background: white;
+        padding: 10px;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+        line-height: 20px;
+      }
+      .legend-title {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      .legend-gradient {
+        background: linear-gradient(
+          to right,
+          hsl(120, 85%, 50%),
+          hsl(90, 85%, 50%),
+          hsl(60, 85%, 50%),
+          hsl(30, 85%, 50%),
+          hsl(0, 85%, 50%)
+        );
+        height: 15px;
+        width: 150px;
+        border-radius: 3px;
+        margin-bottom: 4px;
+      }
+      .legend-labels {
+        display: flex;
+        justify-content: space-between;
+        font-size: 11px;
+        color: #555;
+      }
+      .leaflet-tile-pane {
+        filter: brightness(40%) contrast(100%);
+      }
+    </style>
+
+    <div id="map"></div>
+
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-polylinedecorator/dist/leaflet.polylineDecorator.min.js"></script>
+
+    <script type="module">
+      const map = L.map("map").setView([51.948, 10.265], 6);
+
+      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution:
+          '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      }).addTo(map);
+
+      const markersLayer = L.layerGroup().addTo(map);
+
+      const drawPoint = (key, element, val) => {
+        const color = getColorFromRange(val);
+        const circle = L.circle(element.position, {
+          color: color,
+          fillColor: color,
+          radius: 500,
+          fillOpacity: 1,
+        }).addTo(markersLayer);
+        circle.on("click", (e) => {
+          console.log(element);
+        });
+      };
+
+      const drawLine = (line, key1, key2, val) => {
+        // const color = getColorFromRange(val);
+
+        const polyline = L.polyline(line, {
+          color: val !== 0 ? "#800080" : "#ff0000",
+          weight: 2,
+        }).addTo(markersLayer);
+
+        if (val !== 0) {
+          const decorator = L.polylineDecorator(polyline, {
+            patterns: [
+              {
+                offset: "100%",
+                repeat: 0,
+                symbol: L.Symbol.arrowHead({
+                  pixelSize: 10,
+                  polygon: false,
+                  pathOptions: {
+                    color: "#800080",
+                    stroke: true,
+                    weight: 2,
+                  },
+                }),
+              },
+            ],
+          }).addTo(markersLayer);
+        }
+
+        polyline.on("click", (e) => {
+          console.log(val);
+        });
+      };
+
+      const drawLineValues = (line, key1, key2, val, value) => {
+        const color = getColorFromRange(val);
+
+        const polyline = L.polyline(line, {
+          color: color,
+          weight: 2,
+        }).addTo(markersLayer);
+
+        polyline.on("click", (e) => {
+          console.log(key1, " ", key2, " ", value);
+        });
+      };
+
+      const getColorFromRange = (value) => {
+        const clampedValue = Math.max(0, Math.min(1, value));
+
+        const percentage = clampedValue * 100;
+
+        const hue = 120 - percentage * 1.2;
+
+        return `hsl(${hue}, 85%, 50%)`;
+      };
+
+      const legend = L.control({ position: "topright" });
+
+      legend.onAdd = function (map) {
+        const div = L.DomUtil.create("div", "info legend");
+        div.innerHTML = `
+          <div class="legend-title">Value Range</div>
+          <div class="legend-gradient"></div>
+          <div class="legend-labels">
+            <span>min</span>
+            <span>max</span>
+          </div>
+        `;
+        return div;
+      };
+
+      legend.addTo(map);
+
+      const respone = await fetch("/grid-points");
+      const data = await respone.json();
+
+      const respone2 = await fetch("/data");
+      const values = await respone2.json();
+
+      const sliderControl = L.control({ position: "topright" });
+
+      sliderControl.onAdd = function (map) {
+        const div = L.DomUtil.create("div", "info slider-control");
+        div.innerHTML = `
+          <div class="slider-title">Filter Threshold</div>
+          <input type="range" id="value-slider" min="0" max="${Object.keys(values.e["224690262666541430"]).length - 1}" step="1" value="0">
+          <div class="slider-value-display">Show up to: <span id="slider-val">0</span></div>
+        `;
+
+        L.DomEvent.disableClickPropagation(div);
+        L.DomEvent.disableScrollPropagation(div);
+
+        return div;
+      };
+
+      sliderControl.addTo(map);
+
+      const updateMapPoints = (threshold) => {
+        markersLayer.clearLayers();
+
+        // for (const [key, object] of Object.entries(values.v).reverse()) {
+        //   drawPoint(
+        //     data.nodes[key - 1].name,
+        //     { ...data.nodes[key - 1], value: object[threshold] },
+        //     object[threshold],
+        //   );
+        // }
+
+        // for (const [key, object] of Object.entries(values.e).reverse()) {
+        //   const dest = values.eDst[key][threshold];
+
+        //   const val = dest < 0 && object[threshold] < 0 ? 0 : dest > 0 ? 1 : -1;
+
+        //   const key1 = data.keys[data.edges[key - 1][0]];
+        //   const key2 = data.keys[data.edges[key - 1][1]];
+
+        //   drawLine(
+        //     val == 1
+        //       ? [data.nodes[key1].position, data.nodes[key2].position]
+        //       : [data.nodes[key2].position, data.nodes[key1].position],
+        //     key1,
+        //     key2,
+        //     val,
+        //   );
+        // }
+
+        let maxLine = -20;
+        let minLine = 100000;
+
+        for (const [key, object] of Object.entries(values.e).reverse()) {
+          maxLine = Math.max(Math.abs(object[threshold]), maxLine);
+          minLine = Math.min(Math.abs(object[threshold]), minLine);
+        }
+
+        console.log(maxLine);
+        console.log(minLine);
+
+        for (const line of data.lines) {
+          const key1 = data.nodes[line[0]].name;
+          const key2 = data.nodes[line[1]].name;
+          const value = Math.abs(values.e[key1 + key2][threshold]);
+          if(key1 === "Netherlands"){
+            console.log(data.nodes[key1].position);
+          }
+          drawLineValues(
+            [data.nodes[key1].position, data.nodes[key2].position],
+            key1,
+            key2,
+            (value),
+            value,
+          );
+        }
+
+        // for (const [key, object] of Object.entries(data.nodes)) {
+        //   const key1 = data.keys[data.edges[key - 1][0]];
+        //   const key2 = data.keys[data.edges[key - 1][1]];
+
+        //   drawLineValues(
+        //     [data.nodes[key1].position, data.nodes[key2].position],
+        //     key1,
+        //     key2,
+        //     Math.abs((object[threshold] - minLine) / (maxLine - minLine)),
+        //     Math.abs(object[threshold]),
+        //   );
+        // }
+      };
+
+      updateMapPoints(0);
+
+      const slider = document.getElementById("value-slider");
+      const sliderValDisplay = document.getElementById("slider-val");
+
+      slider.addEventListener("input", (e) => {
+        const currentVal = parseInt(e.target.value);
+        sliderValDisplay.textContent = values.t[currentVal];
+
+        updateMapPoints(currentVal);
+      });
+
+      // for (const [key1, key2] of data.edges) {
+      //   drawLine(
+      //     [data.nodes[key1].position, data.nodes[key2].position],
+      //     key1,
+      //     key2,
+      //   );
+      // }
+    </script>
+  </body>
+</html>

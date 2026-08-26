@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Map with Points</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+  </head>
+  <body>
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+      }
+      #map {
+        height: 100%;
+      }
+    </style>
+
+    <div id="map"></div>
+
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+
+    <script>
+      const map = L.map("map").setView([51.948, 10.265], 6);
+
+        L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          maxZoom: 19,
+          attribution:
+            '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        }).addTo(map);
+
+      const drawArea = (area, key, color = "#3388ff") => {
+        var polygon = L.polygon(
+          [
+            [area.minlat, area.minlon],
+            [area.maxlat, area.minlon],
+            [area.maxlat, area.maxlon],
+            [area.minlat, area.maxlon],
+          ],
+          {
+            fillColor: color,
+            color: color,
+          },
+        ).addTo(map);
+        polygon.on("click", (e) => {
+          console.log(key, area);
+        });
+      };
+
+      const drawLine = (line, key) => {
+        const color = "blue";
+
+        const polyline = L.polyline(line, {
+          color: color,
+          weight: 2,
+        }).addTo(map);
+
+        polyline.on("click", (e) => {
+          console.log(key, line);
+        });
+      };
+
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const country = urlParams.get("country");
+
+      fetch(`/points/${country}`)
+        .then((response) => response.json())
+        .then((data) => {
+          for (const [key, object] of Object.entries(data.network)) {
+            if (object.type === "line") {
+              drawLine(object.position, key);
+            } else if (object.type === "plant") {
+              drawArea(object, key);
+            } else {
+              drawArea(object, key, "red");
+            }
+          }
+        });
+    </script>
+  </body>
+</html>
