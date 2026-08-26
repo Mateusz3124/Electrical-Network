@@ -32,7 +32,7 @@
 
     <script>
       const map = L.map("map").setView([51.948, 10.265], 6);
-      const neighbours = new Set(["Germany", "France", "Netherlands"]);
+
       L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
         maxZoom: 19,
         attribution:
@@ -55,59 +55,40 @@
         const circle = L.circle(element.position, {
           color: color,
           fillColor: color,
-          radius: neighbours.has(element.name) ? 10000 : 50,
+          radius: key === "87772593" || key === "87772589_junction_start" ? 200 : 50,
         }).addTo(map);
         circle.on("click", (e) => {
           console.log(key, element);
         });
       };
 
-      // const trippedLines = new Set([
-      //   "88799384→87772591",
-      //   "Netherlands→825954426",
-      //   "103041296_junction_start→24394061",
-      //   "24552827→24552827_low",
-      //   "38188076_junction_start→86013779_junction_end",
-      //   "86013779_junction_end→135193936",
-      //   "135193936→135193936_low",
-      //   "88382379_junction_start→1030917105",
-      //   "239279176→239281817_junction_end",
-      //   "1030917105→239279176",
-      //   "87772591→87772591_low",
-      //   "32009946_junction_start→88092061_junction_end",
-      //   "238857406_junction_end→103728377_low",
-      //   "115017366→32002039",
-      //   "23148277_junction_start→23587437_junction_end",
-      //   "23148277_junction_start→48521014_junction_start",
-      //   "23587437_junction_end→82480435",
-      //   "8591150→87772591",
-      //   "23154962_low→29498205_junction_end",
-      //   "88293709_junction_end→204985697_junction_end",
-      //   "204985694_junction_end→204985697_junction_end",
-      //   "111312142_junction_start→24552827_low",
-      // ]);
+const trippedLines = new Set([
+ 
+  "88293709_junction_end→204985697_junction_end",
+  "204985694_junction_end→204985697_junction_end",
+  "111312142_junction_start→24552827_low",
+]);
 
-      const trippedLines = new Set([
-        "87772595_junction_end→87761208",
-        "87772593→87772595_junction_end",
-        "87772589_junction_start→87772593",
-        "182944051→118351379_junction_end",
-        "91752661→118351379_junction_end",
-        "Netherlands→825954426",
-        "88799384→87772591",
-        "98411324_junction_start→98411324_junction_end",
-      ]);
-
+// const trippedLines = new Set([
+//   "87772595_junction_end→87761208",
+//   "87772593→87772595_junction_end",
+//   "87772589_junction_start→87772593",
+//   "182944051→118351379_junction_end",
+//   "91752661→118351379_junction_end",
+//   "Netherlands→825954426",
+//   "88799384→87772591",
+//   "98411324_junction_start→98411324_junction_end"
+// ]);
       const isTripped = (key1, key2) =>
-        trippedLines.has(`${key1}→${key2}`) ||
-        trippedLines.has(`${key2}→${key1}`);
+        trippedLines.has(`${key1}→${key2}`) || trippedLines.has(`${key2}→${key1}`);
 
       const drawLine = (line, key1, key2) => {
-        const color = "blue";
+        const tripped = isTripped(key1, key2);
+        const color = tripped ? "#000000" : "blue";
 
         const polyline = L.polyline(line, {
           color: color,
-          weight: 2,
+          weight: tripped ? 5 : 2,
         }).addTo(map);
 
         polyline.on("click", (e) => {
