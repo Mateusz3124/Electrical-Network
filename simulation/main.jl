@@ -199,11 +199,6 @@ end
 #     set_default!(bus_load, Regex("load₊Vrel\$"), 1.0)
 # end
 
-function update_junction(bus_junction, s, k)
-    # V² = s.v[k, :busbar₊u_mag]^2
-    # set_default!(bus_junction, Regex("shunt₊B\$"),  1e-3 / V²)
-    # set_default!(bus_junction, Regex("shunt₊Q\$"),  1e-3 * V²)
-end
 
 function main()
     data = JSON3.read(read("../data/calculated/belgium.json", String))
@@ -240,7 +235,7 @@ function main()
     sol = simulate(nw, s0, nodes, lines, plant_types)
     end
     # serialize("../../project/example5.jld2", sol)
-    serialize("sims/exampleTestIfCorrectNow100(tests_for_when_simplegfdc)Fixed.jld2", sol)
+    serialize("sims/zzzzzzzzzworkingBat.jld2", sol)
     println("Finished")
 end
 

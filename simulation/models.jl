@@ -86,8 +86,13 @@ smooth_max(a, b; δ=1e-4) = 0.5*(a + b + sqrt((a - b)^2 + δ^2))
     end
 end
 
+using PowerDynamics.Library.ComposableInverter: SimpleGFLDC
+
 function initialize_templates()
-    solar_wind_plant = CustomRenewable(name=:solar_wind, kp_v_dc=0.785, ki_v_dc=6.17, CC1_KI=339.3, C_dc=0.01)
+    # solar_wind_plant = CustomRenewable(name=:solar_wind, kp_v_dc=0.785, ki_v_dc=6.17, CC1_KI=135, C_dc=0.04)
+    # solar_wind_plant = CustomRenewable(name=:solar_wind, kp_v_dc=0.785, ki_v_dc=6.17, CC1_KI=339.3, C_dc=0.01)
+    # solar_wind_plant = SimpleGFLDC(name=:solar_wind, kp_v_dc=0.785, ki_v_dc=6.17, CC1_KI=339.3, C_dc=0.01)
+    solar_wind_plant = SimpleGFLDC(name=:solar_wind, kp_v_dc=2.5*1.25*(2π*5), ki_v_dc=2.5*1.25*(2π*5)^2/4, CC1_KI=339.3, C_dc=1.25)
 
     gensal = Library.PSSE_GENSAL(;
         name=:gensal,
@@ -192,7 +197,7 @@ function initialize_templates()
         S_b=1000,
         v_0=1
     )
-    # zipload = ZIPLoadSafe(Pset=0.0, Qset=0.0, Vset=1.0, KpZ=0.0, KqZ=0.0, KpI=0.0, KqI=0.0, name=:load)
+    # zipload = Library.ZIPLoad(Pset=0.0, Qset=0.0, Vset=1.0, KpZ=0.0, KqZ=0.0, KpI=0.0, KqI=0.0, name=:load)
     
     piline_fault = Library.PiLine_fault(;R=0.001, X=0.002, G_src=0, B_src=0, G_dst=0, B_dst=0, name=:piline)
     breaker = Library.Breaker(; name=:breaker)

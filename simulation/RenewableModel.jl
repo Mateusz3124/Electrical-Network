@@ -73,7 +73,8 @@ end
         cc1.i_f_ref_d ~ status * iset_d_dc
         cc1.i_f_ref_q ~ status * iset_q
 
-        v_dc_safe ~ max(v_dc_state, 0.1*V_dc)
+        # v_dc_safe ~ max(v_dc_state, 0.1*V_dc)
+        v_dc_safe ~ v_dc_state
 
         # DC link dynamics: Frozen when status is 0.0 to prevent windup and extreme discharge
         C_dc * Dt(v_dc_state) ~ status * (P_ac - P_dc) / v_dc_safe
