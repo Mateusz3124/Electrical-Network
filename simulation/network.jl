@@ -35,7 +35,7 @@ function should_have_load(info)
   return 0
 end
 
-counter = 1
+counter = 2
 
 
 sum_solar = 0
@@ -52,38 +52,34 @@ function handle_plant!(id, info, network, nodes, lines, tpl, p_base, plant_types
 
   p /= p_base
 
-  # if info.source == "wind" || info.source == "solar"
-  #   # push!(nodes, get_other(tpl.other, Symbol(id, :_plant), p, 1.0))
-  #   push!(nodes, get_wind(tpl.solar_wind, Symbol(id, :_plant), p, 1.0))
-  #   plant_types[Symbol(id, :_plant)] = :solar_wind
-  #   # push!(nodes, get_other(tpl.other, Symbol(id, :_plant), p, 1.0))
-  #   # plant_types[Symbol(id, :_plant)] = :other
-  # elseif info.source == "hydro"
-  #   push!(nodes, get_hydro(tpl.hydro, Symbol(id, :_plant), p, 1.0))
-  #   plant_types[Symbol(id, :_plant)] = :hydro
-  #   # push!(nodes, get_other(tpl.other, Symbol(id, :_plant), p, 1.0))
-  #   # plant_types[Symbol(id, :_plant)] = :other
-  # else
-  #   push!(nodes, get_other(tpl.other, Symbol(id, :_plant), p, 1.0))
-  #   plant_types[Symbol(id, :_plant)] = :other
-  # end
-
-  global counter
-
-  # if counter % 4 < 3 && p > 1
-  if counter % 4 > 0 && p > 0.05
-    println("other ", id)
-    sum_other += p
-    push!(nodes, get_other(tpl.other, Symbol(id, :_plant), p, 1.0))
-    plant_types[Symbol(id, :_plant)] = :other
-  else
-    println("solar ", id)
-    sum_solar += p
+  if info.source == "wind" || info.source == "solar"
     push!(nodes, get_wind(tpl.solar_wind, Symbol(id, :_plant), p, 1.0))
     plant_types[Symbol(id, :_plant)] = :solar_wind
+  elseif info.source == "hydro"
+    push!(nodes, get_hydro(tpl.hydro, Symbol(id, :_plant), p, 1.0))
+    plant_types[Symbol(id, :_plant)] = :hydro
+  else
+    push!(nodes, get_other(tpl.other, Symbol(id, :_plant), p, 1.0))
+    plant_types[Symbol(id, :_plant)] = :other
   end
 
-  counter += 1
+  # global counter
+
+
+  # # if counter % 3 < 2 && p > 0.05
+  # if counter % 4 != 1 && p > 0.05
+  #   println("other ", id)
+  #   sum_other += p
+  #   push!(nodes, get_other(tpl.other, Symbol(id, :_plant), p, 1.0))
+  #   plant_types[Symbol(id, :_plant)] = :other
+  # else
+  #   println("solar ", id)
+  #   sum_solar += p
+  #   push!(nodes, get_wind(tpl.solar_wind, Symbol(id, :_plant), p, 1.0))
+  #   plant_types[Symbol(id, :_plant)] = :solar_wind
+  # end
+
+  # counter += 1
 
   push!(nodes, get_junction(tpl.junction, id))
   push!(lines, get_line(tpl.line, Symbol(id, :_temp), Symbol(id, :_plant)))
