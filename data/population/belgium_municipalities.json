@@ -1,0 +1,5171 @@
+{
+ "source": "GeoNames BE.txt, https://download.geonames.org/export/dump/BE.zip, downloaded 2026-10-24, CC BY 4.0; ADM4 municipalities with population, 8 municipalities merged in 2025 without population replaced by their ADM4H predecessors",
+ "municipalities": [
+  {
+   "name": "Zwevegem",
+   "geonameid": 2783090,
+   "lat": 50.78297,
+   "lon": 3.37671,
+   "population": 24656,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Zutendaal",
+   "geonameid": 2783144,
+   "lat": 50.93252,
+   "lon": 5.57273,
+   "population": 7289,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Zulte",
+   "geonameid": 2783152,
+   "lat": 50.9321,
+   "lon": 3.47295,
+   "population": 15720,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Zuienkerke",
+   "geonameid": 2783154,
+   "lat": 51.25248,
+   "lon": 3.13613,
+   "population": 2721,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Zoutleeuw",
+   "geonameid": 2783171,
+   "lat": 50.835,
+   "lon": 5.10109,
+   "population": 8480,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Zottegem",
+   "geonameid": 2783176,
+   "lat": 50.86621,
+   "lon": 3.80897,
+   "population": 26582,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Zonnebeke",
+   "geonameid": 2783185,
+   "lat": 50.87277,
+   "lon": 2.98768,
+   "population": 12481,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Zonhoven",
+   "geonameid": 2783189,
+   "lat": 50.99139,
+   "lon": 5.37094,
+   "population": 21237,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Zoersel",
+   "geonameid": 2783205,
+   "lat": 51.2675,
+   "lon": 4.71262,
+   "population": 21944,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Zemst",
+   "geonameid": 2783275,
+   "lat": 50.98345,
+   "lon": 4.45882,
+   "population": 23358,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Zelzate",
+   "geonameid": 2783279,
+   "lat": 51.19887,
+   "lon": 3.81056,
+   "population": 12854,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Zele",
+   "geonameid": 2783294,
+   "lat": 51.06701,
+   "lon": 4.03492,
+   "population": 21125,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Zedelgem",
+   "geonameid": 2783309,
+   "lat": 51.12617,
+   "lon": 3.13719,
+   "population": 22819,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Zaventem",
+   "geonameid": 2783311,
+   "lat": 50.88322,
+   "lon": 4.47504,
+   "population": 34368,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Zandhoven",
+   "geonameid": 2783348,
+   "lat": 51.21699,
+   "lon": 4.66438,
+   "population": 13025,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Yvoir",
+   "geonameid": 2783386,
+   "lat": 50.32749,
+   "lon": 4.88111,
+   "population": 9167,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Wuustwezel",
+   "geonameid": 2783417,
+   "lat": 51.39192,
+   "lon": 4.59392,
+   "population": 20970,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Wortegem-Petegem",
+   "geonameid": 2783450,
+   "lat": 50.85,
+   "lon": 3.5,
+   "population": 6397,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Wommelgem",
+   "geonameid": 2783463,
+   "lat": 51.2043,
+   "lon": 4.52431,
+   "population": 12865,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Sint-Pieters-Woluwe",
+   "geonameid": 2783475,
+   "lat": 50.82934,
+   "lon": 4.44105,
+   "population": 41824,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Sint-Lambrechts-Woluwe",
+   "geonameid": 2783477,
+   "lat": 50.84378,
+   "lon": 4.42629,
+   "population": 56660,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Willebroek",
+   "geonameid": 2783633,
+   "lat": 51.06082,
+   "lon": 4.36466,
+   "population": 26462,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Wijnegem",
+   "geonameid": 2783685,
+   "lat": 51.22871,
+   "lon": 4.51607,
+   "population": 9816,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Wielsbeke",
+   "geonameid": 2783718,
+   "lat": 50.91635,
+   "lon": 3.37132,
+   "population": 9641,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Wichelen",
+   "geonameid": 2783729,
+   "lat": 50.9976,
+   "lon": 3.95236,
+   "population": 11672,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Wezembeek-Oppem",
+   "geonameid": 2783738,
+   "lat": 50.84285,
+   "lon": 4.49204,
+   "population": 14258,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Wevelgem",
+   "geonameid": 2783760,
+   "lat": 50.83246,
+   "lon": 3.17177,
+   "population": 31406,
+   "geonames_modified": "2025-11-30",
+   "note": "ADM4"
+  },
+  {
+   "name": "Wetteren",
+   "geonameid": 2783764,
+   "lat": 50.99342,
+   "lon": 3.87211,
+   "population": 25815,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Vleteren",
+   "geonameid": 2783769,
+   "lat": 50.91602,
+   "lon": 2.74143,
+   "population": 3691,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Westerlo",
+   "geonameid": 2783802,
+   "lat": 51.08778,
+   "lon": 4.9157,
+   "population": 25051,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Wervik",
+   "geonameid": 2783821,
+   "lat": 50.80798,
+   "lon": 3.05762,
+   "population": 18767,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "De Haan",
+   "geonameid": 2783855,
+   "lat": 51.27201,
+   "lon": 3.04287,
+   "population": 12666,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Wemmel",
+   "geonameid": 2783857,
+   "lat": 50.90867,
+   "lon": 4.30986,
+   "population": 16491,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Wellin",
+   "geonameid": 2783863,
+   "lat": 50.06004,
+   "lon": 5.10192,
+   "population": 3093,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Wellen",
+   "geonameid": 2783865,
+   "lat": 50.84205,
+   "lon": 5.33644,
+   "population": 7372,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Welkenraedt",
+   "geonameid": 2783871,
+   "lat": 50.66274,
+   "lon": 5.9733,
+   "population": 10002,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Wavre",
+   "geonameid": 2783942,
+   "lat": 50.71925,
+   "lon": 4.59262,
+   "population": 34396,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Watermael-Boitsfort",
+   "geonameid": 2783980,
+   "lat": 50.80257,
+   "lon": 4.41513,
+   "population": 25184,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Waterloo",
+   "geonameid": 2783986,
+   "lat": 50.70944,
+   "lon": 4.40446,
+   "population": 30328,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Wasseiges",
+   "geonameid": 2784011,
+   "lat": 50.62366,
+   "lon": 5.00616,
+   "population": 2937,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Waregem",
+   "geonameid": 2784069,
+   "lat": 50.88106,
+   "lon": 3.40259,
+   "population": 38266,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Wanze",
+   "geonameid": 2784093,
+   "lat": 50.53951,
+   "lon": 5.20924,
+   "population": 13738,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Trois-Ponts",
+   "geonameid": 2784103,
+   "lat": 50.37221,
+   "lon": 5.87159,
+   "population": 2553,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Walhain",
+   "geonameid": 2784169,
+   "lat": 50.61667,
+   "lon": 4.7,
+   "population": 7187,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Walcourt",
+   "geonameid": 2784190,
+   "lat": 50.2539,
+   "lon": 4.43521,
+   "population": 18430,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Waimes",
+   "geonameid": 2784200,
+   "lat": 50.46366,
+   "lon": 6.1297,
+   "population": 7425,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Waasmunster",
+   "geonameid": 2784232,
+   "lat": 51.11884,
+   "lon": 4.07734,
+   "population": 10801,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Vresse-sur-Semois",
+   "geonameid": 2784312,
+   "lat": 49.86742,
+   "lon": 4.9375,
+   "population": 2615,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Vosselaar",
+   "geonameid": 2784350,
+   "lat": 51.30744,
+   "lon": 4.88806,
+   "population": 11187,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Laakdal",
+   "geonameid": 2784365,
+   "lat": 51.07775,
+   "lon": 5.00668,
+   "population": 16101,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Vorselaar",
+   "geonameid": 2784371,
+   "lat": 51.20285,
+   "lon": 4.7709,
+   "population": 7861,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Visé",
+   "geonameid": 2784549,
+   "lat": 50.73863,
+   "lon": 5.7019,
+   "population": 17812,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Virton",
+   "geonameid": 2784556,
+   "lat": 49.57468,
+   "lon": 5.5711,
+   "population": 11332,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Vilvoorde",
+   "geonameid": 2784605,
+   "lat": 50.9289,
+   "lon": 4.4323,
+   "population": 44727,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Les Bons Villers",
+   "geonameid": 2784626,
+   "lat": 50.53209,
+   "lon": 4.4335,
+   "population": 9451,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Villers-le-Bouillet",
+   "geonameid": 2784640,
+   "lat": 50.57768,
+   "lon": 5.26134,
+   "population": 6496,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Villers-la-Ville",
+   "geonameid": 2784642,
+   "lat": 50.56482,
+   "lon": 4.5273,
+   "population": 10702,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Vielsalm",
+   "geonameid": 2784776,
+   "lat": 50.2808,
+   "lon": 5.88616,
+   "population": 7814,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Veurne",
+   "geonameid": 2784805,
+   "lat": 51.05202,
+   "lon": 2.67484,
+   "population": 11903,
+   "geonames_modified": "2024-08-12",
+   "note": "ADM4"
+  },
+  {
+   "name": "Verviers",
+   "geonameid": 2784822,
+   "lat": 50.58349,
+   "lon": 5.86412,
+   "population": 55207,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Verlaine",
+   "geonameid": 2784859,
+   "lat": 50.60748,
+   "lon": 5.31893,
+   "population": 4228,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Vaux-sur-Sûre",
+   "geonameid": 2784999,
+   "lat": 49.91155,
+   "lon": 5.57436,
+   "population": 5640,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Ukkel",
+   "geonameid": 2785124,
+   "lat": 50.79102,
+   "lon": 4.36016,
+   "population": 83024,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Turnhout",
+   "geonameid": 2785142,
+   "lat": 51.3231,
+   "lon": 4.94831,
+   "population": 44664,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Tubize",
+   "geonameid": 2785170,
+   "lat": 50.69037,
+   "lon": 4.20691,
+   "population": 26233,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Tremelo",
+   "geonameid": 2785294,
+   "lat": 50.99237,
+   "lon": 4.70618,
+   "population": 14914,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Tournai",
+   "geonameid": 2785342,
+   "lat": 50.61839,
+   "lon": 3.41943,
+   "population": 69370,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Torhout",
+   "geonameid": 2785365,
+   "lat": 51.06065,
+   "lon": 3.09841,
+   "population": 20463,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Tintigny",
+   "geonameid": 2785423,
+   "lat": 49.69346,
+   "lon": 5.49106,
+   "population": 4300,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Tienen",
+   "geonameid": 2785471,
+   "lat": 50.80767,
+   "lon": 4.94179,
+   "population": 34975,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Tielt-Winge",
+   "geonameid": 2785479,
+   "lat": 50.91775,
+   "lon": 4.8848,
+   "population": 10747,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Thuin",
+   "geonameid": 2785518,
+   "lat": 50.33949,
+   "lon": 4.28484,
+   "population": 14702,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Thimister-Clermont",
+   "geonameid": 2785563,
+   "lat": 50.65512,
+   "lon": 5.86713,
+   "population": 5700,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Theux",
+   "geonameid": 2785594,
+   "lat": 50.53433,
+   "lon": 5.81237,
+   "population": 12031,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Tervuren",
+   "geonameid": 2785623,
+   "lat": 50.82364,
+   "lon": 4.51852,
+   "population": 22422,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Ternat",
+   "geonameid": 2785656,
+   "lat": 50.8656,
+   "lon": 4.158,
+   "population": 15746,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Tenneville",
+   "geonameid": 2785746,
+   "lat": 50.10839,
+   "lon": 5.49329,
+   "population": 2832,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Temse",
+   "geonameid": 2785779,
+   "lat": 51.13455,
+   "lon": 4.2085,
+   "population": 29926,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Tellin",
+   "geonameid": 2785794,
+   "lat": 50.07196,
+   "lon": 5.23262,
+   "population": 2432,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Stoumont",
+   "geonameid": 2785990,
+   "lat": 50.40906,
+   "lon": 5.80868,
+   "population": 3167,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Stekene",
+   "geonameid": 2786088,
+   "lat": 51.21476,
+   "lon": 4.03347,
+   "population": 18445,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Steenokkerzeel",
+   "geonameid": 2786125,
+   "lat": 50.91878,
+   "lon": 4.51143,
+   "population": 12135,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Stavelot",
+   "geonameid": 2786186,
+   "lat": 50.39298,
+   "lon": 5.93433,
+   "population": 7169,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Staden",
+   "geonameid": 2786227,
+   "lat": 50.95044,
+   "lon": 3.01828,
+   "population": 11489,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Stabroek",
+   "geonameid": 2786230,
+   "lat": 51.33083,
+   "lon": 4.37462,
+   "population": 18710,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Sprimont",
+   "geonameid": 2786244,
+   "lat": 50.50797,
+   "lon": 5.65993,
+   "population": 14712,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Spa",
+   "geonameid": 2786319,
+   "lat": 50.48591,
+   "lon": 5.86464,
+   "population": 10229,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Soumagne",
+   "geonameid": 2786345,
+   "lat": 50.61516,
+   "lon": 5.74825,
+   "population": 16925,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Somme-Leuze",
+   "geonameid": 2786388,
+   "lat": 50.30254,
+   "lon": 5.32299,
+   "population": 5641,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Sombreffe",
+   "geonameid": 2786391,
+   "lat": 50.52865,
+   "lon": 4.59838,
+   "population": 8440,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Soignies",
+   "geonameid": 2786421,
+   "lat": 50.56358,
+   "lon": 4.04431,
+   "population": 28016,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Tinlot",
+   "geonameid": 2786426,
+   "lat": 50.47515,
+   "lon": 5.37841,
+   "population": 2706,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Sivry-Rance",
+   "geonameid": 2786531,
+   "lat": 50.16681,
+   "lon": 4.16691,
+   "population": 4798,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Sint-Truiden",
+   "geonameid": 2786546,
+   "lat": 50.81537,
+   "lon": 5.184,
+   "population": 40590,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Sint-Pieters-Leeuw",
+   "geonameid": 2786560,
+   "lat": 50.78958,
+   "lon": 4.24752,
+   "population": 34228,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Sint-Niklaas",
+   "geonameid": 2786579,
+   "lat": 51.15997,
+   "lon": 4.10893,
+   "population": 77679,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Voeren",
+   "geonameid": 2786584,
+   "lat": 50.75031,
+   "lon": 5.78447,
+   "population": 4146,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Lennik",
+   "geonameid": 2786588,
+   "lat": 50.80892,
+   "lon": 4.16313,
+   "population": 9074,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Sint-Martens-Latem",
+   "geonameid": 2786592,
+   "lat": 51.00838,
+   "lon": 3.62266,
+   "population": 8392,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Lierde",
+   "geonameid": 2786604,
+   "lat": 50.81667,
+   "lon": 3.85,
+   "population": 6616,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Sint-Lievens-Houtem",
+   "geonameid": 2786617,
+   "lat": 50.9329,
+   "lon": 3.88087,
+   "population": 10342,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Sint-Laureins",
+   "geonameid": 2786627,
+   "lat": 51.26319,
+   "lon": 3.58636,
+   "population": 6783,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Horebeke",
+   "geonameid": 2786637,
+   "lat": 50.83333,
+   "lon": 3.68333,
+   "population": 2036,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Sint-Katelijne-Waver",
+   "geonameid": 2786642,
+   "lat": 51.06419,
+   "lon": 4.53434,
+   "population": 20792,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Sint-Gillis-Waas",
+   "geonameid": 2786695,
+   "lat": 51.228,
+   "lon": 4.12064,
+   "population": 19370,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Sint-Genesius-Rode",
+   "geonameid": 2786701,
+   "lat": 50.7455,
+   "lon": 4.375,
+   "population": 18387,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Silly",
+   "geonameid": 2786770,
+   "lat": 50.63547,
+   "lon": 3.9632,
+   "population": 8168,
+   "geonames_modified": "2018-07-06",
+   "note": "ADM4"
+  },
+  {
+   "name": "Seraing",
+   "geonameid": 2786825,
+   "lat": 50.59043,
+   "lon": 5.51823,
+   "population": 64259,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Seneffe",
+   "geonameid": 2786853,
+   "lat": 50.54981,
+   "lon": 4.26623,
+   "population": 10763,
+   "geonames_modified": "2018-07-06",
+   "note": "ADM4"
+  },
+  {
+   "name": "Schoten",
+   "geonameid": 2786964,
+   "lat": 51.25364,
+   "lon": 4.50354,
+   "population": 34517,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Schilde",
+   "geonameid": 2787049,
+   "lat": 51.24107,
+   "lon": 4.5813,
+   "population": 19652,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Scherpenheuvel-Zichem",
+   "geonameid": 2787061,
+   "lat": 51.01041,
+   "lon": 4.9738,
+   "population": 23029,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Schelle",
+   "geonameid": 2787081,
+   "lat": 51.12604,
+   "lon": 4.34406,
+   "population": 8518,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Schaarbeek",
+   "geonameid": 2787150,
+   "lat": 50.86946,
+   "lon": 4.37943,
+   "population": 133309,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Saint-Vith",
+   "geonameid": 2787316,
+   "lat": 50.28407,
+   "lon": 6.12728,
+   "population": 9722,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Saint-Nicolas",
+   "geonameid": 2787357,
+   "lat": 50.62867,
+   "lon": 5.53179,
+   "population": 24263,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Saint-Léger",
+   "geonameid": 2787380,
+   "lat": 49.61243,
+   "lon": 5.65581,
+   "population": 3608,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Saint-Josse-ten-Noode",
+   "geonameid": 2787388,
+   "lat": 50.8538,
+   "lon": 4.37041,
+   "population": 27457,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Saint-Hubert",
+   "geonameid": 2787409,
+   "lat": 50.04088,
+   "lon": 5.34119,
+   "population": 5569,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Sint-Gillis",
+   "geonameid": 2787415,
+   "lat": 50.8287,
+   "lon": 4.34419,
+   "population": 50267,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Saint-Ghislain",
+   "geonameid": 2787417,
+   "lat": 50.44832,
+   "lon": 3.82007,
+   "population": 23311,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Saint-Georges-sur-Meuse",
+   "geonameid": 2787426,
+   "lat": 50.60016,
+   "lon": 5.35862,
+   "population": 6803,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Rumst",
+   "geonameid": 2787522,
+   "lat": 51.07969,
+   "lon": 4.42509,
+   "population": 15090,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Rumes",
+   "geonameid": 2787531,
+   "lat": 50.54455,
+   "lon": 3.32089,
+   "population": 5167,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Rotselaar",
+   "geonameid": 2787663,
+   "lat": 50.95264,
+   "lon": 4.71889,
+   "population": 16793,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Ronse",
+   "geonameid": 2787770,
+   "lat": 50.75045,
+   "lon": 3.60488,
+   "population": 26479,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Le Roeulx",
+   "geonameid": 2787879,
+   "lat": 50.5,
+   "lon": 4.1,
+   "population": 8716,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Roeselare",
+   "geonameid": 2787891,
+   "lat": 50.95,
+   "lon": 3.13333,
+   "population": 62954,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Rochefort",
+   "geonameid": 2787949,
+   "lat": 50.1626,
+   "lon": 5.21936,
+   "population": 12611,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Rixensart",
+   "geonameid": 2787990,
+   "lat": 50.71989,
+   "lon": 4.52684,
+   "population": 22558,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Rijkevorsel",
+   "geonameid": 2788052,
+   "lat": 51.35045,
+   "lon": 4.7624,
+   "population": 12060,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Riemst",
+   "geonameid": 2788089,
+   "lat": 50.80984,
+   "lon": 5.6044,
+   "population": 16755,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "La Bruyère",
+   "geonameid": 2788112,
+   "lat": 50.55004,
+   "lon": 4.80017,
+   "population": 9276,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Burg-Reuland",
+   "geonameid": 2788132,
+   "lat": 50.1969,
+   "lon": 6.1338,
+   "population": 3935,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Retie",
+   "geonameid": 2788139,
+   "lat": 51.26664,
+   "lon": 5.08392,
+   "population": 11396,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Lo-Reninge",
+   "geonameid": 2788179,
+   "lat": 50.95,
+   "lon": 2.78333,
+   "population": 3291,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Rendeux",
+   "geonameid": 2788187,
+   "lat": 50.21888,
+   "lon": 5.51778,
+   "population": 2637,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Remicourt",
+   "geonameid": 2788212,
+   "lat": 50.68101,
+   "lon": 5.32837,
+   "population": 5906,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Rebecq",
+   "geonameid": 2788300,
+   "lat": 50.66667,
+   "lon": 4.13333,
+   "population": 10979,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Ravels",
+   "geonameid": 2788313,
+   "lat": 51.37199,
+   "lon": 4.99037,
+   "population": 15009,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Ranst",
+   "geonameid": 2788349,
+   "lat": 51.19005,
+   "lon": 4.56774,
+   "population": 19008,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Ramillies",
+   "geonameid": 2788382,
+   "lat": 50.63333,
+   "lon": 4.9,
+   "population": 6522,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Raeren",
+   "geonameid": 2788411,
+   "lat": 50.66769,
+   "lon": 6.11681,
+   "population": 10759,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Quiévrain",
+   "geonameid": 2788445,
+   "lat": 50.40715,
+   "lon": 3.68505,
+   "population": 6822,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Quévy",
+   "geonameid": 2788448,
+   "lat": 50.36835,
+   "lon": 3.93568,
+   "population": 8138,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Quaregnon",
+   "geonameid": 2788500,
+   "lat": 50.44171,
+   "lon": 3.86702,
+   "population": 19007,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Putte",
+   "geonameid": 2788523,
+   "lat": 51.05488,
+   "lon": 4.62988,
+   "population": 17800,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Profondeville",
+   "geonameid": 2788578,
+   "lat": 50.37612,
+   "lon": 4.86694,
+   "population": 12220,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Poperinge",
+   "geonameid": 2788727,
+   "lat": 50.85488,
+   "lon": 2.6875,
+   "population": 19702,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Fernelmont",
+   "geonameid": 2788742,
+   "lat": 50.55346,
+   "lon": 4.9858,
+   "population": 8032,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Pont-à-Celles",
+   "geonameid": 2788766,
+   "lat": 50.50529,
+   "lon": 4.36363,
+   "population": 17371,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Pittem",
+   "geonameid": 2788926,
+   "lat": 51.00148,
+   "lon": 3.2636,
+   "population": 6738,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Philippeville",
+   "geonameid": 2789017,
+   "lat": 50.19569,
+   "lon": 4.54173,
+   "population": 9289,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Perwez",
+   "geonameid": 2789158,
+   "lat": 50.63379,
+   "lon": 4.78972,
+   "population": 9303,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Péruwelz",
+   "geonameid": 2789163,
+   "lat": 50.50819,
+   "lon": 3.59184,
+   "population": 17159,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Pepinster",
+   "geonameid": 2789191,
+   "lat": 50.57408,
+   "lon": 5.80748,
+   "population": 9772,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Pepingen",
+   "geonameid": 2789193,
+   "lat": 50.75014,
+   "lon": 4.15051,
+   "population": 4479,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Peer",
+   "geonameid": 2789233,
+   "lat": 51.13175,
+   "lon": 5.45677,
+   "population": 16357,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Pecq",
+   "geonameid": 2789237,
+   "lat": 50.68504,
+   "lon": 3.35672,
+   "population": 5698,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Roosdaal",
+   "geonameid": 2789347,
+   "lat": 50.83489,
+   "lon": 4.08434,
+   "population": 11631,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Paliseul",
+   "geonameid": 2789355,
+   "lat": 49.91103,
+   "lon": 5.12704,
+   "population": 5389,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Overijse",
+   "geonameid": 2789414,
+   "lat": 50.77512,
+   "lon": 4.53718,
+   "population": 25403,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Oupeye",
+   "geonameid": 2789472,
+   "lat": 50.70999,
+   "lon": 5.64491,
+   "population": 25446,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Ouffet",
+   "geonameid": 2789480,
+   "lat": 50.43903,
+   "lon": 5.46896,
+   "population": 2776,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Oud-Turnhout",
+   "geonameid": 2789484,
+   "lat": 51.31999,
+   "lon": 4.9823,
+   "population": 13662,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Oud-Heverlee",
+   "geonameid": 2789493,
+   "lat": 50.83565,
+   "lon": 4.66164,
+   "population": 11112,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Oudenburg",
+   "geonameid": 2789520,
+   "lat": 51.18513,
+   "lon": 3.00851,
+   "population": 9381,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Oudenaarde",
+   "geonameid": 2789530,
+   "lat": 50.8567,
+   "lon": 3.62474,
+   "population": 31393,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Ottignies-Louvain-la-Neuve",
+   "geonameid": 2789571,
+   "lat": 50.66667,
+   "lon": 4.53333,
+   "population": 31443,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Orp-Jauche",
+   "geonameid": 2789622,
+   "lat": 50.68254,
+   "lon": 4.94436,
+   "population": 8924,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Oreye",
+   "geonameid": 2789636,
+   "lat": 50.7176,
+   "lon": 5.35043,
+   "population": 3895,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Opwijk",
+   "geonameid": 2789655,
+   "lat": 50.96256,
+   "lon": 4.18278,
+   "population": 14547,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Oostrozebeke",
+   "geonameid": 2789738,
+   "lat": 50.92961,
+   "lon": 3.34003,
+   "population": 7932,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Malle",
+   "geonameid": 2789746,
+   "lat": 51.29853,
+   "lon": 4.71107,
+   "population": 15561,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Oostkamp",
+   "geonameid": 2789752,
+   "lat": 51.11879,
+   "lon": 3.23095,
+   "population": 23698,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Oosterzele",
+   "geonameid": 2789772,
+   "lat": 50.93774,
+   "lon": 3.79614,
+   "population": 13590,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Oostende",
+   "geonameid": 2789788,
+   "lat": 51.2119,
+   "lon": 2.92711,
+   "population": 71494,
+   "geonames_modified": "2025-02-02",
+   "note": "ADM4"
+  },
+  {
+   "name": "Onhaye",
+   "geonameid": 2789835,
+   "lat": 50.24259,
+   "lon": 4.84325,
+   "population": 3241,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Olne",
+   "geonameid": 2789870,
+   "lat": 50.59043,
+   "lon": 5.74722,
+   "population": 4080,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Olen",
+   "geonameid": 2789887,
+   "lat": 51.16461,
+   "lon": 4.88327,
+   "population": 12505,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Ohey",
+   "geonameid": 2789909,
+   "lat": 50.43597,
+   "lon": 5.12469,
+   "population": 5127,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Nivelles",
+   "geonameid": 2790102,
+   "lat": 50.59877,
+   "lon": 4.32733,
+   "population": 28734,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Ninove",
+   "geonameid": 2790115,
+   "lat": 50.82845,
+   "lon": 4.00465,
+   "population": 38911,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Nijlen",
+   "geonameid": 2790136,
+   "lat": 51.16271,
+   "lon": 4.67091,
+   "population": 22949,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Nieuwpoort",
+   "geonameid": 2790153,
+   "lat": 51.12436,
+   "lon": 2.77352,
+   "population": 11621,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Nieuwerkerken",
+   "geonameid": 2790181,
+   "lat": 50.86524,
+   "lon": 5.19173,
+   "population": 6947,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Niel",
+   "geonameid": 2790226,
+   "lat": 51.10999,
+   "lon": 4.33617,
+   "population": 10501,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Neupré",
+   "geonameid": 2790241,
+   "lat": 50.54387,
+   "lon": 5.48183,
+   "population": 9923,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Neufchâteau",
+   "geonameid": 2790288,
+   "lat": 49.84461,
+   "lon": 5.42847,
+   "population": 7699,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Brakel",
+   "geonameid": 2790422,
+   "lat": 50.8,
+   "lon": 3.76667,
+   "population": 14801,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Nassogne",
+   "geonameid": 2790452,
+   "lat": 50.13521,
+   "lon": 5.35833,
+   "population": 5498,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Nandrin",
+   "geonameid": 2790468,
+   "lat": 50.50786,
+   "lon": 5.42132,
+   "population": 5753,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Namur",
+   "geonameid": 2790472,
+   "lat": 50.46821,
+   "lon": 4.86729,
+   "population": 110779,
+   "geonames_modified": "2020-11-16",
+   "note": "ADM4"
+  },
+  {
+   "name": "Musson",
+   "geonameid": 2790516,
+   "lat": 49.55818,
+   "lon": 5.7086,
+   "population": 4551,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Zwalm",
+   "geonameid": 2790540,
+   "lat": 50.88333,
+   "lon": 3.73333,
+   "population": 8148,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Mortsel",
+   "geonameid": 2790677,
+   "lat": 51.1737,
+   "lon": 4.45997,
+   "population": 26099,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Morlanwelz",
+   "geonameid": 2790698,
+   "lat": 50.45,
+   "lon": 4.23333,
+   "population": 19139,
+   "geonames_modified": "2018-07-06",
+   "note": "ADM4"
+  },
+  {
+   "name": "Moorslede",
+   "geonameid": 2790730,
+   "lat": 50.87402,
+   "lon": 3.07586,
+   "population": 11250,
+   "geonames_modified": "2022-10-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Mont-Saint-Guibert",
+   "geonameid": 2790757,
+   "lat": 50.63422,
+   "lon": 4.61134,
+   "population": 7771,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Montigny-le-Tilleul",
+   "geonameid": 2790805,
+   "lat": 50.38006,
+   "lon": 4.37754,
+   "population": 10112,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Mons",
+   "geonameid": 2790871,
+   "lat": 50.45384,
+   "lon": 3.95164,
+   "population": 95613,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Momignies",
+   "geonameid": 2790907,
+   "lat": 50.02721,
+   "lon": 4.16648,
+   "population": 5305,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Sint-Jans-Molenbeek",
+   "geonameid": 2791019,
+   "lat": 50.85531,
+   "lon": 4.31761,
+   "population": 97462,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Mol",
+   "geonameid": 2791068,
+   "lat": 51.19204,
+   "lon": 5.11448,
+   "population": 36825,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Modave",
+   "geonameid": 2791133,
+   "lat": 50.44663,
+   "lon": 5.29575,
+   "population": 4212,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Middelkerke",
+   "geonameid": 2791195,
+   "lat": 51.15583,
+   "lon": 2.84175,
+   "population": 19336,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Mettet",
+   "geonameid": 2791262,
+   "lat": 50.32168,
+   "lon": 4.6588,
+   "population": 13102,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Messancy",
+   "geonameid": 2791273,
+   "lat": 49.61172,
+   "lon": 5.8091,
+   "population": 8218,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Mesen",
+   "geonameid": 2791285,
+   "lat": 50.75997,
+   "lon": 2.90057,
+   "population": 1065,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Merksplas",
+   "geonameid": 2791298,
+   "lat": 51.35892,
+   "lon": 4.86265,
+   "population": 8600,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Merchtem",
+   "geonameid": 2791324,
+   "lat": 50.95724,
+   "lon": 4.23025,
+   "population": 16583,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Merbes-le-Château",
+   "geonameid": 2791330,
+   "lat": 50.32459,
+   "lon": 4.16605,
+   "population": 4266,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Menen",
+   "geonameid": 2791344,
+   "lat": 50.78944,
+   "lon": 3.15482,
+   "population": 33385,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Linter",
+   "geonameid": 2791389,
+   "lat": 50.84302,
+   "lon": 5.03826,
+   "population": 7269,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Meix-devant-Virton",
+   "geonameid": 2791420,
+   "lat": 49.60235,
+   "lon": 5.4719,
+   "population": 2809,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Meise",
+   "geonameid": 2791425,
+   "lat": 50.93983,
+   "lon": 4.32947,
+   "population": 19411,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Meerhout",
+   "geonameid": 2791495,
+   "lat": 51.12763,
+   "lon": 5.07467,
+   "population": 10361,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Maasmechelen",
+   "geonameid": 2791535,
+   "lat": 50.96667,
+   "lon": 5.7,
+   "population": 38516,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Mechelen",
+   "geonameid": 2791538,
+   "lat": 51.02758,
+   "lon": 4.48071,
+   "population": 86616,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Martelange",
+   "geonameid": 2791643,
+   "lat": 49.83234,
+   "lon": 5.73881,
+   "population": 1876,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Marchin",
+   "geonameid": 2791734,
+   "lat": 50.46652,
+   "lon": 5.24426,
+   "population": 5469,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Écaussinnes",
+   "geonameid": 2791740,
+   "lat": 50.55,
+   "lon": 4.16667,
+   "population": 11159,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Marche-en-Famenne",
+   "geonameid": 2791745,
+   "lat": 50.21419,
+   "lon": 5.34641,
+   "population": 17465,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Manage",
+   "geonameid": 2791815,
+   "lat": 50.4933,
+   "lon": 4.24062,
+   "population": 22493,
+   "geonames_modified": "2021-02-24",
+   "note": "ADM4"
+  },
+  {
+   "name": "Malmedy",
+   "geonameid": 2791835,
+   "lat": 50.42613,
+   "lon": 6.03029,
+   "population": 12741,
+   "geonames_modified": "2023-10-30",
+   "note": "ADM4"
+  },
+  {
+   "name": "Maldegem",
+   "geonameid": 2791858,
+   "lat": 51.20146,
+   "lon": 3.44716,
+   "population": 23774,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Machelen",
+   "geonameid": 2791953,
+   "lat": 50.90866,
+   "lon": 4.43745,
+   "population": 15469,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Maaseik",
+   "geonameid": 2791965,
+   "lat": 51.09067,
+   "lon": 5.70788,
+   "population": 25317,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Maarkedal",
+   "geonameid": 2791971,
+   "lat": 50.8,
+   "lon": 3.65,
+   "population": 6343,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Lummen",
+   "geonameid": 2792008,
+   "lat": 50.98804,
+   "lon": 5.1943,
+   "population": 14890,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Lubbeek",
+   "geonameid": 2792035,
+   "lat": 50.88333,
+   "lon": 4.83333,
+   "population": 14559,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Lontzen",
+   "geonameid": 2792120,
+   "lat": 50.68156,
+   "lon": 6.00729,
+   "population": 5764,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Londerzeel",
+   "geonameid": 2792166,
+   "lat": 51.00825,
+   "lon": 4.30304,
+   "population": 18749,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Lommel",
+   "geonameid": 2792180,
+   "lat": 51.23172,
+   "lon": 5.31103,
+   "population": 34079,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Lobbes",
+   "geonameid": 2792246,
+   "lat": 50.35291,
+   "lon": 4.26664,
+   "population": 5832,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Lint",
+   "geonameid": 2792294,
+   "lat": 51.12782,
+   "lon": 4.4983,
+   "population": 8718,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Hélécine",
+   "geonameid": 2792297,
+   "lat": 50.75047,
+   "lon": 4.98573,
+   "population": 3553,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Linkebeek",
+   "geonameid": 2792302,
+   "lat": 50.76757,
+   "lon": 4.34457,
+   "population": 4671,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Lincent",
+   "geonameid": 2792333,
+   "lat": 50.71233,
+   "lon": 5.03878,
+   "population": 3311,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Gouvy",
+   "geonameid": 2792344,
+   "lat": 50.18553,
+   "lon": 5.94034,
+   "population": 5286,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Limbourg",
+   "geonameid": 2792349,
+   "lat": 50.61527,
+   "lon": 5.94069,
+   "population": 5912,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Lille",
+   "geonameid": 2792361,
+   "lat": 51.25476,
+   "lon": 4.83722,
+   "population": 16529,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Lierneux",
+   "geonameid": 2792401,
+   "lat": 50.28616,
+   "lon": 5.79065,
+   "population": 3614,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Lier",
+   "geonameid": 2792406,
+   "lat": 51.12082,
+   "lon": 4.57522,
+   "population": 36242,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Liège",
+   "geonameid": 2792414,
+   "lat": 50.62564,
+   "lon": 5.59837,
+   "population": 197327,
+   "geonames_modified": "2020-06-10",
+   "note": "ADM4"
+  },
+  {
+   "name": "Liedekerke",
+   "geonameid": 2792424,
+   "lat": 50.86895,
+   "lon": 4.09213,
+   "population": 13295,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Lichtervelde",
+   "geonameid": 2792430,
+   "lat": 51.02834,
+   "lon": 3.1458,
+   "population": 8926,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Libramont-Chevigny",
+   "geonameid": 2792438,
+   "lat": 49.94658,
+   "lon": 5.41847,
+   "population": 11276,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Libin",
+   "geonameid": 2792443,
+   "lat": 49.98042,
+   "lon": 5.23518,
+   "population": 5223,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Leuze-en-Hainaut",
+   "geonameid": 2792477,
+   "lat": 50.60011,
+   "lon": 3.62883,
+   "population": 13850,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Leuven",
+   "geonameid": 2792483,
+   "lat": 50.87967,
+   "lon": 4.70078,
+   "population": 101624,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Lessines",
+   "geonameid": 2792568,
+   "lat": 50.71428,
+   "lon": 3.83231,
+   "population": 18414,
+   "geonames_modified": "2018-07-06",
+   "note": "ADM4"
+  },
+  {
+   "name": "Leopoldsburg",
+   "geonameid": 2792857,
+   "lat": 51.11944,
+   "lon": 5.24967,
+   "population": 15755,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Lens",
+   "geonameid": 2792872,
+   "lat": 50.55718,
+   "lon": 3.90143,
+   "population": 4525,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Lendelede",
+   "geonameid": 2792880,
+   "lat": 50.88333,
+   "lon": 3.23333,
+   "population": 5747,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Léglise",
+   "geonameid": 2792986,
+   "lat": 49.8131,
+   "lon": 5.56684,
+   "population": 5471,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Ledegem",
+   "geonameid": 2793068,
+   "lat": 50.87383,
+   "lon": 3.15129,
+   "population": 9695,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Lede",
+   "geonameid": 2793079,
+   "lat": 50.96258,
+   "lon": 3.94544,
+   "population": 18701,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Lebbeke",
+   "geonameid": 2793145,
+   "lat": 50.99103,
+   "lon": 4.12246,
+   "population": 19321,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Lasne",
+   "geonameid": 2793248,
+   "lat": 50.68705,
+   "lon": 4.48259,
+   "population": 14244,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "La Roche-en-Ardenne",
+   "geonameid": 2793280,
+   "lat": 50.16353,
+   "lon": 5.60782,
+   "population": 4253,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Langemark-Poelkapelle",
+   "geonameid": 2793393,
+   "lat": 50.91667,
+   "lon": 2.91667,
+   "population": 7819,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Landen",
+   "geonameid": 2793430,
+   "lat": 50.75383,
+   "lon": 5.07998,
+   "population": 15951,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Lanaken",
+   "geonameid": 2793447,
+   "lat": 50.89426,
+   "lon": 5.65006,
+   "population": 25841,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Rouvroy",
+   "geonameid": 2793464,
+   "lat": 49.53333,
+   "lon": 5.48333,
+   "population": 2107,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "La Louvière",
+   "geonameid": 2793509,
+   "lat": 50.47348,
+   "lon": 4.15632,
+   "population": 78233,
+   "geonames_modified": "2019-04-13",
+   "note": "ADM4"
+  },
+  {
+   "name": "La Hulpe",
+   "geonameid": 2793549,
+   "lat": 50.73178,
+   "lon": 4.48191,
+   "population": 7343,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "La Calamine",
+   "geonameid": 2793723,
+   "lat": 50.71891,
+   "lon": 6.01313,
+   "population": 11108,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Laarne",
+   "geonameid": 2793798,
+   "lat": 51.04434,
+   "lon": 3.88169,
+   "population": 12370,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Kuurne",
+   "geonameid": 2793858,
+   "lat": 50.85987,
+   "lon": 3.27085,
+   "population": 13484,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Kraainem",
+   "geonameid": 2794017,
+   "lat": 50.86199,
+   "lon": 4.47178,
+   "population": 13730,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Kortrijk",
+   "geonameid": 2794056,
+   "lat": 50.82811,
+   "lon": 3.26459,
+   "population": 76735,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Kortenberg",
+   "geonameid": 2794071,
+   "lat": 50.88701,
+   "lon": 4.53976,
+   "population": 20279,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Kortenaken",
+   "geonameid": 2794073,
+   "lat": 50.90043,
+   "lon": 5.05096,
+   "population": 7875,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Kortemark",
+   "geonameid": 2794075,
+   "lat": 51.02334,
+   "lon": 3.00223,
+   "population": 12616,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Kontich",
+   "geonameid": 2794118,
+   "lat": 51.13202,
+   "lon": 4.44878,
+   "population": 21115,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Koksijde",
+   "geonameid": 2794167,
+   "lat": 51.11169,
+   "lon": 2.68519,
+   "population": 21910,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Koekelberg",
+   "geonameid": 2794192,
+   "lat": 50.86403,
+   "lon": 4.32303,
+   "population": 21990,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Koekelare",
+   "geonameid": 2794195,
+   "lat": 51.09366,
+   "lon": 2.96587,
+   "population": 8777,
+   "geonames_modified": "2022-09-12",
+   "note": "ADM4"
+  },
+  {
+   "name": "Knokke-Heist",
+   "geonameid": 2794216,
+   "lat": 51.33333,
+   "lon": 3.33333,
+   "population": 33126,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Kluisbergen",
+   "geonameid": 2794234,
+   "lat": 50.78254,
+   "lon": 3.52893,
+   "population": 6488,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Kinrooi",
+   "geonameid": 2794446,
+   "lat": 51.14759,
+   "lon": 5.73847,
+   "population": 12174,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Heuvelland",
+   "geonameid": 2794580,
+   "lat": 50.78333,
+   "lon": 2.81667,
+   "population": 7909,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Keerbergen",
+   "geonameid": 2794620,
+   "lat": 51.0022,
+   "lon": 4.63692,
+   "population": 12850,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Kasterlee",
+   "geonameid": 2794664,
+   "lat": 51.24258,
+   "lon": 4.96994,
+   "population": 18655,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Kaprijke",
+   "geonameid": 2794708,
+   "lat": 51.20802,
+   "lon": 3.62725,
+   "population": 6434,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Kapelle-op-den-Bos",
+   "geonameid": 2794725,
+   "lat": 51.00396,
+   "lon": 4.35573,
+   "population": 9413,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Kapellen",
+   "geonameid": 2794733,
+   "lat": 51.31463,
+   "lon": 4.4383,
+   "population": 26850,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Kampenhout",
+   "geonameid": 2794764,
+   "lat": 50.94074,
+   "lon": 4.56458,
+   "population": 11972,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Kalmthout",
+   "geonameid": 2794789,
+   "lat": 51.38464,
+   "lon": 4.47418,
+   "population": 18695,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Jurbise",
+   "geonameid": 2794853,
+   "lat": 50.53318,
+   "lon": 3.91079,
+   "population": 10383,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Juprelle",
+   "geonameid": 2794855,
+   "lat": 50.70771,
+   "lon": 5.53368,
+   "population": 9295,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Jodoigne",
+   "geonameid": 2794896,
+   "lat": 50.72765,
+   "lon": 4.87226,
+   "population": 14123,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Jette",
+   "geonameid": 2794915,
+   "lat": 50.88458,
+   "lon": 4.32208,
+   "population": 52536,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Jemeppe-sur-Sambre",
+   "geonameid": 2794933,
+   "lat": 50.46433,
+   "lon": 4.66507,
+   "population": 19190,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Jalhay",
+   "geonameid": 2794990,
+   "lat": 50.5598,
+   "lon": 5.96841,
+   "population": 8585,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Jabbeke",
+   "geonameid": 2795001,
+   "lat": 51.18504,
+   "lon": 3.09502,
+   "population": 13865,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Izegem",
+   "geonameid": 2795010,
+   "lat": 50.91996,
+   "lon": 3.20863,
+   "population": 28018,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Ixelles",
+   "geonameid": 2795012,
+   "lat": 50.82157,
+   "lon": 4.37389,
+   "population": 86876,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Ittre",
+   "geonameid": 2795018,
+   "lat": 50.64674,
+   "lon": 4.26201,
+   "population": 6889,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Ingelmunster",
+   "geonameid": 2795057,
+   "lat": 50.922,
+   "lon": 3.26214,
+   "population": 10996,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Incourt",
+   "geonameid": 2795064,
+   "lat": 50.70222,
+   "lon": 4.784,
+   "population": 5487,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Ieper",
+   "geonameid": 2795101,
+   "lat": 50.85704,
+   "lon": 2.86733,
+   "population": 34845,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Ichtegem",
+   "geonameid": 2795107,
+   "lat": 51.11498,
+   "lon": 3.03087,
+   "population": 14050,
+   "geonames_modified": "2023-11-19",
+   "note": "ADM4"
+  },
+  {
+   "name": "Huy",
+   "geonameid": 2795114,
+   "lat": 50.51976,
+   "lon": 5.23155,
+   "population": 21227,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Hulshout",
+   "geonameid": 2795171,
+   "lat": 51.0757,
+   "lon": 4.7945,
+   "population": 10424,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Huldenberg",
+   "geonameid": 2795185,
+   "lat": 50.78971,
+   "lon": 4.5843,
+   "population": 9921,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Hove",
+   "geonameid": 2795233,
+   "lat": 51.15491,
+   "lon": 4.47264,
+   "population": 8125,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Houyet",
+   "geonameid": 2795239,
+   "lat": 50.18586,
+   "lon": 5.00968,
+   "population": 4956,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Houthulst",
+   "geonameid": 2795256,
+   "lat": 50.9637,
+   "lon": 2.89858,
+   "population": 10098,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Houthalen-Helchteren",
+   "geonameid": 2795262,
+   "lat": 51.032,
+   "lon": 5.37755,
+   "population": 30655,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Houffalize",
+   "geonameid": 2795323,
+   "lat": 50.13323,
+   "lon": 5.78889,
+   "population": 5193,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Hotton",
+   "geonameid": 2795338,
+   "lat": 50.26824,
+   "lon": 5.43571,
+   "population": 5556,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Hoogstraten",
+   "geonameid": 2795399,
+   "lat": 51.40215,
+   "lon": 4.7618,
+   "population": 21355,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Hooglede",
+   "geonameid": 2795424,
+   "lat": 50.99014,
+   "lon": 3.08596,
+   "population": 9987,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Holsbeek",
+   "geonameid": 2795512,
+   "lat": 50.92057,
+   "lon": 4.75888,
+   "population": 10019,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Hoeilaart",
+   "geonameid": 2795700,
+   "lat": 50.7608,
+   "lon": 4.45456,
+   "population": 11321,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Hoegaarden",
+   "geonameid": 2795704,
+   "lat": 50.77577,
+   "lon": 4.88737,
+   "population": 6886,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Heusden-Zolder",
+   "geonameid": 2795802,
+   "lat": 51.03751,
+   "lon": 5.29919,
+   "population": 33708,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Herzele",
+   "geonameid": 2795909,
+   "lat": 50.86971,
+   "lon": 3.8931,
+   "population": 18027,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Herve",
+   "geonameid": 2795913,
+   "lat": 50.64113,
+   "lon": 5.79606,
+   "population": 17609,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Herstappe",
+   "geonameid": 2795929,
+   "lat": 50.72809,
+   "lon": 5.42261,
+   "population": 83,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Herstal",
+   "geonameid": 2795931,
+   "lat": 50.66448,
+   "lon": 5.62569,
+   "population": 39989,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Herselt",
+   "geonameid": 2795934,
+   "lat": 51.05,
+   "lon": 4.88333,
+   "population": 14523,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Mouscron",
+   "geonameid": 2795937,
+   "lat": 50.73333,
+   "lon": 3.21667,
+   "population": 55202,
+   "geonames_modified": "2018-07-06",
+   "note": "ADM4"
+  },
+  {
+   "name": "Héron",
+   "geonameid": 2795950,
+   "lat": 50.54736,
+   "lon": 5.0992,
+   "population": 5375,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Herk-de-Stad",
+   "geonameid": 2795986,
+   "lat": 50.94069,
+   "lon": 5.16975,
+   "population": 12636,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Herenthout",
+   "geonameid": 2796006,
+   "lat": 51.13811,
+   "lon": 4.75725,
+   "population": 9061,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Herentals",
+   "geonameid": 2796010,
+   "lat": 51.17644,
+   "lon": 4.82763,
+   "population": 28177,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Herent",
+   "geonameid": 2796013,
+   "lat": 50.90823,
+   "lon": 4.66833,
+   "population": 21682,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Herbeumont",
+   "geonameid": 2796038,
+   "lat": 49.79905,
+   "lon": 5.30883,
+   "population": 1624,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Hensies",
+   "geonameid": 2796057,
+   "lat": 50.43318,
+   "lon": 3.68566,
+   "population": 6828,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Hemiksem",
+   "geonameid": 2796086,
+   "lat": 51.14554,
+   "lon": 4.34252,
+   "population": 11559,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Heist-op-den-Berg",
+   "geonameid": 2796154,
+   "lat": 51.07614,
+   "lon": 4.72446,
+   "population": 42681,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Heers",
+   "geonameid": 2796298,
+   "lat": 50.75469,
+   "lon": 5.31363,
+   "population": 7391,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Hechtel-Eksel",
+   "geonameid": 2796320,
+   "lat": 51.14172,
+   "lon": 5.37549,
+   "population": 12419,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Havelange",
+   "geonameid": 2796370,
+   "lat": 50.3598,
+   "lon": 5.24508,
+   "population": 5175,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Hastière",
+   "geonameid": 2796483,
+   "lat": 50.21667,
+   "lon": 4.81667,
+   "population": 6022,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Harelbeke",
+   "geonameid": 2796543,
+   "lat": 50.86485,
+   "lon": 3.31078,
+   "population": 28158,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Hannut",
+   "geonameid": 2796584,
+   "lat": 50.67231,
+   "lon": 5.07603,
+   "population": 16571,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Ham-sur-Heure-Nalinnes",
+   "geonameid": 2796617,
+   "lat": 50.31667,
+   "lon": 4.38333,
+   "population": 13623,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Hamont-Achel",
+   "geonameid": 2796626,
+   "lat": 51.24961,
+   "lon": 5.50621,
+   "population": 14369,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Hamois",
+   "geonameid": 2796628,
+   "lat": 50.33483,
+   "lon": 5.15121,
+   "population": 7357,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Hamoir",
+   "geonameid": 2796630,
+   "lat": 50.427,
+   "lon": 5.53462,
+   "population": 3880,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Hamme",
+   "geonameid": 2796640,
+   "lat": 51.08445,
+   "lon": 4.13538,
+   "population": 24865,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Halle",
+   "geonameid": 2796697,
+   "lat": 50.73385,
+   "lon": 4.23454,
+   "population": 39540,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Halen",
+   "geonameid": 2796716,
+   "lat": 50.94869,
+   "lon": 5.11216,
+   "population": 9427,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Habay",
+   "geonameid": 2796810,
+   "lat": 49.72777,
+   "lon": 5.646,
+   "population": 8409,
+   "geonames_modified": "2025-06-12",
+   "note": "ADM4"
+  },
+  {
+   "name": "Haaltert",
+   "geonameid": 2796834,
+   "lat": 50.88525,
+   "lon": 3.99092,
+   "population": 18633,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Haacht",
+   "geonameid": 2796845,
+   "lat": 50.97756,
+   "lon": 4.63537,
+   "population": 14577,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Grobbendonk",
+   "geonameid": 2797095,
+   "lat": 51.19107,
+   "lon": 4.73914,
+   "population": 11155,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Grimbergen",
+   "geonameid": 2797115,
+   "lat": 50.9413,
+   "lon": 4.37736,
+   "population": 37542,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Grez-Doiceau",
+   "geonameid": 2797129,
+   "lat": 50.7482,
+   "lon": 4.6882,
+   "population": 13668,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Manhay",
+   "geonameid": 2797227,
+   "lat": 50.29285,
+   "lon": 5.67598,
+   "population": 3556,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Waremme",
+   "geonameid": 2797322,
+   "lat": 50.69793,
+   "lon": 5.25601,
+   "population": 15334,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Grâce-Hollogne",
+   "geonameid": 2797337,
+   "lat": 50.63444,
+   "lon": 5.47668,
+   "population": 22660,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Glabbeek",
+   "geonameid": 2797501,
+   "lat": 50.87358,
+   "lon": 4.94213,
+   "population": 5271,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Gistel",
+   "geonameid": 2797518,
+   "lat": 51.14947,
+   "lon": 2.94936,
+   "population": 12178,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Gingelom",
+   "geonameid": 2797524,
+   "lat": 50.73481,
+   "lon": 5.16979,
+   "population": 8405,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Gesves",
+   "geonameid": 2797582,
+   "lat": 50.40162,
+   "lon": 5.07345,
+   "population": 7202,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Gerpinnes",
+   "geonameid": 2797599,
+   "lat": 50.33746,
+   "lon": 4.53049,
+   "population": 12716,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Geraardsbergen",
+   "geonameid": 2797639,
+   "lat": 50.7804,
+   "lon": 3.90696,
+   "population": 33439,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Gent",
+   "geonameid": 2797657,
+   "lat": 51.07304,
+   "lon": 3.73664,
+   "population": 262219,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Genk",
+   "geonameid": 2797671,
+   "lat": 50.96619,
+   "lon": 5.49511,
+   "population": 66227,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Genappe",
+   "geonameid": 2797695,
+   "lat": 50.60901,
+   "lon": 4.44903,
+   "population": 15427,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Plombières",
+   "geonameid": 2797697,
+   "lat": 50.73504,
+   "lon": 5.95304,
+   "population": 10459,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Gembloux",
+   "geonameid": 2797714,
+   "lat": 50.561,
+   "lon": 4.697,
+   "population": 26014,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Geetbets",
+   "geonameid": 2797762,
+   "lat": 50.89383,
+   "lon": 5.11259,
+   "population": 6118,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Geer",
+   "geonameid": 2797771,
+   "lat": 50.66986,
+   "lon": 5.17465,
+   "population": 3485,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Geel",
+   "geonameid": 2797780,
+   "lat": 51.1661,
+   "lon": 4.99191,
+   "population": 40353,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Gedinne",
+   "geonameid": 2797782,
+   "lat": 49.98048,
+   "lon": 4.93835,
+   "population": 4632,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Gavere",
+   "geonameid": 2797799,
+   "lat": 50.92891,
+   "lon": 3.68893,
+   "population": 12805,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Ganshoren",
+   "geonameid": 2797845,
+   "lat": 50.87489,
+   "lon": 4.30994,
+   "population": 24902,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Froidchapelle",
+   "geonameid": 2797938,
+   "lat": 50.1515,
+   "lon": 4.32964,
+   "population": 3959,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Frasnes-lez-Anvaing",
+   "geonameid": 2797980,
+   "lat": 50.68335,
+   "lon": 3.60579,
+   "population": 11814,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Frameries",
+   "geonameid": 2798024,
+   "lat": 50.40534,
+   "lon": 3.89594,
+   "population": 21934,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Trooz",
+   "geonameid": 2798035,
+   "lat": 50.57026,
+   "lon": 5.69384,
+   "population": 8199,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Fosses-la-Ville",
+   "geonameid": 2798101,
+   "lat": 50.39583,
+   "lon": 4.69751,
+   "population": 10388,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Vorst",
+   "geonameid": 2798142,
+   "lat": 50.815,
+   "lon": 4.32522,
+   "population": 56289,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Fontaine-l'Évêque",
+   "geonameid": 2798185,
+   "lat": 50.40736,
+   "lon": 4.32302,
+   "population": 17806,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Florenville",
+   "geonameid": 2798273,
+   "lat": 49.7024,
+   "lon": 5.29053,
+   "population": 5578,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Florennes",
+   "geonameid": 2798277,
+   "lat": 50.24933,
+   "lon": 4.64438,
+   "population": 11310,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Floreffe",
+   "geonameid": 2798280,
+   "lat": 50.43466,
+   "lon": 4.75845,
+   "population": 8144,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Flobecq",
+   "geonameid": 2798291,
+   "lat": 50.75263,
+   "lon": 3.73152,
+   "population": 3447,
+   "geonames_modified": "2021-03-02",
+   "note": "ADM4"
+  },
+  {
+   "name": "Fleurus",
+   "geonameid": 2798298,
+   "lat": 50.48427,
+   "lon": 4.55177,
+   "population": 22918,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Fléron",
+   "geonameid": 2798302,
+   "lat": 50.61511,
+   "lon": 5.68139,
+   "population": 16526,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Flémalle",
+   "geonameid": 2798310,
+   "lat": 50.60242,
+   "lon": 5.44321,
+   "population": 26304,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Fexhe-le-Haut-Clocher",
+   "geonameid": 2798358,
+   "lat": 50.66529,
+   "lon": 5.4009,
+   "population": 3233,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Ferrières",
+   "geonameid": 2798367,
+   "lat": 50.40141,
+   "lon": 5.60955,
+   "population": 4935,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Fauvillers",
+   "geonameid": 2798439,
+   "lat": 49.87654,
+   "lon": 5.69755,
+   "population": 2281,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Farciennes",
+   "geonameid": 2798471,
+   "lat": 50.42963,
+   "lon": 4.5437,
+   "population": 11316,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Evergem",
+   "geonameid": 2798553,
+   "lat": 51.14552,
+   "lon": 3.71181,
+   "population": 35447,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Evere",
+   "geonameid": 2798555,
+   "lat": 50.86947,
+   "lon": 4.40827,
+   "population": 41763,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Eupen",
+   "geonameid": 2798574,
+   "lat": 50.62954,
+   "lon": 6.03819,
+   "population": 19677,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Etterbeek",
+   "geonameid": 2798579,
+   "lat": 50.83316,
+   "lon": 4.39024,
+   "population": 48367,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Étalle",
+   "geonameid": 2798594,
+   "lat": 49.67385,
+   "lon": 5.60122,
+   "population": 5877,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Estinnes",
+   "geonameid": 2798598,
+   "lat": 50.40972,
+   "lon": 4.10528,
+   "population": 7711,
+   "geonames_modified": "2018-07-06",
+   "note": "ADM4"
+  },
+  {
+   "name": "Estaimpuis",
+   "geonameid": 2798605,
+   "lat": 50.69047,
+   "lon": 3.28723,
+   "population": 10478,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Affligem",
+   "geonameid": 2798612,
+   "lat": 50.90947,
+   "lon": 4.11335,
+   "population": 13228,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Essen",
+   "geonameid": 2798616,
+   "lat": 51.46224,
+   "lon": 4.45633,
+   "population": 19038,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Spiere-Helkijn",
+   "geonameid": 2798628,
+   "lat": 50.71667,
+   "lon": 3.35,
+   "population": 2049,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Esneux",
+   "geonameid": 2798637,
+   "lat": 50.53338,
+   "lon": 5.56442,
+   "population": 12917,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Erquelinnes",
+   "geonameid": 2798667,
+   "lat": 50.30721,
+   "lon": 4.11232,
+   "population": 10003,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Erpe-Mere",
+   "geonameid": 2798679,
+   "lat": 50.93333,
+   "lon": 3.96667,
+   "population": 19811,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Érezée",
+   "geonameid": 2798699,
+   "lat": 50.29485,
+   "lon": 5.55386,
+   "population": 3284,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Engis",
+   "geonameid": 2798744,
+   "lat": 50.56063,
+   "lon": 5.38689,
+   "population": 6138,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Enghien",
+   "geonameid": 2798748,
+   "lat": 50.68899,
+   "lon": 4.03356,
+   "population": 12836,
+   "geonames_modified": "2018-07-06",
+   "note": "ADM4"
+  },
+  {
+   "name": "Ellezelles",
+   "geonameid": 2798837,
+   "lat": 50.71824,
+   "lon": 3.70036,
+   "population": 5975,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Éghezée",
+   "geonameid": 2798950,
+   "lat": 50.58509,
+   "lon": 4.90282,
+   "population": 16337,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Eeklo",
+   "geonameid": 2798988,
+   "lat": 51.19389,
+   "lon": 3.56383,
+   "population": 21134,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Edegem",
+   "geonameid": 2799008,
+   "lat": 51.1562,
+   "lon": 4.44654,
+   "population": 22063,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Durbuy",
+   "geonameid": 2799048,
+   "lat": 50.36137,
+   "lon": 5.48395,
+   "population": 11395,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Duffel",
+   "geonameid": 2799091,
+   "lat": 51.09576,
+   "lon": 4.51178,
+   "population": 17491,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Drogenbos",
+   "geonameid": 2799115,
+   "lat": 50.79412,
+   "lon": 4.30906,
+   "population": 5689,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Viroinval",
+   "geonameid": 2799225,
+   "lat": 50.00818,
+   "lon": 4.66438,
+   "population": 5659,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Dour",
+   "geonameid": 2799227,
+   "lat": 50.39539,
+   "lon": 3.77535,
+   "population": 16644,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Donceel",
+   "geonameid": 2799318,
+   "lat": 50.64674,
+   "lon": 5.32176,
+   "population": 3060,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Doische",
+   "geonameid": 2799329,
+   "lat": 50.13521,
+   "lon": 4.7418,
+   "population": 2997,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Dison",
+   "geonameid": 2799348,
+   "lat": 50.60961,
+   "lon": 5.85417,
+   "population": 15248,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Dinant",
+   "geonameid": 2799359,
+   "lat": 50.25835,
+   "lon": 4.91063,
+   "population": 13451,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Dilsen-Stokkem",
+   "geonameid": 2799363,
+   "lat": 51.03092,
+   "lon": 5.73624,
+   "population": 20590,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Dilbeek",
+   "geonameid": 2799366,
+   "lat": 50.85313,
+   "lon": 4.23346,
+   "population": 42847,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Diksmuide",
+   "geonameid": 2799370,
+   "lat": 51.03333,
+   "lon": 2.86667,
+   "population": 16743,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Diest",
+   "geonameid": 2799398,
+   "lat": 50.99983,
+   "lon": 5.07575,
+   "population": 23998,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Diepenbeek",
+   "geonameid": 2799413,
+   "lat": 50.9078,
+   "lon": 5.4221,
+   "population": 19031,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Destelbergen",
+   "geonameid": 2799497,
+   "lat": 51.04022,
+   "lon": 3.81058,
+   "population": 18271,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Dessel",
+   "geonameid": 2799512,
+   "lat": 51.24016,
+   "lon": 5.11448,
+   "population": 9598,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "De Panne",
+   "geonameid": 2799578,
+   "lat": 51.07923,
+   "lon": 2.59173,
+   "population": 11176,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Dentergem",
+   "geonameid": 2799587,
+   "lat": 50.94703,
+   "lon": 3.40238,
+   "population": 8555,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Dendermonde",
+   "geonameid": 2799646,
+   "lat": 51.03333,
+   "lon": 4.08333,
+   "population": 45769,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Denderleeuw",
+   "geonameid": 2799648,
+   "lat": 50.88753,
+   "lon": 4.05929,
+   "population": 20338,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Deinze",
+   "geonameid": 2799747,
+   "lat": 50.99911,
+   "lon": 3.51462,
+   "population": 43571,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Deerlijk",
+   "geonameid": 2799798,
+   "lat": 50.84262,
+   "lon": 3.3651,
+   "population": 11946,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Daverdisse",
+   "geonameid": 2799852,
+   "lat": 50.00043,
+   "lon": 5.06998,
+   "population": 1395,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Damme",
+   "geonameid": 2799886,
+   "lat": 51.2516,
+   "lon": 3.28126,
+   "population": 10993,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Dalhem",
+   "geonameid": 2799898,
+   "lat": 50.71315,
+   "lon": 5.72602,
+   "population": 7408,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Crisnée",
+   "geonameid": 2799998,
+   "lat": 50.71101,
+   "lon": 5.39847,
+   "population": 3412,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Couvin",
+   "geonameid": 2800026,
+   "lat": 50.0529,
+   "lon": 4.49306,
+   "population": 13747,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Court-Saint-Étienne",
+   "geonameid": 2800043,
+   "lat": 50.6257,
+   "lon": 4.56306,
+   "population": 10540,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Courcelles",
+   "geonameid": 2800064,
+   "lat": 50.46373,
+   "lon": 4.37359,
+   "population": 31299,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Comines-Warneton",
+   "geonameid": 2800196,
+   "lat": 50.76667,
+   "lon": 3.0,
+   "population": 17802,
+   "geonames_modified": "2018-07-06",
+   "note": "ADM4"
+  },
+  {
+   "name": "Comblain-au-Pont",
+   "geonameid": 2800205,
+   "lat": 50.47553,
+   "lon": 5.57865,
+   "population": 5404,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Colfontaine",
+   "geonameid": 2800221,
+   "lat": 50.4118,
+   "lon": 3.85294,
+   "population": 20811,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Clavier",
+   "geonameid": 2800270,
+   "lat": 50.40048,
+   "lon": 5.3524,
+   "population": 4637,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Ciney",
+   "geonameid": 2800299,
+   "lat": 50.29647,
+   "lon": 5.101,
+   "population": 16580,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Chiny",
+   "geonameid": 2800321,
+   "lat": 49.71731,
+   "lon": 5.39399,
+   "population": 5180,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Chimay",
+   "geonameid": 2800326,
+   "lat": 50.04865,
+   "lon": 4.32106,
+   "population": 9805,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Chièvres",
+   "geonameid": 2800329,
+   "lat": 50.58803,
+   "lon": 3.80831,
+   "population": 6916,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Chaumont-Gistoux",
+   "geonameid": 2800431,
+   "lat": 50.68689,
+   "lon": 4.69331,
+   "population": 11798,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Chaudfontaine",
+   "geonameid": 2800439,
+   "lat": 50.58181,
+   "lon": 5.63403,
+   "population": 20800,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Châtelet",
+   "geonameid": 2800449,
+   "lat": 50.40305,
+   "lon": 4.5298,
+   "population": 35903,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Chastre",
+   "geonameid": 2800458,
+   "lat": 50.60089,
+   "lon": 4.62988,
+   "population": 7647,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Charleroi",
+   "geonameid": 2800482,
+   "lat": 50.413,
+   "lon": 4.44654,
+   "population": 202267,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Chapelle-lez-Herlaimont",
+   "geonameid": 2800501,
+   "lat": 50.46428,
+   "lon": 4.28492,
+   "population": 14737,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Cerfontaine",
+   "geonameid": 2800592,
+   "lat": 50.17003,
+   "lon": 4.41153,
+   "population": 4923,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Celles",
+   "geonameid": 2800608,
+   "lat": 50.70384,
+   "lon": 3.4483,
+   "population": 5666,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Faimes",
+   "geonameid": 2800609,
+   "lat": 50.66268,
+   "lon": 5.25902,
+   "population": 3935,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Butgenbach",
+   "geonameid": 2800712,
+   "lat": 50.42744,
+   "lon": 6.20556,
+   "population": 5610,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Burdinne",
+   "geonameid": 2800762,
+   "lat": 50.58226,
+   "lon": 5.0756,
+   "population": 3238,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Bullange",
+   "geonameid": 2800783,
+   "lat": 50.40781,
+   "lon": 6.25929,
+   "population": 5478,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Buggenhout",
+   "geonameid": 2800817,
+   "lat": 51.01269,
+   "lon": 4.19943,
+   "population": 14517,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Brugge",
+   "geonameid": 2800935,
+   "lat": 51.25,
+   "lon": 3.21667,
+   "population": 118325,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Brugelette",
+   "geonameid": 2800937,
+   "lat": 50.59615,
+   "lon": 3.85251,
+   "population": 3728,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Bree",
+   "geonameid": 2801094,
+   "lat": 51.14182,
+   "lon": 5.59891,
+   "population": 16085,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Bredene",
+   "geonameid": 2801104,
+   "lat": 51.23341,
+   "lon": 2.9804,
+   "population": 18095,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Brecht",
+   "geonameid": 2801107,
+   "lat": 51.33772,
+   "lon": 4.62735,
+   "population": 29268,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Brasschaat",
+   "geonameid": 2801118,
+   "lat": 51.29145,
+   "lon": 4.49495,
+   "population": 37946,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Braives",
+   "geonameid": 2801148,
+   "lat": 50.61723,
+   "lon": 5.13508,
+   "population": 6375,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Braine-le-Comte",
+   "geonameid": 2801151,
+   "lat": 50.60817,
+   "lon": 4.14344,
+   "population": 21901,
+   "geonames_modified": "2024-06-06",
+   "note": "ADM4"
+  },
+  {
+   "name": "Braine-le-Château",
+   "geonameid": 2801153,
+   "lat": 50.68072,
+   "lon": 4.2871,
+   "population": 10549,
+   "geonames_modified": "2020-06-10",
+   "note": "ADM4"
+  },
+  {
+   "name": "Braine-l'Alleud",
+   "geonameid": 2801155,
+   "lat": 50.67513,
+   "lon": 4.35984,
+   "population": 40008,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Boutersem",
+   "geonameid": 2801216,
+   "lat": 50.83456,
+   "lon": 4.83107,
+   "population": 8242,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Boussu",
+   "geonameid": 2801227,
+   "lat": 50.43438,
+   "lon": 3.79578,
+   "population": 19824,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Bouillon",
+   "geonameid": 2801284,
+   "lat": 49.79689,
+   "lon": 5.06779,
+   "population": 5411,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Bornem",
+   "geonameid": 2801448,
+   "lat": 51.09705,
+   "lon": 4.24192,
+   "population": 21366,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Boortmeerbeek",
+   "geonameid": 2801484,
+   "lat": 50.97961,
+   "lon": 4.5728,
+   "population": 12516,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Boom",
+   "geonameid": 2801495,
+   "lat": 51.09328,
+   "lon": 4.37153,
+   "population": 18244,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Bonheiden",
+   "geonameid": 2801540,
+   "lat": 51.02293,
+   "lon": 4.54868,
+   "population": 15010,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Boechout",
+   "geonameid": 2801744,
+   "lat": 51.15991,
+   "lon": 4.49324,
+   "population": 13266,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Bocholt",
+   "geonameid": 2801755,
+   "lat": 51.17428,
+   "lon": 5.57831,
+   "population": 13110,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Brunehaut",
+   "geonameid": 2801819,
+   "lat": 50.51667,
+   "lon": 3.4,
+   "population": 8080,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Blankenberge",
+   "geonameid": 2801859,
+   "lat": 51.30123,
+   "lon": 3.14175,
+   "population": 20436,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Binche",
+   "geonameid": 2801923,
+   "lat": 50.41623,
+   "lon": 4.16587,
+   "population": 32845,
+   "geonames_modified": "2018-07-06",
+   "note": "ADM4"
+  },
+  {
+   "name": "Bièvre",
+   "geonameid": 2801950,
+   "lat": 49.94001,
+   "lon": 5.01646,
+   "population": 3355,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Bever",
+   "geonameid": 2801951,
+   "lat": 50.71133,
+   "lon": 3.93152,
+   "population": 2159,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Bierbeek",
+   "geonameid": 2801999,
+   "lat": 50.82882,
+   "lon": 4.76189,
+   "population": 10083,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Beyne-Heusay",
+   "geonameid": 2802016,
+   "lat": 50.62257,
+   "lon": 5.6644,
+   "population": 11929,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Bertrix",
+   "geonameid": 2802107,
+   "lat": 49.85482,
+   "lon": 5.25178,
+   "population": 8793,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Bertem",
+   "geonameid": 2802124,
+   "lat": 50.85191,
+   "lon": 4.61924,
+   "population": 10007,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Bernissart",
+   "geonameid": 2802136,
+   "lat": 50.47411,
+   "lon": 3.65004,
+   "population": 11859,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Berloz",
+   "geonameid": 2802144,
+   "lat": 50.69934,
+   "lon": 5.2137,
+   "population": 3132,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Berlare",
+   "geonameid": 2802155,
+   "lat": 51.0364,
+   "lon": 3.98172,
+   "population": 14958,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Berlaar",
+   "geonameid": 2802157,
+   "lat": 51.11786,
+   "lon": 4.65752,
+   "population": 11527,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Beringen",
+   "geonameid": 2802172,
+   "lat": 51.05068,
+   "lon": 5.2216,
+   "population": 46346,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Sint-Agatha-Berchem",
+   "geonameid": 2802248,
+   "lat": 50.86457,
+   "lon": 4.29387,
+   "population": 25179,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Beloeil",
+   "geonameid": 2802294,
+   "lat": 50.53422,
+   "lon": 3.68759,
+   "population": 14068,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Bekkevoort",
+   "geonameid": 2802375,
+   "lat": 50.93361,
+   "lon": 4.96668,
+   "population": 6306,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Begijnendijk",
+   "geonameid": 2802406,
+   "lat": 51.01937,
+   "lon": 4.7848,
+   "population": 10114,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Beersel",
+   "geonameid": 2802434,
+   "lat": 50.76339,
+   "lon": 4.30029,
+   "population": 25251,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Beerse",
+   "geonameid": 2802436,
+   "lat": 51.32064,
+   "lon": 4.85596,
+   "population": 18084,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Beernem",
+   "geonameid": 2802438,
+   "lat": 51.15149,
+   "lon": 3.34196,
+   "population": 15763,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Beauvechain",
+   "geonameid": 2802484,
+   "lat": 50.77609,
+   "lon": 4.76463,
+   "population": 7243,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Beauraing",
+   "geonameid": 2802502,
+   "lat": 50.10919,
+   "lon": 4.95595,
+   "population": 9159,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Beaumont",
+   "geonameid": 2802511,
+   "lat": 50.23683,
+   "lon": 4.23969,
+   "population": 7124,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Bassenge",
+   "geonameid": 2802607,
+   "lat": 50.75948,
+   "lon": 5.60921,
+   "population": 8905,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Blégny",
+   "geonameid": 2802681,
+   "lat": 50.6728,
+   "lon": 5.72396,
+   "population": 13292,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Balen",
+   "geonameid": 2802744,
+   "lat": 51.16842,
+   "lon": 5.17173,
+   "population": 22618,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Baelen",
+   "geonameid": 2802788,
+   "lat": 50.63133,
+   "lon": 5.97188,
+   "population": 4454,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Baarle-Hertog",
+   "geonameid": 2802817,
+   "lat": 51.40408,
+   "lon": 4.89158,
+   "population": 2760,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Aywaille",
+   "geonameid": 2802838,
+   "lat": 50.47379,
+   "lon": 5.67976,
+   "population": 12436,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Awans",
+   "geonameid": 2802851,
+   "lat": 50.69334,
+   "lon": 5.45702,
+   "population": 9318,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Avelgem",
+   "geonameid": 2802872,
+   "lat": 50.78119,
+   "lon": 3.46012,
+   "population": 10158,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Sambreville",
+   "geonameid": 2802903,
+   "lat": 50.43466,
+   "lon": 4.63383,
+   "population": 28288,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Honnelles",
+   "geonameid": 2802909,
+   "lat": 50.33401,
+   "lon": 3.6945,
+   "population": 5159,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Oudergem",
+   "geonameid": 2802961,
+   "lat": 50.81252,
+   "lon": 4.43509,
+   "population": 34013,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Aubel",
+   "geonameid": 2802986,
+   "lat": 50.7032,
+   "lon": 5.85872,
+   "population": 4288,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Aubange",
+   "geonameid": 2802991,
+   "lat": 49.57297,
+   "lon": 5.79377,
+   "population": 17093,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Attert",
+   "geonameid": 2802997,
+   "lat": 49.75116,
+   "lon": 5.78525,
+   "population": 5578,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Ath",
+   "geonameid": 2803011,
+   "lat": 50.62829,
+   "lon": 3.77938,
+   "population": 29311,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Assesse",
+   "geonameid": 2803019,
+   "lat": 50.36934,
+   "lon": 5.02058,
+   "population": 7032,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Assenede",
+   "geonameid": 2803027,
+   "lat": 51.228,
+   "lon": 3.71517,
+   "population": 14256,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Asse",
+   "geonameid": 2803035,
+   "lat": 50.91078,
+   "lon": 4.22009,
+   "population": 33158,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "As",
+   "geonameid": 2803054,
+   "lat": 51.00922,
+   "lon": 5.58672,
+   "population": 8202,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Arlon",
+   "geonameid": 2803074,
+   "lat": 49.67728,
+   "lon": 5.79505,
+   "population": 29858,
+   "geonames_modified": "2020-11-17",
+   "note": "ADM4"
+  },
+  {
+   "name": "Arendonk",
+   "geonameid": 2803084,
+   "lat": 51.32224,
+   "lon": 5.07826,
+   "population": 13293,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Ardooie",
+   "geonameid": 2803092,
+   "lat": 50.98142,
+   "lon": 3.20318,
+   "population": 9056,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Anzegem",
+   "geonameid": 2803131,
+   "lat": 50.8314,
+   "lon": 3.45475,
+   "population": 14716,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Antwerpen",
+   "geonameid": 2803139,
+   "lat": 51.2663,
+   "lon": 4.37077,
+   "population": 525935,
+   "geonames_modified": "2025-07-29",
+   "note": "ADM4"
+  },
+  {
+   "name": "Antoing",
+   "geonameid": 2803145,
+   "lat": 50.556,
+   "lon": 3.46532,
+   "population": 7687,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Anthisnes",
+   "geonameid": 2803149,
+   "lat": 50.48905,
+   "lon": 5.49891,
+   "population": 4189,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Mont-de-l'Enclus",
+   "geonameid": 2803156,
+   "lat": 50.73333,
+   "lon": 3.51667,
+   "population": 3764,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Ans",
+   "geonameid": 2803161,
+   "lat": 50.66236,
+   "lon": 5.51908,
+   "population": 28373,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Anhée",
+   "geonameid": 2803175,
+   "lat": 50.31006,
+   "lon": 4.87887,
+   "population": 7046,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Anderlues",
+   "geonameid": 2803200,
+   "lat": 50.40726,
+   "lon": 4.26982,
+   "population": 12261,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Anderlecht",
+   "geonameid": 2803202,
+   "lat": 50.83348,
+   "lon": 4.31969,
+   "population": 119714,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Andenne",
+   "geonameid": 2803205,
+   "lat": 50.48951,
+   "lon": 5.09834,
+   "population": 27391,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Amblève",
+   "geonameid": 2803243,
+   "lat": 50.35138,
+   "lon": 6.16814,
+   "population": 5474,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Sainte-Ode",
+   "geonameid": 2803245,
+   "lat": 50.02616,
+   "lon": 5.52544,
+   "population": 2555,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Amay",
+   "geonameid": 2803247,
+   "lat": 50.54845,
+   "lon": 5.3088,
+   "population": 14412,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Alveringem",
+   "geonameid": 2803253,
+   "lat": 50.97932,
+   "lon": 2.67751,
+   "population": 5047,
+   "geonames_modified": "2022-10-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Alken",
+   "geonameid": 2803286,
+   "lat": 50.87509,
+   "lon": 5.30708,
+   "population": 11499,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Aiseau-Presles",
+   "geonameid": 2803324,
+   "lat": 50.4083,
+   "lon": 4.58104,
+   "population": 10743,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Aartselaar",
+   "geonameid": 2803421,
+   "lat": 51.13542,
+   "lon": 4.38269,
+   "population": 14293,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Aarschot",
+   "geonameid": 2803430,
+   "lat": 50.9875,
+   "lon": 4.8333,
+   "population": 30115,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Aalter",
+   "geonameid": 2803444,
+   "lat": 51.07668,
+   "lon": 3.43645,
+   "population": 28906,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Aalst",
+   "geonameid": 2803451,
+   "lat": 50.94652,
+   "lon": 4.07251,
+   "population": 86445,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "City of Brussels",
+   "geonameid": 3337389,
+   "lat": 50.85115,
+   "lon": 4.34526,
+   "population": 181726,
+   "geonames_modified": "2023-10-12",
+   "note": "ADM4"
+  },
+  {
+   "name": "Lievegem",
+   "geonameid": 11994860,
+   "lat": 51.12809,
+   "lon": 3.59116,
+   "population": 26162,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Kruisem",
+   "geonameid": 11994886,
+   "lat": 50.90238,
+   "lon": 3.53022,
+   "population": 15641,
+   "geonames_modified": "2025-03-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Puurs-Sint-Amands",
+   "geonameid": 11994998,
+   "lat": 51.06227,
+   "lon": 4.24596,
+   "population": 25882,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Oudsbergen",
+   "geonameid": 11995083,
+   "lat": 51.07716,
+   "lon": 5.53999,
+   "population": 23532,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Pelt",
+   "geonameid": 11995106,
+   "lat": 51.22474,
+   "lon": 5.42963,
+   "population": 32902,
+   "geonames_modified": "2020-04-04",
+   "note": "ADM4"
+  },
+  {
+   "name": "Beveren-Kruibeke-Zwijndrecht",
+   "geonameid": 13192440,
+   "lat": 51.22826,
+   "lon": 4.29183,
+   "population": 87490,
+   "geonames_modified": "2025-01-29",
+   "note": "ADM4"
+  },
+  {
+   "name": "Wingene",
+   "geonameid": 13494318,
+   "lat": 51.05815,
+   "lon": 3.29771,
+   "population": 14243,
+   "geonames_modified": "2025-07-29",
+   "note": "ADM4"
+  },
+  {
+   "name": "Tielt",
+   "geonameid": 13494319,
+   "lat": 50.98986,
+   "lon": 3.34318,
+   "population": 20500,
+   "geonames_modified": "2025-07-29",
+   "note": "ADM4"
+  },
+  {
+   "name": "Lochristi",
+   "geonameid": 13494321,
+   "lat": 51.13125,
+   "lon": 3.86301,
+   "population": 22300,
+   "geonames_modified": "2025-07-29",
+   "note": "ADM4"
+  },
+  {
+   "name": "Bastogne",
+   "geonameid": 13494328,
+   "lat": 50.03219,
+   "lon": 5.7216,
+   "population": 15894,
+   "geonames_modified": "2025-09-09",
+   "note": "ADM4"
+  },
+  {
+   "name": "Galmaarden",
+   "geonameid": 2797852,
+   "lat": 50.7517,
+   "lon": 3.99334,
+   "population": 8746,
+   "geonames_modified": "2025-07-28",
+   "note": "ADM4H (predecessor of 2025 merger)"
+  },
+  {
+   "name": "Gooik",
+   "geonameid": 2797418,
+   "lat": 50.7815,
+   "lon": 4.09465,
+   "population": 9170,
+   "geonames_modified": "2025-07-28",
+   "note": "ADM4H (predecessor of 2025 merger)"
+  },
+  {
+   "name": "Herne",
+   "geonameid": 2795957,
+   "lat": 50.71962,
+   "lon": 4.03515,
+   "population": 6665,
+   "geonames_modified": "2025-07-28",
+   "note": "ADM4H (predecessor of 2025 merger)"
+  },
+  {
+   "name": "Nazareth",
+   "geonameid": 2790435,
+   "lat": 50.95702,
+   "lon": 3.61373,
+   "population": 11619,
+   "geonames_modified": "2025-07-28",
+   "note": "ADM4H (predecessor of 2025 merger)"
+  },
+  {
+   "name": "De Pinte",
+   "geonameid": 2799571,
+   "lat": 50.98717,
+   "lon": 3.67272,
+   "population": 10683,
+   "geonames_modified": "2025-07-28",
+   "note": "ADM4H (predecessor of 2025 merger)"
+  },
+  {
+   "name": "Merelbeke",
+   "geonameid": 2791316,
+   "lat": 50.97264,
+   "lon": 3.74366,
+   "population": 24660,
+   "geonames_modified": "2025-07-28",
+   "note": "ADM4H (predecessor of 2025 merger)"
+  },
+  {
+   "name": "Melle",
+   "geonameid": 2791386,
+   "lat": 50.99716,
+   "lon": 3.79376,
+   "population": 11736,
+   "geonames_modified": "2025-07-28",
+   "note": "ADM4H (predecessor of 2025 merger)"
+  },
+  {
+   "name": "Lokeren",
+   "geonameid": 2792197,
+   "lat": 51.11544,
+   "lon": 3.96304,
+   "population": 41690,
+   "geonames_modified": "2025-07-28",
+   "note": "ADM4H (predecessor of 2025 merger)"
+  },
+  {
+   "name": "Moerbeke",
+   "geonameid": 2791122,
+   "lat": 51.1863,
+   "lon": 3.94729,
+   "population": 6481,
+   "geonames_modified": "2025-07-28",
+   "note": "ADM4H (predecessor of 2025 merger)"
+  },
+  {
+   "name": "Tessenderlo",
+   "geonameid": 2785613,
+   "lat": 51.06546,
+   "lon": 5.08667,
+   "population": 18613,
+   "geonames_modified": "2025-07-28",
+   "note": "ADM4H (predecessor of 2025 merger)"
+  },
+  {
+   "name": "Ham",
+   "geonameid": 2789770,
+   "lat": 51.10061,
+   "lon": 5.16023,
+   "population": 10897,
+   "geonames_modified": "2025-07-28",
+   "note": "ADM4H (predecessor of 2025 merger)"
+  },
+  {
+   "name": "Hasselt",
+   "geonameid": 2796492,
+   "lat": 50.93182,
+   "lon": 5.33266,
+   "population": 78296,
+   "geonames_modified": "2025-07-28",
+   "note": "ADM4H (predecessor of 2025 merger)"
+  },
+  {
+   "name": "Kortessem",
+   "geonameid": 2794064,
+   "lat": 50.85787,
+   "lon": 5.38639,
+   "population": 8442,
+   "geonames_modified": "2025-07-28",
+   "note": "ADM4H (predecessor of 2025 merger)"
+  },
+  {
+   "name": "Bilzen",
+   "geonameid": 2801925,
+   "lat": 50.87298,
+   "lon": 5.51625,
+   "population": 32328,
+   "geonames_modified": "2025-07-28",
+   "note": "ADM4H (predecessor of 2025 merger)"
+  },
+  {
+   "name": "Hoeselt",
+   "geonameid": 2795649,
+   "lat": 50.84779,
+   "lon": 5.48578,
+   "population": 9688,
+   "geonames_modified": "2025-07-28",
+   "note": "ADM4H (predecessor of 2025 merger)"
+  },
+  {
+   "name": "Tongeren",
+   "geonameid": 2785390,
+   "lat": 50.78065,
+   "lon": 5.46227,
+   "population": 30996,
+   "geonames_modified": "2025-07-28",
+   "note": "ADM4H (predecessor of 2025 merger)"
+  },
+  {
+   "name": "Borgloon",
+   "geonameid": 2801468,
+   "lat": 50.80398,
+   "lon": 5.34365,
+   "population": 10906,
+   "geonames_modified": "2025-07-28",
+   "note": "ADM4H (predecessor of 2025 merger)"
+  }
+ ]
+}

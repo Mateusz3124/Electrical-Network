@@ -18,6 +18,7 @@ using NonlinearSolve
 include("models.jl")
 include("network.jl")
 include("simulation.jl")
+include("pf_guesses.jl")
 
 function save_names(nodes, lines, data)
     names = Dict()
@@ -128,25 +129,41 @@ function save_names(nodes, lines, data)
 end
 
 industry = Set([
-    Symbol("33756607_load"),
-    Symbol("228369813_load"),
-    Symbol("225982020_load"),
-    Symbol("225991900_load"),
-    Symbol("239444041_load"),
-    Symbol("205830382_load"),
-    Symbol("239276278_load"),
     Symbol("825954426_load"),
     Symbol("666662687_load"),
-    Symbol("667172748_load"),
-    Symbol("103325119_load"),
-    Symbol("766062193_load"),
-    Symbol("1351038456_load"),
-    Symbol("715026288_load"),
-    Symbol("138113463_load"),
-    Symbol("105919468_load"),
-    Symbol("87792346_load"),
+    Symbol("680430995_load"),
+    Symbol("33756607_load"),
     Symbol("168872812_load"),
+    Symbol("114523371_load"),
+    Symbol("102818079_load"),
+    Symbol("88819123_load"),
+    Symbol("1245588491_load"),
+    Symbol("205404800_load"),
+    Symbol("1351038456_load"),
+    Symbol("104409497_load"),
+    Symbol("222279202_load"),
+    Symbol("667172748_load"),
+    Symbol("228931537_load"),
+    Symbol("28979441_load"),
+    Symbol("140182455_load"),
+    Symbol("239276278_load"),
+    Symbol("751883703_load"),
+    Symbol("121080025_load"),
+    Symbol("160976810_load"),
+    Symbol("498865497_load"),
+    Symbol("225982020_load"),
+    Symbol("1111521949_load"),
+    Symbol("934934374_load"),
     Symbol("161234130_load"),
+    Symbol("715026288_load"),
+    Symbol("224892908_load"),
+    Symbol("108157653_load"),
+    Symbol("87792346_load"),
+    Symbol("207384003_load"),
+    Symbol("239278935_load"),
+    Symbol("707996453_load"),
+    Symbol("738290081_load"),
+    Symbol("238922193_load"),
 ])
 
 function update_load(bus_load, s, k, KpZ, KpI, KqZ, KqI)
@@ -208,10 +225,12 @@ function main()
     nw, nodes, lines, plant_types = create_network(data, p_base)
 
     nw = set_jac_prototype!(nw)
-
+    
     pfnw = powerflow_model(nw)
+    pfnw = set_jac_prototype!(pfnw)
+
     pfs0 = NWState(pfnw)
-    s = solve_powerflow(nw; pfnw, pfs0, verbose=false, sparse=true)
+    s = solve_powerflow(nw; pfnw, pfs0, verbose=false, alg=TrustRegion(linsolve=NonlinearSolve.LinearSolve.KLUFactorization()))
     i = 1
     for (k, node) in enumerate(nodes)
         parts = split(string(node.name), "_")
@@ -228,7 +247,8 @@ function main()
             end
         end
     end
-    s0 = initialize_from_pf(nw; pfs=s, verbose=false, tol=1e-6, nwtol=1e-6, parallel=false)
+    guesses = sauerpai_guesses(nw, s)
+    s0 = initialize_from_pf(nw; pfs=s, guess_overrides=guesses, verbose=false, tol=1e-6, nwtol=1e-6, parallel=false)
     end
 
     @time begin
