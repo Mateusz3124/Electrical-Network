@@ -53,12 +53,15 @@ function handle_plant!(id, info, network, nodes, lines, tpl, p_base, plant_types
   p /= p_base
 
   if info.source == "wind" || info.source == "solar"
+    sum_solar += p
     push!(nodes, get_wind(tpl.solar_wind, Symbol(id, :_plant), p, 1.0))
     plant_types[Symbol(id, :_plant)] = :solar_wind
   elseif info.source == "hydro"
+    sum_solar += p
     push!(nodes, get_hydro(tpl.hydro, Symbol(id, :_plant), p, 1.0))
     plant_types[Symbol(id, :_plant)] = :hydro
   else
+    sum_other += p
     push!(nodes, get_other(tpl.other, Symbol(id, :_plant), p, 1.0))
     plant_types[Symbol(id, :_plant)] = :other
   end

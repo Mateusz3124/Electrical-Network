@@ -134,6 +134,8 @@ function trip_wire(nw, s0, plant_types; eidxs = 1:ne(nw))
         if tripped
             SciMLBase.auto_dt_reset!(integrator)
             save_parameters!(integrator)
+        else
+            u_modified!(integrator, false)
         end
     end
 
@@ -144,7 +146,7 @@ function simulate(nw, s0, nodes, lines, plant_types)
     # shut_down_inits(nodes)
     # short_circuit(lines[417])
     # short_circuit(lines[330])
-    # short_circuit(lines[142])
+    short_circuit(lines[142])
     # short_circuit(lines[1])
     # close_line(lines[276])
     # close_line(lines[277])
@@ -153,14 +155,14 @@ function simulate(nw, s0, nodes, lines, plant_types)
     # cb = trip_wire(nw, s0, plant_types)
 
     # plant_Max(nodes, s0)
-    cb = get_global_callbacks(nodes,s0)
+    # cb = get_global_callbacks(nodes,s0)
     # change_load_all(nodes)
         
-    prob = ODEProblem(nw, s0, (0.0, 270);add_nw_cb=cb)
+    # prob = ODEProblem(nw, s0, (0.0, 270);add_nw_cb=cb)
     
     # prob = ODEProblem(nw, s0, (0.0, 0.14))
     # prob = ODEProblem(nw, s0, (0.0, 5.0);add_nw_cb=cb)
-    # prob = ODEProblem(nw, s0, (0.0, 2.0);)
+    prob = ODEProblem(nw, s0, (0.0, 15.0))
     # prob = ODEProblem(nw, s0, (0.0, 2);)
 
     print_cb = FunctionCallingCallback((u, t, integrator) -> println("t = $t, dt = $(integrator.dt)");
@@ -172,9 +174,9 @@ function simulate(nw, s0, nodes, lines, plant_types)
     # sol = solve(prob, Rodas5P(linsolve = KLUFactorization()), dtmin = 1e-10, force_dtmin = false)
     # sol = solve(prob, Rodas5P(); callback = print_cb)
     # sol = solve(prob, FBDF(); verbose = true)
-    # sol = solve(prob, Rodas5P(); abstol=1e-7, reltol=1e-8 , saveat = 0.01, callback = print_cb)
+    sol = solve(prob, Rodas5P(); abstol=1e-7, reltol=1e-8 , saveat = 0.01, callback = print_cb)
     # sol = solve(prob, Rodas5P(); abstol=1e-5, reltol=1e-7 , saveat = 0.01, maxiters = 10^7)
-    sol = solve(prob, Rodas5P(linsolve = KLUFactorization()); abstol=1e-5, reltol=1e-10, maxiters = 10^7)
+    # sol = solve(prob, Rodas5P(linsolve = KLUFactorization()); abstol=1e-5, reltol=1e-10, maxiters = 10^7)
     println(sol.t[end])
     # sol = solve(prob, FBDF(); callback = print_cb, dtmin = 1e-7,, saveat = 0.01 force_dtmin = true, verbose=true)
 

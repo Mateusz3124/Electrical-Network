@@ -235,7 +235,7 @@ function main()
     sol = simulate(nw, s0, nodes, lines, plant_types)
     end
     # serialize("../../project/example5.jld2", sol)
-    serialize("sims/zzzzzzzzzworkingBat.jld2", sol)
+    serialize("sims/shortNewData.jld2", sol)
     println("Finished")
 end
 

@@ -25,7 +25,8 @@ function get_other(other_plant_template, name::Symbol, P, v)
 
     set_default!(bus, Regex("ctrld_gen₊gov₊V_min\$"), 0.0)
     set_default!(bus, Regex("ctrld_gen₊gov₊V_max\$"), 1.00)
-    set_pfmodel!(bus, pfPV(P=P, V=1.0))
+    # set_pfmodel!(bus, pfPV(P=P, V=1.0))
+    set_pfmodel!(bus, P*1000 < 50 ? pfPQ(P=P, Q=0.0) : pfPV(P=P, V=1.0))
     return bus
 end
 
@@ -148,18 +149,18 @@ function initialize_templates()
         ω_b=2*π*50,
         Vn=16.5, 
         R_s=0, 
-        X_ls=0.125, 
-        X_d=1.0, 
-        X_q=0.69, 
-        X′_d=0.31, 
-        X′_q=0.5,
-        T′_d0=10.2, 
-        T′_q0=0.2, 
-        X″_d=0.25, 
-        X″_q=0.25, 
+        X_ls=0.298, 
+        X_d=2.1, 
+        X_q=2.05, 
+        X′_d=0.57, 
+        X′_q=0.59,
+        T′_d0=4.79, 
+        T′_q0=1.96, 
+        X″_d=0.45, 
+        X″_q=0.45, 
         T″_d0=0.05, 
         T″_q0=0.035, 
-        H=4.3, 
+        H=3.45, 
         D=0.5
     )
 
